@@ -1,0 +1,26 @@
+/* body {
+    background-image: url("img/background.jpg");
+} */
+
+/* #bg {
+    background-image: url("img/background.jpg");
+} */
+
+.title {
+    font-size: 4em;
+    font-family: 'Fredericka the Great', cursive;
+    /* color: #a5673f; */
+}
+
+.subtitle {
+    font-size: 2.5em;
+    font-family: 'Sacramento', cursive;
+    /* font-weight: bold; */
+    /* color: #a5673f; */
+}
+
+.tagline {
+    font-size: 1.5em;
+    font-family: 'Josefin Slab', serif;
+    /* color: #a5673f; */
+}

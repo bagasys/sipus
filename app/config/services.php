@@ -18,7 +18,6 @@ $di->set(
     function(){
         $view = new \Phalcon\Mvc\View();
         $view->setViewsDir(APP_PATH . "/views");
-        //echo APP_PATH . "\\views";
 
         $view->registerEngines([
             ".volt" => "voltService",

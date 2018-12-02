@@ -1,0 +1,42 @@
+a:5:{i:0;s:653:"<!DOCTYPE html>
+<html>
+<head>
+    <link href="<?= $this->url->get('css/style.css') ?>" type="text/css" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Sacramento|Josefin+Slab" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+<script src="<?= $this->url->get('js/script.js') ?>" type="text/javascript"></script>
+    <title>Sipus - ";s:5:"title";N;i:1;s:887:"</title>
+</head>
+<body style="background-image: url('img/background2.jpg'); background-repeat: no-repeat; background-size: 100% 100%">
+    <div class="ui brown inverted menu">
+        <a class="item">
+            <img class="ui mini image" src="<?= $this->url->get('img/sipus_logo.png') ?>">
+        </a>
+        <a class="item">Browse Catalogue</a>
+        <div class="ui search item">
+            <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="Search for books...">
+                <input class="circular ui brown icon button" type="hidden" value="">
+                <i class="search icon"></i>
+            </div>
+            <div class="results"></div>
+        </div>        
+        <div class="right menu">
+            <a class="item">Login</a>
+            <a class="item">Sign Up</a>
+        </div>
+    </div>
+
+    ";s:7:"content";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:1:" ";s:4:"file";s:49:"E:\xampp\htdocs\sipus\app/views\layouts\base.volt";s:4:"line";i:34;}}i:2;s:24:"
+
+
+
+</body>
+</html>";}

@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-    </head>
+{% extends "layouts\base.volt" %}
 
-    <body>
-        <h4>Not found</h4>
-        <p>{{message}}</p>
-    </body>
-</html>
+{% block content %}
+<div class="ui centered grid">
+  <div class="two wide column">
+    Not Found
+  </div>
+</div>
+{% endblock %}
