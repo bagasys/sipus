@@ -25,7 +25,7 @@ class ReservasiRoutes extends RouterGroup
         );
        
         $this->addPost(
-            '',
+            '/hapus-reservasi',
             [
                 'action'    => 'destroy',
             ]

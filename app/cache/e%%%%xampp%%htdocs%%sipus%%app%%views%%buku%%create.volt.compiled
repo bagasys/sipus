@@ -12,9 +12,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 
 <script src="<?= $this->url->get('js/script.js') ?>" type="text/javascript"></script>
-    <title>Sipus - 
-Not Found
-</title>
+    <title>Sipus - </title>
 </head>
 <body style="background-image: url('img/background2.jpg'); background-repeat: no-repeat; background-size: 100% 100%">
     <div class="ui brown inverted menu">
@@ -36,13 +34,18 @@ Not Found
     </div>
 
     
-<div class="ui vertical masthead center aligned segment">
-    <div class="ui text container">
-        <h1>
-            Sorry, the page you're looking for is not found.
-        </h1>
-    </div>
-</div>
+<form method="POST" action="<?= $this->url->get('tambah-buku') ?>">
+    <input type="text" name="ISBN_ISSN" placeholder="ISBN">
+    <input type="text" name="judul" placeholder="judul">
+    <input type="text" name="pengarang" placeholder="pengarang">
+    <input type="text" name="kategori" placeholder="kategori">
+    <input type="text" name="penerbit" placeholder="penerbit">
+    <input type="text" name="deskripsi" placeholder="deskripsi">
+    <input type="text" name="deskripsi_fisik" placeholder="deskripsi fisik">
+    <input type="text" name="nomor_panggil" placeholder="nomor panggil">
+
+    <input type="submit">
+</form>
 
 
 

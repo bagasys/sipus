@@ -8,7 +8,7 @@ class Buku extends Model
     public $judul;
     public $pengarang;
     public $kategori;
-    public $penrbit;
+    public $penerbit;
     public $deskripsi;
     public $deskripsi_fisik;
     public $nomor_panggil;

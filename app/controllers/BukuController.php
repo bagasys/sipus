@@ -19,7 +19,29 @@ class BukuController extends BaseController
 
     public function storeAction()
     {
-    
+        $book = new Buku();
+
+        $isbn = $this->request->getPost('ISBN_ISSN');
+        $judul = $this->request->getPost('judul');
+        $pengarang = $this->request->getPost('pengarang');
+        $kategori = $this->request->getPost('kategori');
+        $penerbit = $this->request->getPost('penerbit');
+        $deskripsi = $this->request->getPost('deskripsi');
+        $deskripsi_fisik = $this->request->getPost('deskripsi_fisik');
+        $nomor_panggil = $this->request->getPost('nomor_panggil');
+
+        $book->ISBN_ISSN = $isbn;
+        $book->judul = $judul;
+        $book->pengarang = $pengarang;
+        $book->kategori = $kategori;
+        $book->penerbit = $penerbit;
+        $book->deskripsi = $deskripsi;
+        $book->deskripsi_fisik = $deskripsi_fisik;
+        $book->nomor_panggil = $nomor_panggil;
+
+        $book->save();
+
+        echo "wow";
     }
     
     public function updateAction()
