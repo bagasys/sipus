@@ -1,13 +1,16 @@
 <?php
 use Phalcon\Mvc\Controller;
-class PeminjamanController extends BaseController
+class UsersController extends BaseController
 {
     public function manageAction()
     {
     
     }
-
     public function createAction()
+    {
+    
+    }
+    public function editAction()
     {
     
     }
@@ -16,13 +19,11 @@ class PeminjamanController extends BaseController
     {
     
     }
-
-    public function destroyAction()
+    public function updateAction()
     {
     
     }
-
-    public function showAction()
+    public function destroyAction()
     {
     
     }

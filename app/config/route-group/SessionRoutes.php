@@ -13,29 +13,33 @@ class SessionRoutes extends RouterGroup
         $this->addGet(
             '/login',
             [
-                'action' => 'create',
+                'action'    => 'create',
             ]
         );
 
         $this->addPost(
             '/login',
             [
-                'action' => 'store',
+                'action'    => 'store',
             ]
         );
-
+        
         $this->addGet(
             '/profile',
             [
-                'action' => 'show',
+                'action'    => 'show',
             ]
         );
 
         $this->addGet(
             '/logout',
             [
-                'action' => 'destroy',
+                'action'    => 'destroy',
             ]
         );
+
+
+        
+       
     }
 }

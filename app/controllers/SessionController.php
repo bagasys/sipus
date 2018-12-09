@@ -1,28 +1,21 @@
 <?php
-
 use Phalcon\Mvc\Controller;
-use Phalcon\Mvc\Dispatcher;
-use Phalcon\Http\Response;
-
-class SessionController extends Controller
+class SessionController extends BaseController
 {
     public function createAction()
     {
-
+    
     }
 
     public function storeAction()
     {
-
-    }
-
-    public function showAction()
-    {
-
+    
     }
 
     public function destroyAction()
     {
-
+    
     }
+
 }
+   

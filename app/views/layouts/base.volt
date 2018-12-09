@@ -6,10 +6,10 @@
 </head>
 <body style="background-image: url('img/background2.jpg'); background-repeat: no-repeat; background-size: 100% 100%">
     <div class="ui brown inverted menu">
-        <a class="item">
+        <a href="{{ url("") }}" class="item">
             <img class="ui mini image" src="{{ url("img/sipus_logo.png") }}">
         </a>
-        <a class="item">Browse Catalogue</a>
+        <a href="{{ url("catalogue") }}" class="item">Browse Catalogue</a>
         <div class="ui search item">
             <div class="ui icon input">
                 <input class="prompt" type="text" placeholder="Search for books...">
@@ -19,8 +19,7 @@
             <div class="results"></div>
         </div>        
         <div class="right menu">
-            <a class="item">Login</a>
-            <a class="item">Sign Up</a>
+            <a href="{{ url("login") }}" class="item">Login</a>
         </div>
     </div>
 {#

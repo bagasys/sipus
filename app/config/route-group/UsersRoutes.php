@@ -2,50 +2,56 @@
 
 use \Phalcon\Mvc\Router\Group as RouterGroup;
 
-class PeminjamanRoutes extends RouterGroup
+class UsersRoutes extends RouterGroup
 {
     public function initialize()
     {
         $this->setPaths([
-            'controller' => 'peminjaman',
+            'controller' => 'users',
         ]);
 
         $this->addGet(
-            '/daftar-peminjaman/{id}',
+            '/daftar-anggota',
             [
                 'action'    => 'manage',
             ]
         );
 
         $this->addGet(
-            '/pinjam',
+            '/tambah-anggota',
             [
                 'action'    => 'create',
             ]
         );
 
         $this->addGet(
-            '/peminjaman',
+            '/ubah-anggota',
             [
-                'action'    => 'show',
+                'action'    => 'edit',
             ]
         );
 
         $this->addPost(
-            '/pinjam',
+            '/tambah-anggota',
             [
                 'action'    => 'store',
             ]
         );
 
         $this->addPost(
-            '/hapus-peminjaman',
+            '/ubah-anggota',
+            [
+                'action'    => 'update',
+            ]
+        );
+
+        $this->addPost(
+            '/hapus-anggota',
             [
                 'action'    => 'destroy',
             ]
         );
        
-
-
+        
     }
 }

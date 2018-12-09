@@ -11,4 +11,15 @@ class IndexController extends BaseController
     {   
     
     }
+
+    public function showBooksAction()
+    {   
+    
+    }
+
+    public function showBookDetailAction()
+    {   
+    
+    }
+
 }
