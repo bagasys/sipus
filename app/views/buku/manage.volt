@@ -17,6 +17,7 @@
             <th>Jumlah</th>
             <th>Jumlah tersedia</th>
             <th>Status</th>
+            <th>Aksi<th>
         </tr>
     </thead>
     <tbody>
@@ -35,6 +36,7 @@
             <th>{{result.jumlah}}</th>
             <th>{{result.jumlah_tersedia}}</th>
             <th>{{result.status}}</th>
+            <th>  <th>
         </tr>
         {% endfor  %}
     </tbody>
