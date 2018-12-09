@@ -14,7 +14,8 @@ class IndexController extends BaseController
 
     public function showBooksAction()
     {   
-    
+        $results = Buku::find();
+        $this->view->results = $results;
     }
 
     public function showBookDetailAction()
