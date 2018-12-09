@@ -3,6 +3,7 @@
 
 <div class="ui two column centered grid">
     <form method="POST" action="{{ url("ubah-buku") }}" class="ui form">
+        <input type="hidden" name="id" value="{{results.id}}">
         <div class="field">
             <label for="ISBN_ISSN">ISBN / ISSN </label>
             <input type="text" name="ISBN_ISSN" placeholder="Ex: 978-0-262-03384-8" value="{{results.ISBN_ISSN}}">
