@@ -25,7 +25,7 @@ class BukuRoutes extends RouterGroup
         );
 
         $this->addGet(
-            '/ubah-buku',
+            '/ubah-buku/{id}',
             [
                 'action'    => 'edit',
             ]
