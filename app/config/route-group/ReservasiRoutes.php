@@ -17,6 +17,21 @@ class ReservasiRoutes extends RouterGroup
             ]
         );
 
+        $this->addGet(
+            '/daftar-reservasi',
+            [
+                'action'    => 'manage',
+            ]
+        );
+
+         $this->addPost(
+            '/daftar-reservasi',
+            [
+                'action'    => 'manage',
+            ]
+        );
+
+
         $this->addPost(
             '/reservasi',
             [
