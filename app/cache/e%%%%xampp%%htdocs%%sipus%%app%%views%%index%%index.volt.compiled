@@ -34,6 +34,12 @@
     </div>
 
     
+
+<?php if ($this->session->has('auth')) { ?>
+            <p style="color:white">Halo, <?= $this->session->get('auth')['nama'] ?></p>
+<?php } ?>
+
+
 <div class="ui vertical masthead center aligned segment">
     <div class="ui middle aligned medium image">
         <img src="<?= $this->url->get('img/sipus_logo.png') ?>">

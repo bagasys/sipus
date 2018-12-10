@@ -34,21 +34,19 @@
     </div>
 
     
-<div class="ui horizontal segments">
-    <div class="ui segment">
-        <p>yoi</p>
+<div class="ui four column grid">
+    
+    <div class="column">
+        <center>
+            <img src="<?= $this->url->get('img/sipus_logo.png') ?>">
+            <div class="ui header">
+                <div class="content">Judul Buku</div>
+                <div class="sub header">Pengarang</div>
+            </div>
+        </center>
     </div>
-    <div class="ui segment">
-        <p>yoi2</p>
-    </div>
-    <div class="ui segment">
-        <p>yoi3</p>
-    </div>
-    <div class="ui segment">
-        <p>yoi4</p>
-    </div>
+    
 </div>
-
 
 
 
