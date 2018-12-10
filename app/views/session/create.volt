@@ -6,7 +6,7 @@
 
 <div class="ui two column centered grid">
     <div class="ui brown inverted segment">
-        <form method="POST" action="{{ url("tambah-anggota") }}" class="ui form">
+        <form method="POST" action="{{ url("login") }}" class="ui form">
             <div class="field">
                 <label>Email</label>
                 <input type="text" name="email" placeholder="example@mail.com">
@@ -15,7 +15,7 @@
                 <label>Password</label>
                 <input type="password" name="password" placeholder="">
             </div>
-            <input type="submit" value="Tambahkan sebagai Anggota" class="ui brown button">
+            <input type="submit" value="Masuk" class="ui brown button">
         </form>
     </div>
 </div>
