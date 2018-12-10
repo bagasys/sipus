@@ -31,7 +31,7 @@
             <label for="cpassword">Confirm Password</label>
             <input type="password" name="cpassword" placeholder="">
         </div>
-        <input type="submit" value="Tambahkan sebagai Anggota" class="ui inverted brown button">
+        <input type="submit" value="Ubah Data Anggota" class="ui inverted brown button">
     </form>
 </div>
 
