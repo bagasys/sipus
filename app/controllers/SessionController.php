@@ -4,10 +4,10 @@ class SessionController extends BaseController
 {
     public function createAction()
     {
-        if($this->session->get('auth')['status'] === '0'){
+        if($this->session->get('auth')['status'] === '1'){
             $this->response->redirect('daftar-buku');
         }
-        else{
+        else if($this->session->get('auth')['status'] === '0'){
             $this->response->redirect();
         }
     }

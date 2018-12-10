@@ -31,17 +31,23 @@
             </div>
         </form>
         <div class="right menu">
-
             <?php if ($this->session->has('auth')) { ?>
+
                 <p style="color:white">Halo, <?= $this->session->get('auth')['nama'] ?> </p>
                 <a href="<?= $this->url->get('logout') ?>" class="item">Log out</a>
             <?php } elseif ($this->session->has('admin')) { ?>
-                <p style="color:white">Halo, <?= $this->session->get('admin')['nama'] ?> </p>
-                <a href="<?= $this->url->get('logout') ?>" class="item">Log out</a>
+  <div class="ui simple dropdown item">
+    <?= $this->session->get('admin')['nama'] ?>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <div class="item"><a href="<?= $this->url->get('logout') ?>" style="color: black;">Logout</a></div>
+      <div class="item"><a href="<?= $this->url->get('peminjaman') ?>" style="color: black;">Data Peminjaman</a></div>
+      <div class="item"><a href="<?= $this->url->get('reservasi') ?>" style="color: black;">Data Reservasi</a></div>
+    </div>
+  </div>
             <?php } else { ?>
                 <a href="<?= $this->url->get('login') ?>" class="item">Log in</a>
             <?php } ?>
-        
         </div>
     </div>
 
@@ -54,7 +60,7 @@
 <form method="GET" action="daftar-anggota">
     <div class="ui search item">
         <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="Search for users...">
+            <input class="prompt" type="text" placeholder="Search for books...">
             <input class="circular ui brown icon button" type="submit" value="">
             <i class="search icon"></i>
         </div>
@@ -66,10 +72,10 @@
         <tr class="center aligned">
             <th>ID</th>
             <th>Nama Lengkap</th>
+            <th>Nomor Kartu Identitas</th>
             <th>Email</th>
             <th>Alamat</th>
             <th>Nomor Telepon</th>
-            <th>Nomor Kartu Identitas</th>
             <th>Status Admin</th>
             <th>Aksi</th>
         </tr>
@@ -79,10 +85,10 @@
         <tr class="center aligned">
             <th><?= $result->id ?></th>
             <th><?= $result->nama ?></th>
+            <th><?= $result->no_id ?></th>
             <th><?= $result->email ?></th>
             <th><?= $result->alamat ?></th>
             <th><?= $result->no_telepon ?></th>
-            <th><?= $result->no_id ?></th>
             <th><?= $result->admin ?></th>
             <th>
                 <div>

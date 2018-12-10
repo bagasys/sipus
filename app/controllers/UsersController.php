@@ -4,7 +4,7 @@ class UsersController extends BaseController
 {
     public function manageAction()
     {
-        if($this->session->get('auth')['status'] === '0'){
+        if($this->session->get('auth')['status'] != '1'){
             $this->response->redirect();
         }
 
@@ -21,16 +21,17 @@ class UsersController extends BaseController
         
         
         $this->view->results = $results;
+        
     }
     public function createAction()
     {
-        if($this->session->get('auth')['status'] === '0'){
+        if($this->session->get('auth')['status'] != '1'){
             $this->response->redirect();
         }
     }
     public function editAction()
     {
-        if($this->session->get('auth')['status'] === '0'){
+        if($this->session->get('auth')['status'] != '1'){
             $this->response->redirect();
         }
         $id = $this->dispatcher->getParam("id");

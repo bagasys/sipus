@@ -20,20 +20,45 @@
             <img class="ui mini image" src="<?= $this->url->get('img/sipus_logo.png') ?>">
         </a>
         <a href="<?= $this->url->get('catalogue') ?>" class="item">Browse Catalogue</a>
-        <div class="ui search item">
-            <div class="ui icon input">
-                <input class="prompt" type="text" placeholder="Search for books...">
-                <input class="circular ui brown icon button" type="hidden" value="">
-                <i class="search icon"></i>
+        <form method="GET" action="catalogue">
+            <div class="ui search item">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="Search for books...">
+                    <input class="circular ui brown icon button" type="submit" value="">
+                    <i class="search icon"></i>
+                </div>
+                <div class="results"></div>
             </div>
-            <div class="results"></div>
-        </div>        
+        </form>
         <div class="right menu">
-            <a href="<?= $this->url->get('login') ?>" class="item">Login</a>
+            <?php if ($this->session->has('auth')) { ?>
+            <div class="ui simple dropdown item">
+                <?= $this->session->get('auth')['nama'] ?>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="item"><a href="<?= $this->url->get('logout') ?>" style="color: black;">Logout</a></div>
+                    <div class="item"><a href="<?= $this->url->get('peminjaman') ?>" style="color: black;">Data Peminjaman</a></div>
+                    <div class="item"><a href="<?= $this->url->get('reservasi') ?>" style="color: black;">Data Reservasi</a></div>
+                </div>
+            </div>
+            <?php } else { ?>
+                <a href="<?= $this->url->get('login') ?>" class="item">Log in</a>
+            <?php } ?>
         </div>
     </div>
 
-     
+    
+
+    
+<img src="img/sipus_logo.png">
+<?php if ($this->session->has('auth')) { ?>
+<form method="POST" action="<?= $this->url->get('reservasi') ?>">
+    <input type="hidden" value="<?= $id_buku ?>">
+    <input type="submit" value="Reservasi">
+</form>
+<?php } ?>
+
+
 
 
 

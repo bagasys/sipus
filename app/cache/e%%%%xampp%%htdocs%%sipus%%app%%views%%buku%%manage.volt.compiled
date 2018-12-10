@@ -20,22 +20,50 @@
             <img class="ui mini image" src="<?= $this->url->get('img/sipus_logo.png') ?>">
         </a>
         <a href="<?= $this->url->get('catalogue') ?>" class="item">Browse Catalogue</a>
-        <div class="ui search item">
-            <div class="ui icon input">
-                <input class="prompt" type="text" placeholder="Search for books...">
-                <input class="circular ui brown icon button" type="hidden" value="">
-                <i class="search icon"></i>
+        <form method="GET" action="catalogue">
+            <div class="ui search item">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="Search for books...">
+                    <input class="circular ui brown icon button" type="submit" value="">
+                    <i class="search icon"></i>
+                </div>
+                <div class="results"></div>
             </div>
-            <div class="results"></div>
-        </div>        
+        </form>
         <div class="right menu">
-            <a href="<?= $this->url->get('login') ?>" class="item">Login</a>
+            <?php if ($this->session->has('auth')) { ?>
+            <div class="ui simple dropdown item">
+                <?= $this->session->get('auth')['nama'] ?>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="item"><a href="<?= $this->url->get('logout') ?>" style="color: black;">Logout</a></div>
+                    <div class="item"><a href="<?= $this->url->get('peminjaman') ?>" style="color: black;">Data Peminjaman</a></div>
+                    <div class="item"><a href="<?= $this->url->get('reservasi') ?>" style="color: black;">Data Reservasi</a></div>
+                </div>
+            </div>
+            <?php } else { ?>
+                <a href="<?= $this->url->get('login') ?>" class="item">Log in</a>
+            <?php } ?>
         </div>
     </div>
 
     
-<table class="ui selectable inverted brown celled table">
 
+    
+<div>
+    <a href="tambah-buku">Tambahkan Buku Baru</a>    
+</div>
+<form method="GET" action="daftar-buku">
+    <div class="ui search item">
+        <div class="ui icon input">
+            <input class="prompt" type="text" placeholder="Search for books...">
+            <input class="circular ui brown icon button" type="submit" value="">
+            <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+    </div>
+</form>
+<table class="ui selectable inverted brown celled table">
     <thead>
         <tr class="center aligned">
             <th>ID</th>
@@ -51,7 +79,7 @@
             <th>Jumlah</th>
             <th>Jumlah tersedia</th>
             <th>Status</th>
-            <th>Aksi<th>
+            <th>Aksi</th>
         </tr>
     </thead>
     <tbody>
@@ -70,7 +98,12 @@
             <th><?= $result->jumlah ?></th>
             <th><?= $result->jumlah_tersedia ?></th>
             <th><?= $result->status ?></th>
-            <th>  <th>
+            <th> <a href="ubah-buku/<?= $result->id ?>">Edit</a> <br>
+				<form method="POST" action="<?= $this->url->get('hapus-buku') ?>" class="ui form">
+                    <input type="hidden" name="id" value="<?= $result->id ?>">
+                    <input type="submit" value="Hapus">
+                </form> 
+            </th>
         </tr>
         <?php } ?>
     </tbody>
