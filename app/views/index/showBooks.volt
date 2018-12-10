@@ -7,11 +7,11 @@
 {% for result in results %}
     <div class="column">
         <center>
-            <img src="{{ url("img/sipus_logo.png") }}">
+            <a href = "details/{{result.id}}"><img src="{{ url("img/sipus_logo.png") }}"></a>
             <div class="ui header">
                 <div class="content">
                     <div class="book-title">
-                        {{result.judul}}
+                    <a href = "details/{{result.id}}">{{result.judul}}</a>
                     </div>
                 </div>
                 <div class="sub header">
