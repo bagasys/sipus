@@ -4,7 +4,8 @@ class BukuController extends BaseController
 {
     public function manageAction()
     {
-    
+        $results = Buku::find();
+        $this->view->results = $results;
     }
 
     public function createAction()
@@ -30,6 +31,8 @@ class BukuController extends BaseController
         $deskripsi_fisik = $this->request->getPost('deskripsi_fisik');
         $nomor_panggil = $this->request->getPost('nomor_panggil');
 
+       
+
         $book->ISBN_ISSN = $isbn;
         $book->judul = $judul;
         $book->pengarang = $pengarang;
@@ -39,9 +42,15 @@ class BukuController extends BaseController
         $book->deskripsi_fisik = $deskripsi_fisik;
         $book->nomor_panggil = $nomor_panggil;
 
-        $book->save();
+        
 
-        echo "wow";
+        if ($book->save() === false) {
+            foreach ($book->getMessages() as $message) {
+                echo $message, "\n";
+            }
+        } else {
+            echo "pendaftaran sukses";
+        }
     }
     
     public function updateAction()

@@ -1,6 +1,7 @@
 {% extends "layouts\base.volt" %}
 {% block content %}
 <table class="ui selectable inverted brown celled table">
+
     <thead>
         <tr class="center aligned">
             <th>ID</th>
@@ -19,21 +20,23 @@
         </tr>
     </thead>
     <tbody>
+        {% for result in results %}
         <tr class="center aligned">
-            <th>14045</th>
-            <th>000-000-000-000</th>
-            <th>Introduction to Algorithms</th>
-            <th>J. K. Rowling</th>
-            <th>Mizan</th>
-            <th>Mystery, Romance</th>
-            <th>Buku ini berisi tentang blablabla</th>
-            <th>500 halaman, hardcover</th>
-            <th>500 WOW rk.1</th>
+            <th>{{result.id}}</th>
+            <th>{{result.ISBN_ISSN}}</th>
+            <th>{{result.judul}}</th>
+            <th>{{result.pengarang}}</th>
+            <th>{{result.penerbit}}</th>
+            <th>{{result.kategori}}</th>
+            <th>{{result.deskripsi}}</th>
+            <th>{{result.deskripsi_fisik}}</th>
+            <th>{{result.nomor_panggil}}</th>
             <th><img src="{{ url("img/sipus_logo.png") }}"></th>
-            <th>10</th>
-            <th>5</th>
-            <th>blablabla</th>
+            <th>{{result.jumlah}}</th>
+            <th>{{result.jumlah_tersedia}}</th>
+            <th>{{result.status}}</th>
         </tr>
+        {% endfor  %}
     </tbody>
 </table>
 {% endblock %}
