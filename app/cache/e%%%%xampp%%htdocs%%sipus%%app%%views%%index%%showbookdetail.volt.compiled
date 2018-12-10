@@ -53,6 +53,7 @@
 <img src="img/sipus_logo.png">
 <?php if ($this->session->has('auth')) { ?>
 <form method="POST" action="<?= $this->url->get('reservasi') ?>">
+    <input type="hidden" value="<?= $id_buku ?>">
     <input type="submit" value="Reservasi">
 </form>
 <?php } ?>
