@@ -6,7 +6,7 @@
 <form method="GET" action="daftar-anggota">
     <div class="ui search item">
         <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="Search for books...">
+            <input class="prompt" type="text" placeholder="Search for users...">
             <input class="circular ui brown icon button" type="submit" value="">
             <i class="search icon"></i>
         </div>
