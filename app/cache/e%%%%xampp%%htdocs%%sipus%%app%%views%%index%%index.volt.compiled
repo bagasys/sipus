@@ -31,17 +31,19 @@
             </div>
         </form>
         <div class="right menu">
-
             <?php if ($this->session->has('auth')) { ?>
-                <p style="color:white">Halo, <?= $this->session->get('auth')['nama'] ?> </p>
-                <a href="<?= $this->url->get('logout') ?>" class="item">Log out</a>
-            <?php } elseif ($this->session->has('admin')) { ?>
-                <p style="color:white">Halo, <?= $this->session->get('admin')['nama'] ?> </p>
-                <a href="<?= $this->url->get('logout') ?>" class="item">Log out</a>
+            <div class="ui simple dropdown item">
+                <?= $this->session->get('auth')['nama'] ?>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="item"><a href="<?= $this->url->get('logout') ?>" style="color: black;">Logout</a></div>
+                    <div class="item"><a href="<?= $this->url->get('peminjaman') ?>" style="color: black;">Data Peminjaman</a></div>
+                    <div class="item"><a href="<?= $this->url->get('reservasi') ?>" style="color: black;">Data Reservasi</a></div>
+                </div>
+            </div>
             <?php } else { ?>
                 <a href="<?= $this->url->get('login') ?>" class="item">Log in</a>
             <?php } ?>
-        
         </div>
     </div>
 
