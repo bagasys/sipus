@@ -4,19 +4,19 @@ class UsersController extends BaseController
 {
     public function manageAction()
     {
-        if($this->session->has('auth')){
+        if(!$this->session->has('admin')){
             $this->response->redirect();
         }
     }
     public function createAction()
     {
-        if($this->session->has('auth')){
+        if(!$this->session->has('admin')){
             $this->response->redirect();
         }
     }
     public function editAction()
     {
-        if($this->session->has('auth')){
+        if(!$this->session->has('admin')){
             $this->response->redirect();
         }
     }
@@ -37,7 +37,7 @@ class UsersController extends BaseController
         if($password === $cpassword){
             $checkUser = Users::findFirst("email = '$email'");
             if($checkUser){
-                $this->response->redirect('/tambah-anggota');
+                $this->response->redirect('tambah-anggota');
             }
             else{
                 $password = password_hash($password, PASSWORD_DEFAULT); 
@@ -57,12 +57,12 @@ class UsersController extends BaseController
                     }                
                 }
                 else{
-                    $this->response->redirect('/login');
+                    $this->response->redirect('login');
                 }
             }
         }
         else{
-            $this->response->redirect('/tambah-anggota');
+            $this->response->redirect('tambah-anggota');
         }
         
     }

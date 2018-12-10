@@ -4,7 +4,7 @@ class BukuController extends BaseController
 {
     public function manageAction()
     {
-        if($this->session->has('auth')){
+        if(!$this->session->has('admin')){
             $this->response->redirect();
         }
         $results = Buku::find();
@@ -13,7 +13,7 @@ class BukuController extends BaseController
 
     public function createAction()
     {
-        if($this->session->has('auth')){
+        if(!$this->session->has('admin')){
             $this->response->redirect();
         }
         $results = Buku::find();
@@ -22,7 +22,7 @@ class BukuController extends BaseController
     
     public function editAction()
     {   
-        if($this->session->has('auth')){
+        if(!$this->session->has('admin')){
             $this->response->redirect();
         }
         $id = $this->dispatcher->getParam("id");

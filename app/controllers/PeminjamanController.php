@@ -4,14 +4,14 @@ class PeminjamanController extends BaseController
 {
     public function manageAction()
     {
-        if($this->session->has('auth')){
+        if(!$this->session->has('admin')){
             $this->response->redirect();
         }
     }
 
     public function createAction()
     {
-        if($this->session->has('auth')){
+        if(!$this->session->has('admin')){
             $this->response->redirect();
         }
     }
