@@ -27,30 +27,40 @@
                 <i class="search icon"></i>
             </div>
             <div class="results"></div>
-        </div>        
+        </div>
         <div class="right menu">
-            <a href="<?= $this->url->get('login') ?>" class="item">Login</a>
+
+            <?php if ($this->session->has('auth')) { ?>
+                <p style="color:white">Halo, <?= $this->session->get('auth')['nama'] ?> </p>
+                <a href="<?= $this->url->get('logout') ?>" class="item">Log out</a>
+            <?php } elseif ($this->session->has('admin')) { ?>
+                <p style="color:white">Halo, <?= $this->session->get('admin')['nama'] ?> </p>
+                <a href="<?= $this->url->get('logout') ?>" class="item">Log out</a>
+            <?php } else { ?>
+                <a href="<?= $this->url->get('login') ?>" class="item">Log in</a>
+            <?php } ?>
+        
         </div>
     </div>
 
     
-<div class="ui equal width grid">
-    <div class="row">
-        <div class="four wide column">
-            <img class="ui medium image" src="<?= $this->url->get('img/s20s_logo_white.png') ?>">
-            <h5>ini judul buku</h5>
-        </div>
-        <div class="four wide column">
-            hoi
-        </div>
-        <div class="four wide column">
-            heo
-        </div>
-        <div class="four wide column">
-            hia
-        </div>
-    </div>    
+
+    
+<div class="ui horizontal segments">
+    <div class="ui segment">
+        <p>yoi</p>
+    </div>
+    <div class="ui segment">
+        <p>yoi2</p>
+    </div>
+    <div class="ui segment">
+        <p>yoi3</p>
+    </div>
+    <div class="ui segment">
+        <p>yoi4</p>
+    </div>
 </div>
+
 
 
 

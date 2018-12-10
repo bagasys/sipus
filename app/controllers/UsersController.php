@@ -4,15 +4,21 @@ class UsersController extends BaseController
 {
     public function manageAction()
     {
-    
+        if($this->session->has('auth')){
+            $this->response->redirect();
+        }
     }
     public function createAction()
     {
-    
+        if($this->session->has('auth')){
+            $this->response->redirect();
+        }
     }
     public function editAction()
     {
-    
+        if($this->session->has('auth')){
+            $this->response->redirect();
+        }
     }
 
     public function storeAction()
@@ -41,11 +47,15 @@ class UsersController extends BaseController
                 $user->no_telepon = $telp;
                 $user->no_id = $no_id;
 
+                $user->save();
+
                 if($user->save() === false){
-                    echo "pendaftaran gagal";
+                    foreach ($user->getMessages() as $message) {
+                        echo $message, "\n";
+                    }                
                 }
                 else{
-                    echo "pendaftaran sukses";
+                    $this->response->redirect('/login');
                 }
             }
         }
@@ -60,6 +70,6 @@ class UsersController extends BaseController
     }
     public function destroyAction()
     {
-    
+        
     }
 }

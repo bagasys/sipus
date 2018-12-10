@@ -4,18 +4,27 @@ class BukuController extends BaseController
 {
     public function manageAction()
     {
+        if($this->session->has('auth')){
+            $this->response->redirect();
+        }
         $results = Buku::find();
         $this->view->results = $results;
     }
 
     public function createAction()
     {
+        if($this->session->has('auth')){
+            $this->response->redirect();
+        }
         $results = Buku::find();
         $this->view->results = $results;
     }
     
     public function editAction()
     {   
+        if($this->session->has('auth')){
+            $this->response->redirect();
+        }
         $id = $this->dispatcher->getParam("id");
         $results = Buku::findFirst("id = '$id' ");
         $this->view->results = $results;

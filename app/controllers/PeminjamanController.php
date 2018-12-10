@@ -4,10 +4,19 @@ class PeminjamanController extends BaseController
 {
     public function manageAction()
     {
-    
+        if($this->session->has('auth')){
+            $this->response->redirect();
+        }
     }
 
     public function createAction()
+    {
+        if($this->session->has('auth')){
+            $this->response->redirect();
+        }
+    }
+
+    public function showAction()
     {
     
     }
@@ -21,9 +30,5 @@ class PeminjamanController extends BaseController
     {
     
     }
-
-    public function showAction()
-    {
     
-    }
 }

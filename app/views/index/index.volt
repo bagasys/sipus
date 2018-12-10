@@ -5,9 +5,6 @@
 
 {% block content %}
 
-{% if session.has('auth') %}
-            <p style="color:white">Halo, {{ session.get('auth')['nama'] }}</p>
-{% endif %}
 
 
 <div class="ui vertical masthead center aligned segment">

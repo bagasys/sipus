@@ -27,17 +27,26 @@
                 <i class="search icon"></i>
             </div>
             <div class="results"></div>
-        </div>        
+        </div>
         <div class="right menu">
-            <a href="<?= $this->url->get('login') ?>" class="item">Login</a>
+
+            <?php if ($this->session->has('auth')) { ?>
+                <p style="color:white">Halo, <?= $this->session->get('auth')['nama'] ?> </p>
+                <a href="<?= $this->url->get('logout') ?>" class="item">Log out</a>
+            <?php } elseif ($this->session->has('admin')) { ?>
+                <p style="color:white">Halo, <?= $this->session->get('admin')['nama'] ?> </p>
+                <a href="<?= $this->url->get('logout') ?>" class="item">Log out</a>
+            <?php } else { ?>
+                <a href="<?= $this->url->get('login') ?>" class="item">Log in</a>
+            <?php } ?>
+        
         </div>
     </div>
 
     
 
-<?php if ($this->session->has('auth')) { ?>
-            <p style="color:white">Halo, <?= $this->session->get('auth')['nama'] ?></p>
-<?php } ?>
+    
+
 
 
 <div class="ui vertical masthead center aligned segment">

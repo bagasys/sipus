@@ -4,7 +4,12 @@ class SessionController extends BaseController
 {
     public function createAction()
     {
-    
+        if($this->session->has('auth')){
+            $this->response->redirect();
+        }
+        else if($this->session->has('admin')){
+            $this->response->redirect('daftar-buku');
+        }
     }
 
     public function storeAction()
@@ -15,24 +20,40 @@ class SessionController extends BaseController
 
         if($user)
         {
-            if($password === $user->password){
-                $this->session->set(
+            if(password_verify($password, $user->password)){
+                if($user->admin === '1'){
+                    $this->session->set(
+                        'admin',
+                        [
+                            'status' => $user->admin,
+                            'nama' => $user->nama,
+                        ]
+                    );
+                }
+                else{
+                    $this->session->set(
                         'auth',
                         [
                             'status' => $user->admin,
                             'nama' => $user->nama,
                         ]
-                );
-
+                    );
+                }
                 $this->response->redirect();
             }
+            else{
+                $this->response->redirect('login');
+            }
         }
-
+        else{
+            $this->response->redirect('login');
+        }
     }
 
     public function destroyAction()
     {
-    
+        $this->session->destroy();
+        $this->response->redirect();
     }
 
 }

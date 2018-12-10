@@ -17,19 +17,24 @@
                 <i class="search icon"></i>
             </div>
             <div class="results"></div>
-        </div>        
+        </div>
         <div class="right menu">
-            <a href="{{ url("login") }}" class="item">Login</a>
+
+            {% if session.has('auth') %}
+                <p style="color:white">Halo, {{ session.get('auth')['nama'] }} </p>
+                <a href="{{ url("logout") }}" class="item">Log out</a>
+            {% elseif session.has('admin') %}
+                <p style="color:white">Halo, {{ session.get('admin')['nama'] }} </p>
+                <a href="{{ url("logout") }}" class="item">Log out</a>
+            {% else %}
+                <a href="{{ url("login") }}" class="item">Log in</a>
+            {% endif %}
+        
         </div>
     </div>
-{#
-    {% if session.has('auth') %}
-        <p style="color:white">Halo, {{ session.get('auth')['username'] }} </p>
-        <a href="{{ url("logout") }}">Log out</a>
-    {% else %}
-        <a href="{{ url("login") }}">Log in</a>
-    {% endif %}
-#}
+
+    
+
     {% block content %} {% endblock %}
 
 {# ini footer #}
