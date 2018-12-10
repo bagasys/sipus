@@ -1,17 +1,30 @@
 {% extends "layouts\base.volt" %}
+{% block title %}Detail{% endblock %}
 {% block content %}
-<img src="../img/sipus_logo.png">
+<div class="ui equal width grid">
+    <div class="row">
+        <div class="column">
+            <img src="img/sipus_logo.png">
+                {% if session.has('auth') %}
+                <form method="POST" action="{{ url("reservasi") }}">
+                    <input type="hidden" value="{{results.id}}" name = "id_buku">
+                    <input type="submit" value="Reservasi">
+                </form>
 
-{{results.judul}} <br>
-{{results.pengarang}}<br>
-{{results.penerbit}}
-{{results.id}}
-{% if session.has('auth') %}
-
-<form method="POST" action="{{ url("reservasi") }}">
-    <input type="hidden" value="{{results.id}}" name = "id_buku">
-    <input type="submit" value="Reservasi">
-</form>
-{% endif %}
+                {% endif %}
+        </div>
+        <div class="column">
+            <div class="row">
+                {{results.judul}} <br>
+                {{results.pengarang}} <br>
+                {{results.penerbit}} <br>
+                {{results.id}} <br>
+            </div>
+            <div class="row">
+                Pengarang
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
