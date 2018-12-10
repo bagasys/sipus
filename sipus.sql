@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2018 at 06:53 PM
+-- Generation Time: Dec 09, 2018 at 08:08 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -35,13 +35,13 @@ CREATE TABLE `buku` (
   `pengarang` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `kategori` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `penerbit` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `deskripsi` text COLLATE utf8_unicode_ci NOT NULL,
-  `deskripsi_fisik` text COLLATE utf8_unicode_ci NOT NULL,
-  `nomor_panggil` int(11) NOT NULL,
-  `gambar_buku` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `jumlah` int(11) NOT NULL,
-  `jumlah_tersedia` int(11) NOT NULL,
-  `status` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+  `deskripsi` text COLLATE utf8_unicode_ci,
+  `deskripsi_fisik` text COLLATE utf8_unicode_ci,
+  `nomor_panggil` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `gambar_buku` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `jumlah` int(11) DEFAULT NULL,
+  `jumlah_tersedia` int(11) DEFAULT NULL,
+  `status` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -57,9 +57,9 @@ CREATE TABLE `peminjaman` (
   `id_admin` int(11) NOT NULL,
   `tgl_pinjam` date NOT NULL,
   `tgl_hrs_kembali` date NOT NULL,
-  `tgl_kembali` date NOT NULL,
-  `denda` int(11) NOT NULL,
-  `status` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+  `tgl_kembali` date DEFAULT NULL,
+  `denda` int(11) DEFAULT NULL,
+  `status` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -117,7 +117,9 @@ ALTER TABLE `reservasi`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `no_id` (`no_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -127,7 +129,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `peminjaman`
