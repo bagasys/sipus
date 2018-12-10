@@ -21,17 +21,19 @@
             </div>
         </form>
         <div class="right menu">
-
             {% if session.has('auth') %}
-                <p style="color:white">Halo, {{ session.get('auth')['nama'] }} </p>
-                <a href="{{ url("logout") }}" class="item">Log out</a>
-            {% elseif session.has('admin') %}
-                <p style="color:white">Halo, {{ session.get('admin')['nama'] }} </p>
-                <a href="{{ url("logout") }}" class="item">Log out</a>
+            <div class="ui simple dropdown item">
+                {{ session.get('auth')['nama'] }}
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="item"><a href="{{ url("logout") }}" style="color: black;">Logout</a></div>
+                    <div class="item"><a href="{{ url("peminjaman") }}" style="color: black;">Data Peminjaman</a></div>
+                    <div class="item"><a href="{{ url("reservasi") }}" style="color: black;">Data Reservasi</a></div>
+                </div>
+            </div>
             {% else %}
                 <a href="{{ url("login") }}" class="item">Log in</a>
             {% endif %}
-        
         </div>
     </div>
 

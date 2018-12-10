@@ -1,5 +1,8 @@
 {% extends "layouts\base.volt" %}
 {% block content %}
+<div>
+    <a href="tambah-buku">Tambahkan Buku Baru</a>    
+</div>
 <form method="POST" action="{{ url("daftar-buku") }}">
     <div class="ui search item">
         <div class="ui icon input">
@@ -26,7 +29,7 @@
             <th>Jumlah</th>
             <th>Jumlah tersedia</th>
             <th>Status</th>
-            <th>Aksi<th>
+            <th>Aksi</th>
         </tr>
     </thead>
     <tbody>
@@ -50,9 +53,9 @@
                     <input type="hidden" name="id" value="{{result.id}}">
                     <input type="submit" value="Hapus">
                 </form> 
-            <th>
+            </th>
         </tr>
-        {% endfor  %}
+        {% endfor %}
     </tbody>
 </table>
 {% endblock %}

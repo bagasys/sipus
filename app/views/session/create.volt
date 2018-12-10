@@ -3,7 +3,9 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-
+<div>
+    
+</div>
 <div class="ui two column centered grid">
     <div class="ui brown inverted segment">
         <form method="POST" action="{{ url("login") }}" class="ui form">

@@ -17,6 +17,13 @@ class UsersRoutes extends RouterGroup
             ]
         );
 
+        $this->addPost(
+            '/daftar-anggota',
+            [
+                'action'    => 'manage',
+            ]
+        );
+
         $this->addGet(
             '/tambah-anggota',
             [

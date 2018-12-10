@@ -4,11 +4,11 @@ class SessionController extends BaseController
 {
     public function createAction()
     {
-        if($this->session->has('auth')){
-            $this->response->redirect();
-        }
-        else if($this->session->has('admin')){
+        if($this->session->get('auth')['status'] === '0'){
             $this->response->redirect('daftar-buku');
+        }
+        else{
+            $this->response->redirect();
         }
     }
 
@@ -21,16 +21,16 @@ class SessionController extends BaseController
         if($user)
         {
             if(password_verify($password, $user->password)){
-                if($user->admin === '1'){
-                    $this->session->set(
-                        'admin',
-                        [
-                            'status' => $user->admin,
-                            'nama' => $user->nama,
-                        ]
-                    );
-                }
-                else{
+                // if($user->admin === '1'){
+                //     $this->session->set(
+                //         'admin',
+                //         [
+                //             'status' => $user->admin,
+                //             'nama' => $user->nama,
+                //         ]
+                //     );
+                // }
+                // else{
                     $this->session->set(
                         'auth',
                         [
@@ -38,7 +38,7 @@ class SessionController extends BaseController
                             'nama' => $user->nama,
                         ]
                     );
-                }
+                // }
                 $this->response->redirect();
             }
             else{
