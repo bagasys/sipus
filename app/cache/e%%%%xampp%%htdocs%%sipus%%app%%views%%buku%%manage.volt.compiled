@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="<?= $this->url->get('css/style.css') ?>" type="text/css" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Sacramento|Josefin+Slab" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+<script src="<?= $this->url->get('js/script.js') ?>" type="text/javascript"></script>
+    <title>Sipus - </title>
+</head>
+<body style="background-image: url('img/background2.jpg'); background-repeat: no-repeat; background-size: 100% 100%">
+    <div class="ui brown inverted menu">
+        <a href="<?= $this->url->get('') ?>" class="item">
+            <img class="ui mini image" src="<?= $this->url->get('img/sipus_logo.png') ?>">
+        </a>
+        <a href="<?= $this->url->get('catalogue') ?>" class="item">Browse Catalogue</a>
+        <div class="ui search item">
+            <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="Search for books...">
+                <input class="circular ui brown icon button" type="hidden" value="">
+                <i class="search icon"></i>
+            </div>
+            <div class="results"></div>
+        </div>        
+        <div class="right menu">
+            <a href="<?= $this->url->get('login') ?>" class="item">Login</a>
+        </div>
+    </div>
+
+    
+<table class="ui selectable inverted brown celled table">
+    <thead>
+        <tr class="center aligned">
+            <th>ID</th>
+            <th>ISBN / ISSN</th>
+            <th>Judul</th>
+            <th>Pengarang</th>
+            <th>Penerbit</th>
+            <th>Kategori</th>
+            <th>Deskripsi</th>
+            <th>Deskripsi Fisik</th>
+            <th>Nomor Panggil</th>
+            <th>Gambar Buku</th>
+            <th>Jumlah</th>
+            <th>Jumlah tersedia</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="center aligned">
+            <th>14045</th>
+            <th>000-000-000-000</th>
+            <th>Introduction to Algorithms</th>
+            <th>J. K. Rowling</th>
+            <th>Mizan</th>
+            <th>Mystery, Romance</th>
+            <th>Buku ini berisi tentang blablabla</th>
+            <th>500 halaman, hardcover</th>
+            <th>500 WOW rk.1</th>
+            <th><img src="<?= $this->url->get('img/sipus_logo.png') ?>"></th>
+            <th>10</th>
+            <th>5</th>
+            <th>blablabla</th>
+        </tr>
+        <tr>
+            <th>sample2 ID</th>
+            <th>sample2 ISBN / ISSN</th>
+            <th>sample2 Judul</th>
+            <th>sample2 Pengarang</th>
+            <th>sample2 Penerbit</th>
+            <th>sample2 Kategori</th>
+            <th>sample2 Deskripsi</th>
+            <th>sample2 Deskripsi Fisik</th>
+            <th>sample2 Nomor Panggil</th>
+            <th>sample2 Gambar Buku</th>
+            <th>sample2 Jumlah</th>
+            <th>sample2 Jumlah tersedia</th>
+            <th>sample2 Status</th>
+        </tr>
+
+    </tbody>
+</table>
+
+
+
+
+</body>
+</html>
