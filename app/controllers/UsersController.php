@@ -39,7 +39,7 @@ class UsersController extends BaseController
         $cpassword = $this->request->getPost('cpassword');
         $admin = 0;
 
-        if($password === $cpassword){
+        if($password === $cpassword && $password != ''){
             $checkUser = Users::findFirst("email = '$email'");
             if($checkUser){
                 $this->response->redirect('tambah-anggota');
@@ -62,7 +62,7 @@ class UsersController extends BaseController
                     }                
                 }
                 else{
-                    $this->response->redirect('login');
+                    $this->response->redirect('daftar-anggota');
                 }
             }
         }
@@ -81,40 +81,55 @@ class UsersController extends BaseController
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
         $cpassword = $this->request->getPost('cpassword');
-        $admin = 0;
+        $admin = $this->request->getPost('admin');
 
         $user = Users::findFirst("id = '$id'");
 
-        if($password === $cpassword){
+        if($password === $cpassword && $password != ''){
            
-                $password = password_hash($password, PASSWORD_DEFAULT); 
-                $user->nama = $nama;
-                $user->email = $email;
-                $user->password = $password;
-                $user->alamat = $alamat;
-                $user->no_telepon = $telp;
-                $user->no_id = $no_id;
-                $user->admin = $admin;
+            $password = password_hash($password, PASSWORD_DEFAULT); 
+            $user->nama = $nama;
+            $user->email = $email;
+            $user->password = $password;
+            $user->alamat = $alamat;
+            $user->no_telepon = $telp;
+            $user->no_id = $no_id;
+            $user->admin = $admin;
 
-                $user->save();
+            $user->save();
 
-                if($user->save() === false){
-                    foreach ($user->getMessages() as $message) {
-                        echo $message, "\n";
-                    }                
-                }
-                else{
-                    $this->response->redirect('daftar-anggota');
-                }
-            
+            if($user->save() === false){
+                foreach ($user->getMessages() as $message) {
+                    echo $message, "\n";
+                }                
+            }
+            else{
+                $this->response->redirect('daftar-anggota');
+            }
+        
         }
         else{
-        
-            $this->response->redirect('ubah-anggota/$id');
+            $this->response->redirect("ubah-anggota/$id");
         }
     }
     public function destroyAction()
     {
+        $id = $this->request->getPost('id');
         
+        $user = Users::findFirst("id = '$id'");
+
+        if ($user !== false) {
+            if ($user->delete() === false) {
+                echo "Sorry, we can't delete the user right now: \n";
+        
+                $messages = $user->getMessages();
+        
+                foreach ($messages as $message) {
+                    echo $message, "\n";
+                }
+            } else {
+                $this->response->redirect('daftar-anggota');
+            }
+        }
     }
 }

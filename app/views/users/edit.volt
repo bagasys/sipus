@@ -31,6 +31,7 @@
             <label for="cpassword">Confirm Password</label>
             <input type="password" name="cpassword" placeholder="">
         </div>
+        <input type="hidden" name="admin" value="{{results.admin}}">
         <input type="submit" value="Ubah Data Anggota" class="ui inverted brown button">
     </form>
 </div>
