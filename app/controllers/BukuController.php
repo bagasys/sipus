@@ -57,9 +57,10 @@ class BukuController extends BaseController
     }
     
     public function updateAction()
-    {
-        $book = Buku::findFirst("id = '2'");
-
+    {   
+        
+        
+        $id = $this->request->getPost('id');
         $isbn = $this->request->getPost('ISBN_ISSN');
         $judul = $this->request->getPost('judul');
         $pengarang = $this->request->getPost('pengarang');
@@ -69,8 +70,8 @@ class BukuController extends BaseController
         $deskripsi_fisik = $this->request->getPost('deskripsi_fisik');
         $nomor_panggil = $this->request->getPost('nomor_panggil');
 
-       
 
+        $book = Buku::findFirst("id = '$id'");
         $book->ISBN_ISSN = $isbn;
         $book->judul = $judul;
         $book->pengarang = $pengarang;
@@ -81,7 +82,7 @@ class BukuController extends BaseController
         $book->nomor_panggil = $nomor_panggil;
 
         
-
+        
         if ($book->save() === false) {
             foreach ($book->getMessages() as $message) {
                 echo $message, "\n";
@@ -92,8 +93,28 @@ class BukuController extends BaseController
     }
     
     public function destroyAction()
-    {
-    
+    {   
+        $id = $this->request->getPost('id');
+        echo "$id";
+        
+        
+        $robot = Buku::findFirst("id = '$id'");
+
+        if ($robot !== false) {
+            if ($robot->delete() === false) {
+                echo "Sorry, we can't delete the robot right now: \n";
+        
+                $messages = $robot->getMessages();
+        
+                foreach ($messages as $message) {
+                    echo $message, "\n";
+                }
+            } else {
+                echo 'The robot was deleted successfully!';
+            }
+        }
+
+
     }
 
 }
