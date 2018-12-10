@@ -68,22 +68,6 @@
             <th>5</th>
             <th>blablabla</th>
         </tr>
-        <tr>
-            <th>sample2 ID</th>
-            <th>sample2 ISBN / ISSN</th>
-            <th>sample2 Judul</th>
-            <th>sample2 Pengarang</th>
-            <th>sample2 Penerbit</th>
-            <th>sample2 Kategori</th>
-            <th>sample2 Deskripsi</th>
-            <th>sample2 Deskripsi Fisik</th>
-            <th>sample2 Nomor Panggil</th>
-            <th>sample2 Gambar Buku</th>
-            <th>sample2 Jumlah</th>
-            <th>sample2 Jumlah tersedia</th>
-            <th>sample2 Status</th>
-        </tr>
-
     </tbody>
 </table>
 

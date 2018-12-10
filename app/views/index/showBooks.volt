@@ -1,6 +1,21 @@
 {% extends "layouts\base.volt" %}
 {% block content %}
-<div class="ui equal width grid">
+<div class="ui horizontal segments">
+    <div class="ui segment">
+        <p>yoi</p>
+    </div>
+    <div class="ui segment">
+        <p>yoi2</p>
+    </div>
+    <div class="ui segment">
+        <p>yoi3</p>
+    </div>
+    <div class="ui segment">
+        <p>yoi4</p>
+    </div>
+</div>
+{#
+<div class="ui equal width centered grid">
     <div class="row">
         <div class="four wide column">
             <img class="ui medium image" src="{{ url("img/s20s_logo_white.png") }}">
@@ -17,4 +32,5 @@
         </div>
     </div>    
 </div>
+#}
 {% endblock %}

@@ -1,8 +1,42 @@
-{% extends "layouts\base.volt" %}
-{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="<?= $this->url->get('css/style.css') ?>" type="text/css" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Sacramento|Josefin+Slab" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+<script src="<?= $this->url->get('js/script.js') ?>" type="text/javascript"></script>
+    <title>Sipus - </title>
+</head>
+<body style="background-image: url('img/background2.jpg'); background-repeat: no-repeat; background-size: 100% 100%">
+    <div class="ui brown inverted menu">
+        <a href="<?= $this->url->get('') ?>" class="item">
+            <img class="ui mini image" src="<?= $this->url->get('img/sipus_logo.png') ?>">
+        </a>
+        <a href="<?= $this->url->get('catalogue') ?>" class="item">Browse Catalogue</a>
+        <div class="ui search item">
+            <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="Search for books...">
+                <input class="circular ui brown icon button" type="hidden" value="">
+                <i class="search icon"></i>
+            </div>
+            <div class="results"></div>
+        </div>        
+        <div class="right menu">
+            <a href="<?= $this->url->get('login') ?>" class="item">Login</a>
+        </div>
+    </div>
+
+    
 
 <div class="ui two column centered grid">
-    <form method="POST" action="{{ url("tambah-buku") }}" class="ui form">
+    <form method="POST" action="<?= $this->url->get('tambah-buku') ?>" class="ui form">
         <div class="field">
             <label for="ISBN_ISSN">ISBN / ISSN</label>
             <input type="text" name="ISBN_ISSN" placeholder="Ex: 978-0-262-03384-8">
@@ -51,4 +85,9 @@
         <input type="submit" value="Ubah Data Buku" class="ui inverted brown button">
     </form>
 </div>
-{% endblock %}
+
+
+
+
+</body>
+</html>
