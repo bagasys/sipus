@@ -25,7 +25,7 @@ class UsersRoutes extends RouterGroup
         );
 
         $this->addGet(
-            '/ubah-anggota',
+            '/ubah-anggota/{id}',
             [
                 'action'    => 'edit',
             ]
