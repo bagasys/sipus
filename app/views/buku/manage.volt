@@ -36,9 +36,16 @@
             <th>{{result.jumlah}}</th>
             <th>{{result.jumlah_tersedia}}</th>
             <th>{{result.status}}</th>
-            <th>  <th>
+            <th> <a href="ubah-buku/{{result.id}}">Edit</a> <br>
+				<form method="POST" action="{{url("hapus-buku")}}" class="ui form">
+                    <input type="hidden" name="id" value="{{result.id}}">
+                    <input type="submit" value="Hapus">
+                </form> 
+            <th>
         </tr>
         {% endfor  %}
     </tbody>
 </table>
 {% endblock %}
+
+
