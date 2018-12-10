@@ -7,6 +7,20 @@ class PeminjamanController extends BaseController
         if($this->session->get('auth')['status'] != '1'){
             $this->response->redirect();
         }
+
+        $nama = $this->request->getPost('nama');
+        $nama= '%'.$nama.'%';
+        $peminjamans = Peminjaman::find(
+            [
+                'conditions' => "id LIKE :nama:" ,
+                'bind'       => [
+                    'nama' => $nama,
+                ]
+            ]
+        );
+        
+        
+        $this->view->peminjamans = $peminjamans;
     }
 
     public function createAction()
