@@ -32,7 +32,13 @@ class PeminjamanController extends BaseController
 
     public function showAction()
     {
+        $id = $this->session->get('auth')['id'];
+
     
+        $results = Peminjaman::find("id_user = '$id' ");
+        $this->view->results = $results;
+
+
     }
 
     public function storeAction()
