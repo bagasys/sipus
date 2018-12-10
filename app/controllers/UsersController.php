@@ -39,7 +39,7 @@ class UsersController extends BaseController
         $cpassword = $this->request->getPost('cpassword');
         $admin = 0;
 
-        if($password === $cpassword){
+        if($password === $cpassword && $password != ''){
             $checkUser = Users::findFirst("email = '$email'");
             if($checkUser){
                 $this->response->redirect('tambah-anggota');
@@ -62,7 +62,7 @@ class UsersController extends BaseController
                     }                
                 }
                 else{
-                    $this->response->redirect('login');
+                    $this->response->redirect('daftar-anggota');
                 }
             }
         }
@@ -81,11 +81,11 @@ class UsersController extends BaseController
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
         $cpassword = $this->request->getPost('cpassword');
-        $admin = 0;
+        $admin = $this->request->getPost('admin');
 
         $user = Users::findFirst("id = '$id'");
 
-        if($password === $cpassword){
+        if($password === $cpassword && $password != ''){
            
             $password = password_hash($password, PASSWORD_DEFAULT); 
             $user->nama = $nama;
@@ -109,8 +109,7 @@ class UsersController extends BaseController
         
         }
         else{
-        
-            $this->response->redirect('ubah-anggota/$id');
+            $this->response->redirect("ubah-anggota/$id");
         }
     }
     public function destroyAction()
