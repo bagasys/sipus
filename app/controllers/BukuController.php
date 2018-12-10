@@ -115,9 +115,7 @@ class BukuController extends BaseController
     
     public function destroyAction()
     {   
-        $id = $this->request->getPost('id');
-        echo "$id";
-        
+        $id = $this->request->getPost('id');        
         
         $robot = Buku::findFirst("id = '$id'");
 
