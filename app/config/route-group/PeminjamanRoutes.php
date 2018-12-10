@@ -16,6 +16,12 @@ class PeminjamanRoutes extends RouterGroup
                 'action'    => 'manage',
             ]
         );
+        $this->addPost(
+            '/daftar-peminjaman',
+            [
+                'action'    => 'manage',
+            ]
+        );
 
         $this->addGet(
             '/pinjam',
