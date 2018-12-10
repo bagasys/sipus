@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+a:5:{i:0;s:653:"<!DOCTYPE html>
 <html>
 <head>
     <link href="<?= $this->url->get('css/style.css') ?>" type="text/css" rel="stylesheet">
@@ -12,7 +12,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 
 <script src="<?= $this->url->get('js/script.js') ?>" type="text/javascript"></script>
-    <title>Sipus - Welcome</title>
+    <title>Sipus - ";s:5:"title";N;i:1;s:962:"</title>
 </head>
 <body style="background-image: url('img/background2.jpg'); background-repeat: no-repeat; background-size: 100% 100%">
     <div class="ui brown inverted menu">
@@ -33,40 +33,9 @@
         </div>
     </div>
 
-    
-
-<?php if ($this->session->has('auth')) { ?>
-            <p style="color:white">Halo, <?= $this->session->get('auth')['nama'] ?></p>
-<?php } ?>
-
-
-<div class="ui vertical masthead center aligned segment">
-    <div class="ui middle aligned medium image">
-        <img src="<?= $this->url->get('img/sipus_logo.png') ?>">
-    </div>
-    <div class="ui text container">
-        <div class="title">
-            SiPus
-        </div>
-        <div class="subtitle">
-            Sistem Informasi Perpustakaan    
-        </div>
-        <div class="tagline">
-            jelajahi katalog koleksi perpustakaan kami.
-        </div>
-    </div>
-    <div class="ui search">
-        <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="Search for books...">
-            <input class="circular ui brown icon button" type="submit" value="Search">
-            <i class="search icon"></i>
-        </div>
-        <div class="results"></div>
-    </div>
-</div>
-
+    ";s:7:"content";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:1:" ";s:4:"file";s:49:"C:\xampp\htdocs\sipus\app/views\layouts\base.volt";s:4:"line";i:33;}}i:2;s:24:"
 
 
 
 </body>
-</html>
+</html>";}

@@ -12,7 +12,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 
 <script src="<?= $this->url->get('js/script.js') ?>" type="text/javascript"></script>
-    <title>Sipus - Welcome</title>
+    <title>Sipus - Login</title>
 </head>
 <body style="background-image: url('img/background2.jpg'); background-repeat: no-repeat; background-size: 100% 100%">
     <div class="ui brown inverted menu">
@@ -35,33 +35,19 @@
 
     
 
-<?php if ($this->session->has('auth')) { ?>
-            <p style="color:white">Halo, <?= $this->session->get('auth')['nama'] ?></p>
-<?php } ?>
-
-
-<div class="ui vertical masthead center aligned segment">
-    <div class="ui middle aligned medium image">
-        <img src="<?= $this->url->get('img/sipus_logo.png') ?>">
-    </div>
-    <div class="ui text container">
-        <div class="title">
-            SiPus
-        </div>
-        <div class="subtitle">
-            Sistem Informasi Perpustakaan    
-        </div>
-        <div class="tagline">
-            jelajahi katalog koleksi perpustakaan kami.
-        </div>
-    </div>
-    <div class="ui search">
-        <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="Search for books...">
-            <input class="circular ui brown icon button" type="submit" value="Search">
-            <i class="search icon"></i>
-        </div>
-        <div class="results"></div>
+<div class="ui two column centered grid">
+    <div class="ui brown inverted segment">
+        <form method="POST" action="<?= $this->url->get('login') ?>" class="ui form">
+            <div class="field">
+                <label>Email</label>
+                <input type="text" name="email" placeholder="example@mail.com">
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="">
+            </div>
+            <input type="submit" value="Masuk" class="ui brown button">
+        </form>
     </div>
 </div>
 
