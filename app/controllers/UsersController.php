@@ -87,26 +87,26 @@ class UsersController extends BaseController
 
         if($password === $cpassword){
            
-                $password = password_hash($password, PASSWORD_DEFAULT); 
-                $user->nama = $nama;
-                $user->email = $email;
-                $user->password = $password;
-                $user->alamat = $alamat;
-                $user->no_telepon = $telp;
-                $user->no_id = $no_id;
-                $user->admin = $admin;
+            $password = password_hash($password, PASSWORD_DEFAULT); 
+            $user->nama = $nama;
+            $user->email = $email;
+            $user->password = $password;
+            $user->alamat = $alamat;
+            $user->no_telepon = $telp;
+            $user->no_id = $no_id;
+            $user->admin = $admin;
 
-                $user->save();
+            $user->save();
 
-                if($user->save() === false){
-                    foreach ($user->getMessages() as $message) {
-                        echo $message, "\n";
-                    }                
-                }
-                else{
-                    $this->response->redirect('daftar-anggota');
-                }
-            
+            if($user->save() === false){
+                foreach ($user->getMessages() as $message) {
+                    echo $message, "\n";
+                }                
+            }
+            else{
+                $this->response->redirect('daftar-anggota');
+            }
+        
         }
         else{
         
@@ -115,6 +115,22 @@ class UsersController extends BaseController
     }
     public function destroyAction()
     {
+        $id = $this->request->getPost('id');
         
+        $user = Users::findFirst("id = '$id'");
+
+        if ($user !== false) {
+            if ($user->delete() === false) {
+                echo "Sorry, we can't delete the user right now: \n";
+        
+                $messages = $user->getMessages();
+        
+                foreach ($messages as $message) {
+                    echo $message, "\n";
+                }
+            } else {
+                $this->response->redirect('daftar-anggota');
+            }
+        }
     }
 }

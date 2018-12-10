@@ -119,8 +119,7 @@ class BukuController extends BaseController
                     echo $message, "\n";
                 }
             } else {
-                echo 'The robot was deleted successfully!';
-            }
+                $this->response->redirect('daftar-buku');            }
         }
 
 
