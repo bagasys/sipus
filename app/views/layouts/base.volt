@@ -10,14 +10,16 @@
             <img class="ui mini image" src="{{ url("img/sipus_logo.png") }}">
         </a>
         <a href="{{ url("catalogue") }}" class="item">Browse Catalogue</a>
-        <div class="ui search item">
-            <div class="ui icon input">
-                <input class="prompt" type="text" placeholder="Search for books...">
-                <input class="circular ui brown icon button" type="hidden" value="">
-                <i class="search icon"></i>
+        <form method="GET" action="catalogue">
+            <div class="ui search item">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="Search for books...">
+                    <input class="circular ui brown icon button" type="submit" value="">
+                    <i class="search icon"></i>
+                </div>
+                <div class="results"></div>
             </div>
-            <div class="results"></div>
-        </div>
+        </form>
         <div class="right menu">
 
             {% if session.has('auth') %}

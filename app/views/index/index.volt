@@ -22,13 +22,15 @@
             jelajahi katalog koleksi perpustakaan kami.
         </div>
     </div>
-    <div class="ui search">
-        <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="Search for books...">
-            <input class="circular ui brown icon button" type="submit" value="Search">
-            <i class="search icon"></i>
+    <form method="GET" action="catalogue">
+        <div class="ui search">
+            <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="Search for books...">
+                <input class="circular ui brown icon button" type="submit" value="Search">
+                <i class="search icon"></i>
+            </div>
+            <div class="results"></div>
         </div>
-        <div class="results"></div>
-    </div>
+    </form>
 </div>
 {% endblock %}
