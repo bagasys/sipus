@@ -18,10 +18,10 @@
         <tr class="center aligned">
             <th>ID</th>
             <th>Nama Lengkap</th>
+            <th>Nomor Kartu Identitas</th>
             <th>Email</th>
             <th>Alamat</th>
             <th>Nomor Telepon</th>
-            <th>Nomor Kartu Identitas</th>
             <th>Status Admin</th>
             <th>Aksi</th>
         </tr>
@@ -31,10 +31,10 @@
         <tr class="center aligned">
             <th>{{result.id}}</th>
             <th>{{result.nama}}</th>
+            <th>{{result.no_id}}</th>
             <th>{{result.email}}</th>
             <th>{{result.alamat}}</th>
             <th>{{result.no_telepon}}</th>
-            <th>{{result.no_id}}</th>
             <th>{{result.admin}}</th>
             <th>
                 <div>
