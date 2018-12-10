@@ -33,6 +33,9 @@
             <?php if ($this->session->has('auth')) { ?>
                 <p style="color:white">Halo, <?= $this->session->get('auth')['nama'] ?> </p>
                 <a href="<?= $this->url->get('logout') ?>" class="item">Log out</a>
+            <?php } elseif ($this->session->has('admin')) { ?>
+                <p style="color:white">Halo, <?= $this->session->get('admin')['nama'] ?> </p>
+                <a href="<?= $this->url->get('logout') ?>" class="item">Log out</a>
             <?php } else { ?>
                 <a href="<?= $this->url->get('login') ?>" class="item">Log in</a>
             <?php } ?>

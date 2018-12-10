@@ -32,6 +32,7 @@ class UsersController extends BaseController
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
         $cpassword = $this->request->getPost('cpassword');
+        $admin = 0;
 
         if($password === $cpassword){
             $checkUser = Users::findFirst("email = '$email'");
@@ -46,6 +47,7 @@ class UsersController extends BaseController
                 $user->alamat = $alamat;
                 $user->no_telepon = $telp;
                 $user->no_id = $no_id;
+                $user->admin = $admin;
 
                 $user->save();
 
