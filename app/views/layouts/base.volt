@@ -10,10 +10,10 @@
             <img class="ui mini image" src="{{ url("img/sipus_logo.png") }}">
         </a>
         <a href="{{ url("catalogue") }}" class="item">Browse Catalogue</a>
-        <form method="GET" action="catalogue">
+        <form method="POST" action="catalogue">
             <div class="ui search item">
                 <div class="ui icon input">
-                    <input class="prompt" type="text" placeholder="Search for books...">
+                    <input class="prompt" type="text" placeholder="Search for books..." name = "title">
                     <input class="circular ui brown icon button" type="submit" value="">
                     <i class="search icon"></i>
                 </div>

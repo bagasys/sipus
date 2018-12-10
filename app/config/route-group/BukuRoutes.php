@@ -17,6 +17,13 @@ class BukuRoutes extends RouterGroup
             ]
         );
 
+        $this->addPost(
+            '/daftar-buku',
+            [
+                'action'    => 'manage',
+            ]
+        );
+
         $this->addGet(
             '/tambah-buku',
             [

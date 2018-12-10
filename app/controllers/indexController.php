@@ -12,10 +12,31 @@ class IndexController extends BaseController
     
     }
 
+
+    
     public function showBooksAction()
     {   
-        $results = Buku::find();
+        $judul = $this->request->getPost('title');
+        $judul = '%'.$judul.'%';
+        $results = Buku::find(
+            [
+                'conditions' => "judul LIKE :judul:" ,
+                'bind'       => [
+                    'judul' => $judul,
+                ]
+            ]
+        );
+        
+        
         $this->view->results = $results;
+    }
+
+
+    public function searchBooksAction()
+    {
+        
+
+        //$this->response->redirect("catalogue");
     }
 
     public function showBookDetailAction()

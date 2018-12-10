@@ -46,6 +46,15 @@ $di->set(
             ]
         );
 
+        $router->addPost(
+            '/catalogue',
+            [
+                'controller'    => 'index',
+                'action'        => 'showBooks'
+            ]
+        );
+
+
         $router->addGet(
             '/details',
             [

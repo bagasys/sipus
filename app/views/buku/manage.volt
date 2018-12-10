@@ -1,9 +1,9 @@
 {% extends "layouts\base.volt" %}
 {% block content %}
-<form method="GET" action="daftar-buku">
+<form method="POST" action="{{ url("daftar-buku") }}">
     <div class="ui search item">
         <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="Search for books...">
+            <input class="prompt" type="text" placeholder="Search for books..." name = "title">
             <input class="circular ui brown icon button" type="submit" value="">
             <i class="search icon"></i>
         </div>
