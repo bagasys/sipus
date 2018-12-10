@@ -9,6 +9,7 @@ class UsersController extends BaseController
         }
         $results = Users::find();
         $this->view->results = $results;
+        
     }
     public function createAction()
     {
