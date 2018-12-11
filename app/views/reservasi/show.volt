@@ -1,4 +1,5 @@
 {% extends "layouts\base.volt" %}
+{% block title %}Data Reservasi{% endblock %}
 {% block content %}
 <div class="ui huge header">
     Reservasi oleh {{ session.get('auth')['nama'] }}
