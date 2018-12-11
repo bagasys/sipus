@@ -49,7 +49,41 @@
 
     
 
-     
+    
+<div class="ui huge header">
+    Reservasi oleh <?= $this->session->get('auth')['nama'] ?>
+</div>
+<div class="ui four column grid">
+
+    <div class="column">
+        <center>
+            <img src="<?= $this->url->get('img/sipus_logo.png') ?>">
+            <div class="ui header">
+                <div class="content">
+                    <div class="book-title">
+                        Judul Buku
+                    </div>
+                </div>
+                <div class="sub header">
+                    <div class="book-author">
+                        Pengarang
+                    </div>
+                </div>
+            </div>
+            <div>
+                26 April 2019
+            </div>
+            <div>
+                <form method="POST" action="<?= $this->url->get('hapus-reservasi') ?>">
+                    <input type="hidden" value="<?= $id_buku ?>">
+                    <input type="submit" value="Batalkan">
+                </form>                
+            </div>
+        </center>
+    </div>
+   
+</div>
+
 
 
 
