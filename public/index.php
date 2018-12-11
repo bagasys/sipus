@@ -6,8 +6,8 @@ use Phalcon\Db\Adapter\Pdo\Mysql as DBAdapter;
 
 
 //menyalakan sistem error reporting pada phalcon untuk debugging
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
 //mengatur default Content-Type dan charset
 header('Content-Type: text/html; charset:utf-8');
 mb_internal_encoding("UTF-8");

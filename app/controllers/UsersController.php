@@ -67,8 +67,6 @@ class UsersController extends BaseController
                 $user->no_id = $no_id;
                 $user->admin = $admin;
 
-                $user->save();
-
                 if($user->save() === false){
                     foreach ($user->getMessages() as $message) {
                         echo $message, "\n";
@@ -86,6 +84,7 @@ class UsersController extends BaseController
     }
     public function updateAction()
     {
+        $flag = 0;
         $id = $this->request->getPost('id');
         $nama = $this->request->getPost('nama');
         $alamat = $this->request->getPost('alamat');
@@ -98,28 +97,39 @@ class UsersController extends BaseController
 
         $user = Users::findFirst("id = '$id'");
 
-        if($password === $cpassword && $password != ''){
-           
-            $password = password_hash($password, PASSWORD_DEFAULT); 
-            $user->nama = $nama;
-            $user->email = $email;
-            $user->password = $password;
-            $user->alamat = $alamat;
-            $user->no_telepon = $telp;
-            $user->no_id = $no_id;
-            $user->admin = $admin;
+        if($password === $cpassword && password_verify($password, $user->password)){
+            
+            $checkUser = Users::findFirst("email = '$email'");
+            if($user->email === $email){
+                $flag = 1;
+            }
+            else if (!$checkUser){
+                $flag = 1;
+            }
+            if($flag === 1){
+                
+                $password = password_hash($password, PASSWORD_DEFAULT); 
+                $user->nama = $nama;
+                $user->email = $email;
+                $user->password = $password;
+                $user->alamat = $alamat;
+                $user->no_telepon = $telp;
+                $user->no_id = $no_id;
+                $user->admin = $admin;
 
-            $user->save();
-
-            if($user->save() === false){
-                foreach ($user->getMessages() as $message) {
-                    echo $message, "\n";
-                }                
+                if($user->save() === false){
+                    foreach ($user->getMessages() as $message) {
+                        echo $message, "\n";
+                    }         
+                }
+                else{
+                    $this->response->redirect('daftar-anggota');
+                }
             }
             else{
-                $this->response->redirect('daftar-anggota');
+                $this->response->redirect("ubah-anggota/$id");
             }
-        
+           
         }
         else{
             $this->response->redirect("ubah-anggota/$id");
