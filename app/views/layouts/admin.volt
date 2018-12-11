@@ -5,6 +5,7 @@
     <title>Pustakawan Sipus - {% block title %}{% endblock %}</title>
 </head>
 <body style="background-image: url('img/background2.jpg'); background-repeat: no-repeat; background-size: 100% 100%">
+{#
     <div class="ui brown inverted menu">
         <a href="{{ url("") }}" class="item">
             <img class="ui mini image" src="{{ url("img/sipus_logo.png") }}">
@@ -22,6 +23,7 @@
             <a href="{{ url("login") }}" class="item">Login</a>
         </div>
     </div>
+#}
 {#
     {% if session.has('auth') %}
         <p style="color:white">Halo, {{ session.get('auth')['username'] }} </p>

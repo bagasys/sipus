@@ -11,7 +11,7 @@ class PeminjamanRoutes extends RouterGroup
         ]);
 
         $this->addGet(
-            '/daftar-peminjaman/{id}',
+            '/daftar-peminjaman',
             [
                 'action'    => 'manage',
             ]

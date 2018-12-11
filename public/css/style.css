@@ -1,11 +1,3 @@
-/* body {
-    background-image: url("img/background.jpg");
-} */
-
-/* #bg {
-    background-image: url("img/background.jpg");
-} */
-
 .title {
     font-size: 4em;
     font-family: 'Fredericka the Great', cursive;
@@ -23,4 +15,16 @@
     font-size: 1.5em;
     font-family: 'Josefin Slab', serif;
     /* color: #a5673f; */
+}
+
+.book-title {
+    font-size: 1.75em;
+    font-family: 'Sacramento', cursive;
+    
+}
+
+.book-author {
+    font-size: 1.5em;
+    font-family: 'Josefin Slab', serif;
+
 }

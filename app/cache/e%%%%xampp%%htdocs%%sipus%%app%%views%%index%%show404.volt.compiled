@@ -22,11 +22,11 @@ Not Found
             <img class="ui mini image" src="<?= $this->url->get('img/sipus_logo.png') ?>">
         </a>
         <a href="<?= $this->url->get('catalogue') ?>" class="item">Browse Catalogue</a>
-        <form method="GET" action="catalogue">
+        <form method="POST" action="catalogue">
             <div class="ui search item">
                 <div class="ui icon input">
-                    <input class="prompt" type="text" placeholder="Search for books...">
-                    <input class="circular ui brown icon button" type="submit" value="">
+                    <input class="prompt" type="text" placeholder="Search for books..." name = "title">
+                    <input class="circular ui brown icon button" type="submit" style="display: none;">
                     <i class="search icon"></i>
                 </div>
                 <div class="results"></div>
@@ -34,19 +34,15 @@ Not Found
         </form>
         <div class="right menu">
             <?php if ($this->session->has('auth')) { ?>
-
-                <p style="color:white">Halo, <?= $this->session->get('auth')['nama'] ?> </p>
-                <a href="<?= $this->url->get('logout') ?>" class="item">Log out</a>
-            <?php } elseif ($this->session->has('admin')) { ?>
-  <div class="ui simple dropdown item">
-    <?= $this->session->get('admin')['nama'] ?>
-    <i class="dropdown icon"></i>
-    <div class="menu">
-      <div class="item"><a href="<?= $this->url->get('logout') ?>" style="color: black;">Logout</a></div>
-      <div class="item"><a href="<?= $this->url->get('peminjaman') ?>" style="color: black;">Data Peminjaman</a></div>
-      <div class="item"><a href="<?= $this->url->get('reservasi') ?>" style="color: black;">Data Reservasi</a></div>
-    </div>
-  </div>
+            <div class="ui simple dropdown item">
+                <?= $this->session->get('auth')['nama'] ?>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="item"><a href="<?= $this->url->get('logout') ?>" style="color: black;">Logout</a></div>
+                    <div class="item"><a href="<?= $this->url->get('peminjaman') ?>" style="color: black;">Data Peminjaman</a></div>
+                    <div class="item"><a href="<?= $this->url->get('reservasi') ?>" style="color: black;">Data Reservasi</a></div>
+                </div>
+            </div>
             <?php } else { ?>
                 <a href="<?= $this->url->get('login') ?>" class="item">Log in</a>
             <?php } ?>

@@ -22,10 +22,10 @@
             jelajahi katalog koleksi perpustakaan kami.
         </div>
     </div>
-    <form method="GET" action="catalogue">
+    <form method="POST" action="{{ url("catalogue") }}">
         <div class="ui search">
             <div class="ui icon input">
-                <input class="prompt" type="text" placeholder="Search for books...">
+                <input class="prompt" type="text" placeholder="Search for books..." name="title">
                 <input class="circular ui brown icon button" type="submit" value="Search">
                 <i class="search icon"></i>
             </div>

@@ -1,4 +1,4 @@
-a:5:{i:0;s:653:"<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <link href="<?= $this->url->get('css/style.css') ?>" type="text/css" rel="stylesheet">
@@ -12,7 +12,7 @@ a:5:{i:0;s:653:"<!DOCTYPE html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 
 <script src="<?= $this->url->get('js/script.js') ?>" type="text/javascript"></script>
-    <title>Sipus - ";s:5:"title";N;i:1;s:1831:"</title>
+    <title>Sipus - </title>
 </head>
 <body style="background-image: url('img/background2.jpg'); background-repeat: no-repeat; background-size: 100% 100%">
     <div class="ui brown inverted menu">
@@ -49,9 +49,38 @@ a:5:{i:0;s:653:"<!DOCTYPE html>
 
     
 
-    ";s:7:"content";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:1:" ";s:4:"file";s:49:"E:\xampp\htdocs\sipus\app/views\layouts\base.volt";s:4:"line";i:42;}}i:2;s:24:"
+    
+<table class="ui selectable inverted brown celled table">
+    <thead>
+        <tr class="center aligned">
+            <th>ID Peminjaman</th>
+            <th>ID User</th>
+            <th>ID Buku</th>
+            <th>Tanggal Pinjam</th>
+            <th>Tanggal Harus Kembali</th>
+            <th>Tanggal Kembali</th>
+            <th>Denda</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr class="center aligned">
+            <th>14045</th>
+            <th>32</th>
+            <th>500600</th>
+            <th>26 April 2019</th>
+            <th>8 Mei 2019</th>
+            <th>-</th>
+            <th>Rp. 0,-</th>
+            <th>Sedang dipinjam</th>
+        </tr>
+
+    </tbody>
+</table>
+
 
 
 
 </body>
-</html>";}
+</html>
