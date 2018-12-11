@@ -24,7 +24,7 @@
             <div class="ui search item">
                 <div class="ui icon input">
                     <input class="prompt" type="text" placeholder="Search for books..." name = "title">
-                    <input class="circular ui brown icon button" type="submit" value="">
+                    <input class="circular ui brown icon button" type="submit" style="display: none;">
                     <i class="search icon"></i>
                 </div>
                 <div class="results"></div>
@@ -49,7 +49,35 @@
 
     
 
-     
+    
+<div class="ui huge header">
+    Peminjaman oleh <?= $this->session->get('auth')['nama'] ?>
+</div>
+<div class="ui four column grid">
+
+    <div class="column">
+        <center>
+            <img src="<?= $this->url->get('img/sipus_logo.png') ?>">
+            <div class="ui header">
+                <div class="content">
+                    <div class="book-title">
+                        Judul Buku
+                    </div>
+                </div>
+                <div class="sub header">
+                    <div class="book-author">
+                        Pengarang
+                    </div>
+                </div>
+            </div>
+            <div>
+                26 April 2019 - 8 Mei 2019
+            </div>
+        </center>
+    </div>
+   
+</div>
+
 
 
 
