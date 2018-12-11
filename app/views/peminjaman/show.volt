@@ -4,20 +4,21 @@
 <div class="ui huge header">
     Peminjaman oleh {{ session.get('auth')['nama'] }}
 </div>
+
 <div class="ui four column grid">
-{# loop mulai #}
+{% for result in results %}
     <div class="column">
         <center>
             <img src="{{ url("img/sipus_logo.png") }}">
             <div class="ui header">
                 <div class="content">
                     <div class="book-title">
-                        Judul Buku
+                        Judul Buku {{result.id}}
                     </div>
                 </div>
                 <div class="sub header">
                     <div class="book-author">
-                        Pengarang
+                        Pengarang {{result.id}}
                     </div>
                 </div>
             </div>
@@ -26,6 +27,6 @@
             </div>
         </center>
     </div>
-{# loop mulai #}   
+{% endfor %}   
 </div>
 {% endblock %}

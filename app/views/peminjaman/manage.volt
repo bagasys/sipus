@@ -25,6 +25,7 @@
             <th>Tanggal Kembali</th>
             <th>Denda</th>
             <th>Status</th>
+            <th>Aksi</th>
         </tr>
     </thead>
     <tbody>
@@ -40,6 +41,11 @@
             <th>{{ peminjaman.tgl_hrs_kembali }}</th>
             <th>Rp. {{ peminjaman.denda }}</th>
             <th>{{ peminjaman.status }}</th>
+            <th><form method="POST" action="{{url("hapus-peminjaman")}}" class="ui form">
+                    <input type="hidden" name="id" value="{{peminjaman.id}}">
+                    <input type="submit" value="Hapus">
+                </form> 
+            </th>
         </tr>
         {% endfor %} 
     </tbody>

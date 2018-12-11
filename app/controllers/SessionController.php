@@ -34,6 +34,7 @@ class SessionController extends BaseController
                     $this->session->set(
                         'auth',
                         [
+                            'id' => $user->id,
                             'status' => $user->admin,
                             'nama' => $user->nama,
                         ]

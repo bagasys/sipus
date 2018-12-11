@@ -32,7 +32,13 @@ class PeminjamanController extends BaseController
 
     public function showAction()
     {
+        $id = $this->session->get('auth')['id'];
+
     
+        $results = Peminjaman::find("id_user = '$id' ");
+        $this->view->results = $results;
+
+
     }
 
     public function storeAction()
@@ -84,7 +90,23 @@ class PeminjamanController extends BaseController
 
     public function destroyAction()
     {
-    
+        $id = $this->request->getPost('id');
+        
+        $peminjaman = Peminjaman::findFirst("id = '$id'");
+
+        if ($peminjaman !== false) {
+            if ($peminjaman->delete() === false) {
+                echo "Sorry, we can't delete the loan right now: \n";
+        
+                $messages = $peminjaman->getMessages();
+        
+                foreach ($messages as $message) {
+                    echo $message, "\n";
+                }
+            } else {
+                $this->response->redirect('daftar-peminjaman');
+            }
+        }
     }
     
 }
