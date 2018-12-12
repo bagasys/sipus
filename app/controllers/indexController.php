@@ -41,7 +41,9 @@ class IndexController extends BaseController
 
     public function showBookDetailAction()
     {   
-    
+        $id = $this->dispatcher->getParam("id");
+        $results = Buku::findFirst("id = '$id' ");
+        $this->view->results = $results;
     }
 
 }

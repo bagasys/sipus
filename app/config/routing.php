@@ -56,13 +56,14 @@ $di->set(
 
 
         $router->addGet(
-            '/details',
+            '/details/{id}',
             [
                 'controller'    => 'index',
                 'action'        => 'showBookDetail'
             ]
         );
         
+
         return $router;
     }
 

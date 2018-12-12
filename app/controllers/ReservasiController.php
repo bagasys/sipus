@@ -25,7 +25,23 @@ class ReservasiController extends BaseController
 
     public function createAction()
     {
+        $reservasi = new Reservasi();
+
+        $id_buku = $this->request->getPost('id_buku');
+        $id_user = $this->session->get('auth')['id'];
+       
+
+        $reservasi->id_buku = $id_buku;
+        $reservasi->id_user = $id_user;
         
+
+        if ($reservasi->save() === false) {
+            foreach ($reservasi->getMessages() as $message) {
+                echo $message, "\n";
+            }
+        } else {
+            echo "pendaftaran sukses";
+        }
     }
 
     public function destroyAction()
