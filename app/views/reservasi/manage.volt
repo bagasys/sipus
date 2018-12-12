@@ -31,7 +31,8 @@
             <th>{{ reservasi.id_user }}</th>
             <th>{{ reservasi.id_user.nama }}</th>
             <th>{{ reservasi.id_buku }}</th>
-            <th><form method="POST" action="{{url("hapus-reservasi")}}" class="ui form">
+            <th>
+                <form method="POST" action="{{url("hapus-reservasi")}}" class="ui form">
                     <input type="hidden" name="id" value="{{reservasi.id}}">
                     <input type="submit" value="Hapus">
                 </form> 

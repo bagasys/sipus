@@ -30,7 +30,7 @@
                 <form method="POST" action="{{ url("hapus-reservasi") }}">
                     <input type="hidden" value="{{result.id}}">
                     <input type="submit" value="Batalkan">
-                </form>                
+                </form> 
             </div>
         </center>
     </div>

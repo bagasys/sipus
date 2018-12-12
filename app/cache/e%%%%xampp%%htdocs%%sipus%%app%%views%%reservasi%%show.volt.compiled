@@ -53,20 +53,22 @@
 <div class="ui huge header">
     Reservasi oleh <?= $this->session->get('auth')['nama'] ?>
 </div>
-<div class="ui four column grid">
 
+
+<div class="ui four column grid">
+<?php foreach ($results as $result) { ?>
     <div class="column">
         <center>
             <img src="<?= $this->url->get('img/sipus_logo.png') ?>">
             <div class="ui header">
                 <div class="content">
                     <div class="book-title">
-                        Judul Buku
+                        Judul Buku <?= $result->id ?>
                     </div>
                 </div>
                 <div class="sub header">
                     <div class="book-author">
-                        Pengarang
+                        Pengarang <?= $result->id ?>
                     </div>
                 </div>
             </div>
@@ -75,13 +77,13 @@
             </div>
             <div>
                 <form method="POST" action="<?= $this->url->get('hapus-reservasi') ?>">
-                    <input type="hidden" value="<?= $id_buku ?>">
+                    <input type="hidden" value="<?= $result->id ?>">
                     <input type="submit" value="Batalkan">
                 </form>                
             </div>
         </center>
     </div>
-   
+<?php } ?>   
 </div>
 
 
