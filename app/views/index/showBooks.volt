@@ -1,4 +1,8 @@
 {% extends "layouts\base.volt" %}
+{% block title %}
+Catalogue
+{% endblock %}
+
 {% block content %}
 <div class="ui huge header">
     Katalog Koleksi Perpustakaan
@@ -7,11 +11,15 @@
 {% for result in results %}
     <div class="column">
         <center>
-            <a href = "details/{{result.id}}"><img src="{{ url("img/sipus_logo.png") }}"></a>
+            <a href = "details/{{result.id}}">
+                {{ image("img/sipus_logo.png") }}
+            </a>
             <div class="ui header">
                 <div class="content">
                     <div class="book-title">
-                    <a href = "details/{{result.id}}">{{result.judul}}</a>
+                        <a href = "details/{{result.id}}" style="color: #a5673f;">
+                            {{result.judul}}
+                        </a>
                     </div>
                 </div>
                 <div class="sub header">

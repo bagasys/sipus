@@ -66,8 +66,8 @@ class PeminjamanController extends BaseController
             $id_user = $this->request->getPost('id_user');
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
-            $tgl_pinjam = $this->request->getPost('tgl_pinjam');
-            $tgl_hrs_kembali = $this->request->getPost('tgl_hrs_kembali');
+            $date = date('Y-m-d');
+            $datekembali = strftime("%Y-%m-%d", strtotime("$date +7 day"));
             $id_admin = 1;
             $status = "pinjam";
 
@@ -79,8 +79,8 @@ class PeminjamanController extends BaseController
                 $pinjam->id_user = $id_user;
                 $pinjam->id_buku = $id_buku;
                 $pinjam->id_admin = $id_admin;
-                $pinjam->tgl_pinjam = $tgl_pinjam;
-                $pinjam->tgl_hrs_kembali = $tgl_hrs_kembali;
+                $pinjam->tgl_pinjam = $date;
+                $pinjam->tgl_hrs_kembali = $datekembali;
                 $pinjam->status = $status;
 
                 if($pinjam->save() === false){
@@ -125,60 +125,17 @@ class PeminjamanController extends BaseController
     
 
 
-    public function cobaAction()
-    {
-        
-        $nama = $this->request->getPost('nama');
-        $nama= '%'.$nama.'%';
-        $peminjamans = Peminjaman::findFirst("id = '4'");
-        
-        $users=array();
-        $bukus=array();
-        $user;
-        $buku;
+   
+
+
     
-
-        $user = Users::findFirst("id = '$peminjamans->id_user'");
-        $this->view->user = $user;
-        array_push($users, $user);
-        $user = Users::findFirst("id = '4'");
-        array_push($users,$user);
-
-        $user = Users::findFirst("id = '2'");
-        array_push($users,$user);
-
-        $this->view->arr = $users;
-        $this->view->peminjaman = $peminjamans;
-      
-        // $nama = $this->request->getPost('nama');
-        // $nama= '%'.$nama.'%';
-        // $peminjamans = Peminjaman::find(
-        //     [
-        //         'conditions' => "id LIKE :nama:" ,
-        //         'bind'       => [
-        //             'nama' => $nama,
-        //         ]
-        //     ]
-        // );
+    public function returnAction()
+    {
+        $id = $this->request->getPost('id');
         
-        // $users=array();
-        // $bukus=array();
+        $peminjaman = Peminjaman::findFirst("id = '$id'");
 
-        // foreach ($peminjamans as $peminjaman){
-        //     $user = $peminjaman->users;
-        //     $buku = $peminjaman->buku;
-
-        //     array_push($users, $user);
-        //     array_push($bukus, $buku);
-        // }
-
-        // $count = 0;
-        // $this->view->users = $users;
-        // $this->view->bukus = $bukus;
-        // $this->view->count = $count;
-        // $this->view->peminjamans = $peminjamans;
+        
     }
 
-
-    
 }

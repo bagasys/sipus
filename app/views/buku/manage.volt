@@ -1,4 +1,9 @@
 {% extends "layouts\base.volt" %}
+
+{% block title %}
+Daftar Buku
+{% endblock %}
+
 {% block content %}
 <div>
     <a href="tambah-buku">Tambahkan Buku Baru</a>    
@@ -44,7 +49,7 @@
             <th>{{result.deskripsi}}</th>
             <th>{{result.deskripsi_fisik}}</th>
             <th>{{result.nomor_panggil}}</th>
-            <th><img src="{{ url("img/sipus_logo.png") }}"></th>
+            <th>{{ image("img/sipus_logo.png") }}</th>
             <th>{{result.jumlah}}</th>
             <th>{{result.jumlah_tersedia}}</th>
             <th>{{result.status}}</th>

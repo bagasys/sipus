@@ -1,6 +1,10 @@
 {% extends "layouts\base.volt" %}
-{% block content %}
 
+{% block title %}
+Daftar Peminjaman
+{% endblock %}
+
+{% block content %}
 <form method="POST" action="{{ url("daftar-peminjaman") }}">
     <div class="ui search item">
         <div class="ui icon input">
@@ -39,12 +43,17 @@
             <th>{{ peminjaman.id_admin }}</th>
             <th>{{ peminjaman.tgl_pinjam }}</th>
             <th>{{ peminjaman.tgl_hrs_kembali }}</th>
-            <th>Rp. {{ peminjaman.denda }}</th>
+            <th>Rp. {{ peminjaman.denda }},-</th>
             <th>{{ peminjaman.status }}</th>
-            <th><form method="POST" action="{{url("hapus-peminjaman")}}" class="ui form">
+            <th>
+                <form method="POST" action="{{url("hapus-peminjaman")}}" class="ui form">
                     <input type="hidden" name="id" value="{{peminjaman.id}}">
                     <input type="submit" value="Hapus">
-                </form> 
+                </form>
+                <form method="POST" action="{{url("kembalikan")}}" class="ui form">
+                    <input type="hidden" name="id" value="{{peminjaman.id}}">
+                    <input type="submit" value="Kembalikan">
+                </form>
             </th>
         </tr>
         {% set count = count + 1 %}

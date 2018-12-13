@@ -1,4 +1,9 @@
 {% extends "layouts\base.volt" %}
+
+{% block title %}
+Daftar Anggota
+{% endblock %}
+
 {% block content %}
 <div>
     <a href="tambah-anggota">Daftarkan Anggota Baru</a>    
