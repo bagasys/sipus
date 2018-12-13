@@ -11,16 +11,34 @@ class ReservasiController extends BaseController
 
         $id_buku = $this->request->getPost('id_buku');
         $id_buku= '%'.$id_buku.'%';
-        $reserve = Reservasi::find(
-            [
-                'conditions' => "id_buku LIKE :id_buku:" ,
-                'bind'       => [
-                    'id_buku' => $id_buku,
-                ]
-            ]
-        );
+        // $reservasis = Reservasi::find(
+        //     [
+        //         'conditions' => "id LIKE :nama:" ,
+        //         'bind'       => [
+        //             'nama' => $nama,
+        //         ]
+        //     ]
+        // );
         
-        $this->view->reserve = $reserve;
+        $reservasis = Reservasi::find();
+
+
+        $users=array();
+        $bukus=array();
+
+        foreach ($reservasis as $reservasi){
+            $user =  Users::findFirst("id = '$reservasi->id_user'");
+            $buku =  Buku::findFirst("id = '$reservasi->id_buku'");
+
+            array_push($users, $user);
+            array_push($bukus, $buku);
+        }
+
+        $count = 0;
+        $this->view->users = $users;
+        $this->view->bukus = $bukus;
+        $this->view->count = $count;
+        $this->view->reservasis = $reservasis;
     }
 
     public function createAction()

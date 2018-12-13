@@ -19,7 +19,21 @@ class PeminjamanController extends BaseController
             ]
         );
         
-        
+        $users=array();
+        $bukus=array();
+
+        foreach ($peminjamans as $peminjaman){
+            $user =  Users::findFirst("id = '$peminjaman->id_user'");
+            $buku =  Buku::findFirst("id = '$peminjaman->id_buku'");
+
+            array_push($users, $user);
+            array_push($bukus, $buku);
+        }
+
+        $count = 0;
+        $this->view->users = $users;
+        $this->view->bukus = $bukus;
+        $this->view->count = $count;
         $this->view->peminjamans = $peminjamans;
     }
 
@@ -108,5 +122,63 @@ class PeminjamanController extends BaseController
             }
         }
     }
+    
+
+
+    public function cobaAction()
+    {
+        
+        $nama = $this->request->getPost('nama');
+        $nama= '%'.$nama.'%';
+        $peminjamans = Peminjaman::findFirst("id = '4'");
+        
+        $users=array();
+        $bukus=array();
+        $user;
+        $buku;
+    
+
+        $user = Users::findFirst("id = '$peminjamans->id_user'");
+        $this->view->user = $user;
+        array_push($users, $user);
+        $user = Users::findFirst("id = '4'");
+        array_push($users,$user);
+
+        $user = Users::findFirst("id = '2'");
+        array_push($users,$user);
+
+        $this->view->arr = $users;
+        $this->view->peminjaman = $peminjamans;
+      
+        // $nama = $this->request->getPost('nama');
+        // $nama= '%'.$nama.'%';
+        // $peminjamans = Peminjaman::find(
+        //     [
+        //         'conditions' => "id LIKE :nama:" ,
+        //         'bind'       => [
+        //             'nama' => $nama,
+        //         ]
+        //     ]
+        // );
+        
+        // $users=array();
+        // $bukus=array();
+
+        // foreach ($peminjamans as $peminjaman){
+        //     $user = $peminjaman->users;
+        //     $buku = $peminjaman->buku;
+
+        //     array_push($users, $user);
+        //     array_push($bukus, $buku);
+        // }
+
+        // $count = 0;
+        // $this->view->users = $users;
+        // $this->view->bukus = $bukus;
+        // $this->view->count = $count;
+        // $this->view->peminjamans = $peminjamans;
+    }
+
+
     
 }
