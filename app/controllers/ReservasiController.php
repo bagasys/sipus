@@ -9,8 +9,49 @@ class ReservasiController extends BaseController
             $this->response->redirect();
         }
 
-        $id_buku = $this->request->getPost('id_buku');
-        $id_buku= '%'.$id_buku.'%';
+        $searchBy = $this->request->getPost('searchBy');
+        $searchKey = $this->request->getPost('searchKey');
+        if($searchBy == 'nama'){
+            $searchBy= '%'.$searchBy.'%';
+            $reservasis = Reservasi::query()
+            ->where('nama LIKE :searchKey:')
+            //->andWhere('year < 2000')
+            ->bind(['searchKey' => $searchKey ])
+            //->order('name')
+            ->execute();
+        }else if($searchBy == 'judul'){
+
+        }else if($searchBy == 'id buku'){
+            $reservasis = Reservasi::find(
+                    [
+                        'conditions' => "id_buku == :searchKey:" ,
+                        'bind'       => [
+                            'searchKey' => $searchKey,
+                        ]
+                    ]
+                );
+        }else if($searchBy == 'id user'){
+            $reservasis = Reservasi::find(
+                [
+                    'conditions' => "id_user == :searchKey:" ,
+                    'bind'       => [
+                        'searchKey' => $searchKey,
+                    ]
+                ]
+            );
+        }else if($searchBy == 'id reservasi'){
+            $reservasis = Reservasi::find(
+                [
+                    'conditions' => "id == :searchKey:" ,
+                    'bind'       => [
+                        'searchKey' => $searchKey,
+                    ]
+                ]
+            );
+        }
+
+        // $id_buku = $this->request->getPost('kunci');
+        // $id_buku= '%'.$id_buku.'%';
         // $reservasis = Reservasi::find(
         //     [
         //         'conditions' => "id LIKE :nama:" ,

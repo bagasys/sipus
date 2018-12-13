@@ -12,14 +12,11 @@
     </div>
 </form>
 
-{{user.nama}} <br>
 
-id peminjaman: {{peminjaman.id}}<br>
-id user: {{peminjaman.id_user}}<br>
-id buku: {{peminjaman.id_buku}}<br>
 
-{% for user in arr %}
+{% for user in users %}
     {{user.nama}}
+    {{user.id_buku}}
 {% endfor %}
 
 {% endblock %}
