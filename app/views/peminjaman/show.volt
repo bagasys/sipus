@@ -1,10 +1,16 @@
 {% extends "layouts\base.volt" %}
-{% block title %}Data Peminjaman{% endblock %}
-{% block content %}
-<div class="ui huge header">
-    Peminjaman oleh {{ session.get('auth')['nama'] }}
-</div>
+{% block title %}
+Data Peminjaman
+{% endblock %}
 
+{% block content %}
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <div class="title">
+            Peminjaman oleh {{ session.get('auth')['nama'] }}
+        </div>
+    </div>
+</div>
 <div class="ui four column grid">
 {% for result in results %}
     <div class="column">

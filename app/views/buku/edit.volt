@@ -1,6 +1,12 @@
 {% extends "layouts\base.volt" %}
 {% block content %}
-
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <div class="title">
+            Ubah Data Anggota
+        </div>
+    </div>
+</div>
 <div class="ui two column centered grid">
     <form method="POST" action="{{ url("ubah-buku") }}" class="ui form">
         <input type="hidden" name="id" value="{{results.id}}">

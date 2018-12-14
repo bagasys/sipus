@@ -5,6 +5,13 @@ Pinjam Buku
 {% endblock %}
 
 {% block content %}
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <div class="title">
+            Pinjamkan Buku
+        </div>
+    </div>
+</div>
 <div class="ui two column centered grid">
     <form method="POST" action="{{ url("pinjam") }}" class="ui form">
         <div class="field">

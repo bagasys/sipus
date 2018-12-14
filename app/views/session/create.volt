@@ -1,10 +1,16 @@
 {% extends "layouts\base.volt" %}
 
-{% block title %}Login{% endblock %}
+{% block title %}
+Login
+{% endblock %}
 
 {% block content %}
-<div>
-    
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <div class="title">
+            Login
+        </div>
+    </div>
 </div>
 <div class="ui two column centered grid">
     <div class="ui brown inverted segment">

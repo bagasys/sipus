@@ -5,7 +5,13 @@ Tambah Buku
 {% endblock %}
 
 {% block content %}
-
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <div class="title">
+            Buku Baru
+        </div>
+    </div>
+</div>
 <div class="ui two column centered grid">
     <form method="POST" action="{{ url("tambah-buku") }}" class="ui form">
         <div class="field">

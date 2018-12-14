@@ -5,6 +5,18 @@ Daftar Peminjaman
 {% endblock %}
 
 {% block content %}
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <div class="title">
+            Daftar Peminjaman
+        </div>
+    </div>
+</div>
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <a href="pinjam">Pinjam Buku</a>
+    </div>
+</div>
 <form method="POST" action="{{ url("daftar-peminjaman") }}">
     <label for="searchBy">Cari Berdasarkan: </label>
     <select name="searchBy">
@@ -25,8 +37,6 @@ Daftar Peminjaman
         <div class="results"></div>
     </div>
 </form>
-
-
 <table class="ui selectable inverted brown celled table">
     <thead>
         <tr class="center aligned">
