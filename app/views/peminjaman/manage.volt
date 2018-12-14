@@ -67,13 +67,15 @@ Daftar Peminjaman
             <th>{{ peminjaman.status }}</th>
             <th>
                 <form method="POST" action="{{url("hapus-peminjaman")}}" class="ui form">
-                    <input type="hidden" name="id" value="{{peminjaman.id}}">
+                    <input type="hidden" name="id" value="{{peminjaman.idp}}">
                     <input type="submit" value="Hapus">
                 </form>
-                <form method="POST" action="{{url("kembalikan")}}" class="ui form">
-                    <input type="hidden" name="id" value="{{peminjaman.id}}">
-                    <input type="submit" value="Kembalikan">
-                </form>
+                <div>
+                    <a href="kembalikan/{{peminjaman.idp}}" class="ui labeled icon blue button">
+                        <i class="edit icon"></i>
+                        Kembalikan
+                    </a>
+				</div>
             </th>
         </tr>
        
