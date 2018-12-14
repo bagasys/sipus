@@ -6,6 +6,16 @@ Daftar Peminjaman
 
 {% block content %}
 <form method="POST" action="{{ url("daftar-peminjaman") }}">
+    <label for="searchBy">Cari Berdasarkan: </label>
+    <select name="searchBy">
+            <option value="nama">Nama Anggota</option>
+            <option value="judul">Judul Buku</option>
+            <option value="id_buku">Id Buku</option>
+            <option value="id_user">Id User</option>
+            <option value="id_reservasi">Id Reservasi</option>
+            <option value="id_reservasi">Hari Ini</option>
+    </select>
+
     <div class="ui search item">
         <div class="ui icon input">
             <input class="prompt" type="text" placeholder="Cari peminjaman" name = "searchKey">
@@ -36,7 +46,7 @@ Daftar Peminjaman
         {% for peminjaman in peminjamans %}
          
         <tr class="center aligned">
-            <th>{{ peminjaman.id }}</th>
+            <th>{{ peminjaman.idp }}</th>
             <th>{{ peminjaman.id_user}}</th>
             <th>{{peminjaman.nama}}</th>
             <th>{{ peminjaman.id_buku }}</th>

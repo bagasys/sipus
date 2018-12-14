@@ -12,22 +12,35 @@ class PeminjamanController extends BaseController
         //$query = $this->modelsManager->createQuery('SELECT u.nama, p.id_buku FROM Users u, Peminjaman p
         //WHERE u.id = p.id_user');
         //$users  = $query->execute();
-
-        $query = $this->modelsManager->createQuery('SELECT p.id, p.id_user, u.id as wkwk, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
-        WHERE u.id = p.id_user AND p.id_buku = b.id AND p.id = 1');
-        $peminjamans  = $query->execute();
-        
-        
-        $nama = $this->request->getPost('nama');
-        $nama= '%'.$nama.'%';
-        // $peminjamans = Peminjaman::find(
-        //     [
-        //         'conditions' => "id LIKE :nama:" ,
-        //         'bind'       => [
-        //             'nama' => $nama,
-        //         ]
-        //     ]
-        // );
+        $searchKey = $this->request->getPost('searchKey');
+        $searchBy = $this->request->getPost('searchBy');
+        //$searchKey= '%'.$searchKey.'%';
+        if($searchBy == 'id_peminjaman'){
+            $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
+            WHERE u.id = p.id_user AND p.id_buku = b.id AND p.id = :searchKey:');
+            $peminjamans  = $query->execute([
+                'searchKey' => $searchKey,
+            ]);
+        } else if($searchBy == 'id_user'){
+            $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
+            WHERE u.id = p.id_user AND p.id_buku = b.id AND p.id_user = :searchKey:');
+            $peminjamans  = $query->execute([
+                'searchKey' => $searchKey,
+            ]);
+        } else if ($searchBy == 'nama'){
+            $searchKey = '%'.$searchKey.'%';
+            $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
+            WHERE u.id = p.id_user AND p.id_buku = b.id AND u.nama LIKE :searchKey:');
+            $peminjamans  = $query->execute([
+                'searchKey' => $searchKey,
+            ]);
+        } else {
+            $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
+            WHERE u.id = p.id_user AND p.id_buku = b.id AND p.id_buku = :searchKey:');
+            $peminjamans  = $query->execute([
+                'searchKey' => $searchKey,
+            ]);
+        }
         $this->view->peminjamans = $peminjamans;
     }
 
