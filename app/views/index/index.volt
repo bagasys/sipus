@@ -1,15 +1,13 @@
 {% extends "layouts\base.volt" %}
 
-{% block title %}Welcome{% endblock %}
-
+{% block title %}
+Welcome
+{% endblock %}
 
 {% block content %}
-
-
-
 <div class="ui vertical masthead center aligned segment">
     <div class="ui middle aligned medium image">
-        <img src="{{ url("img/sipus_logo.png") }}">
+        {{ image("img/sipus_logo.png") }}
     </div>
     <div class="ui text container">
         <div class="title">

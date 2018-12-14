@@ -4,7 +4,7 @@
     {% include 'layouts\header.volt' %}
     <title>Pustakawan Sipus - {% block title %}{% endblock %}</title>
 </head>
-<body style="background-image: url('img/background2.jpg'); background-repeat: no-repeat; background-size: 100% 100%">
+<body style="background-image: url('img/background1.jpg'); background-repeat: no-repeat; background-size: 100% 100%">
 {#
     <div class="ui brown inverted menu">
         <a href="{{ url("") }}" class="item">

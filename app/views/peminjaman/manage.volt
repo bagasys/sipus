@@ -1,6 +1,10 @@
 {% extends "layouts\base.volt" %}
-{% block content %}
 
+{% block title %}
+Daftar Peminjaman
+{% endblock %}
+
+{% block content %}
 <form method="POST" action="{{ url("daftar-peminjaman") }}">
     <div class="ui search item">
         <div class="ui icon input">

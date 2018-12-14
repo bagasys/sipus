@@ -12,7 +12,13 @@ class IndexController extends BaseController
     
     }
 
-
+    public function indexAdminAction()
+    {
+        if($this->session->get('auth')['status'] != '1'){
+            $this->response->redirect();
+        }
+        
+    }
     
     public function showBooksAction()
     {   

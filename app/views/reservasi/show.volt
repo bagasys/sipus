@@ -10,7 +10,7 @@
 {% for result in results %}
     <div class="column">
         <center>
-            <img src="{{ url("img/sipus_logo.png") }}">
+            {{ image("img/sipus_logo.png") }}
             <div class="ui header">
                 <div class="content">
                     <div class="book-title">

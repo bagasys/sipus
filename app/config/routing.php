@@ -63,6 +63,13 @@ $di->set(
             ]
         );
         
+        $router->addGet(
+            '/dashboard',
+            [
+                'controller'    => 'index',
+                'action'        => 'indexAdmin'
+            ]
+        );
 
         return $router;
     }

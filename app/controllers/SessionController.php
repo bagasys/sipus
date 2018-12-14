@@ -5,7 +5,7 @@ class SessionController extends BaseController
     public function createAction()
     {
         if($this->session->get('auth')['status'] === '1'){
-            $this->response->redirect('daftar-buku');
+            $this->response->redirect('dashboard');
         }
         else if($this->session->get('auth')['status'] === '0'){
             $this->response->redirect();
@@ -40,7 +40,12 @@ class SessionController extends BaseController
                         ]
                     );
                 // }
-                $this->response->redirect();
+                if($this->session->get('auth')['status'] === '1'){
+                    $this->response->redirect('dashboard');
+                }
+                else if($this->session->get('auth')['status'] === '0'){
+                    $this->response->redirect();
+                }
             }
             else{
                 $this->response->redirect('login');

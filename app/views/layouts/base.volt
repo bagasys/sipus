@@ -26,9 +26,15 @@
                 {{ session.get('auth')['nama'] }}
                 <i class="dropdown icon"></i>
                 <div class="menu">
-                    <div class="item"><a href="{{ url("logout") }}" style="color: black;">Logout</a></div>
+                    {% if session.get('auth')['status'] === '0' %}
                     <div class="item"><a href="{{ url("peminjaman") }}" style="color: black;">Data Peminjaman</a></div>
                     <div class="item"><a href="{{ url("reservasi") }}" style="color: black;">Data Reservasi</a></div>
+                    {% elseif session.get('auth')['status'] === '1' %}
+                    <div class="item"><a href="{{ url("daftar-buku") }}" style="color: black;">Daftar Buku</a></div>
+                    <div class="item"><a href="{{ url("daftar-anggota") }}" style="color: black;">Daftar Anggota</a></div>
+                    <div class="item"><a href="{{ url("daftar-peminjaman") }}" style="color: black;">Daftar Peminjaman</a></div>
+                    {% endif %}
+                    <div class="item"><a href="{{ url("logout") }}" style="color: black;">Logout</a></div>
                 </div>
             </div>
             {% else %}
