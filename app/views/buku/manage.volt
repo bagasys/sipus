@@ -5,13 +5,22 @@ Daftar Buku
 {% endblock %}
 
 {% block content %}
-<div>
-    <a href="tambah-buku">Tambahkan Buku Baru</a>    
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <div class="title">
+            Daftar Buku
+        </div>
+    </div>
+</div>
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <a href="tambah-buku">Tambahkan Buku Baru</a>    
+    </div>
 </div>
 <form method="POST" action="{{ url("daftar-buku") }}">
     <div class="ui search item">
         <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="Search for books..." name = "title">
+            <input class="prompt" type="text" placeholder="Cari judul buku..." name = "title">
             <input class="circular ui brown icon button" type="submit" value="">
             <i class="search icon"></i>
         </div>
@@ -53,10 +62,19 @@ Daftar Buku
             <th>{{result.jumlah}}</th>
             <th>{{result.jumlah_tersedia}}</th>
             <th>{{result.status}}</th>
-            <th> <a href="ubah-buku/{{result.id}}">Edit</a> <br>
-				<form method="POST" action="{{url("hapus-buku")}}" class="ui form">
+            <th>
+                <div>
+                    <a href="ubah-buku/{{result.id}}" class="ui labeled icon button">
+                        <i class="edit icon"></i>
+                        Edit
+                    </a>
+				</div>
+                <form method="POST" action="{{url("hapus-buku")}}" class="ui form">
                     <input type="hidden" name="id" value="{{result.id}}">
-                    <input type="submit" value="Hapus">
+                    <button type="submit" class="ui labeled icon button">
+                        <i class="trash alternate icon"></i>
+                        Hapus
+                    </button>
                 </form> 
             </th>
         </tr>

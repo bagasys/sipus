@@ -5,13 +5,22 @@ Daftar Anggota
 {% endblock %}
 
 {% block content %}
-<div>
-    <a href="tambah-anggota">Daftarkan Anggota Baru</a>    
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <div class="title">
+            Daftar Anggota
+        </div>
+    </div>
+</div>
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <a href="tambah-anggota">Daftarkan Anggota Baru</a>    
+    </div>
 </div>
 <form method="POST" action="{{ url("daftar-anggota") }}">
     <div class="ui search item">
         <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="Search for books..." name = "title">
+            <input class="prompt" type="text" placeholder="Cari nama anggota..." name = "title">
             <input class="circular ui brown icon button" type="submit" value="">
             <i class="search icon"></i>
         </div>
@@ -43,11 +52,17 @@ Daftar Anggota
             <th>{{result.admin}}</th>
             <th>
                 <div>
-                    <a href="ubah-anggota/{{result.id}}">Edit</a>
+                    <a href="ubah-anggota/{{result.id}}" class="ui labeled icon button">
+                        <i class="edit icon"></i>
+                        Edit
+                    </a>
 				</div>
                 <form method="POST" action="{{url("hapus-anggota")}}" class="ui form">
                     <input type="hidden" name="id" value="{{result.id}}">
-                    <input type="submit" value="Hapus">
+                    <button type="submit" class="ui labeled icon button">
+                        <i class="trash alternate icon"></i>
+                        Hapus
+                    </button>
                 </form> 
             </th>
         </tr>

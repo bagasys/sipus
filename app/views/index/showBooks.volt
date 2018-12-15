@@ -4,8 +4,12 @@ Catalogue
 {% endblock %}
 
 {% block content %}
-<div class="ui huge header">
-    Katalog Koleksi Perpustakaan
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <div class="title">
+            Katalog Koleksi Perpustakaan
+        </div>
+    </div>
 </div>
 <div class="ui four column grid">
 {% for result in results %}

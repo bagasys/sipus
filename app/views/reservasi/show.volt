@@ -1,11 +1,16 @@
 {% extends "layouts\base.volt" %}
-{% block title %}Data Reservasi{% endblock %}
+{% block title %}
+Data Reservasi
+{% endblock %}
+
 {% block content %}
-<div class="ui huge header">
-    Reservasi oleh {{ session.get('auth')['nama'] }}
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <div class="title">
+            Reservasi oleh {{ session.get('auth')['nama'] }}
+        </div>
+    </div>
 </div>
-
-
 <div class="ui four column grid">
 {% for result in results %}
     <div class="column">

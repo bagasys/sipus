@@ -5,18 +5,28 @@ Daftar Peminjaman
 {% endblock %}
 
 {% block content %}
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <div class="title">
+            Daftar Peminjaman
+        </div>
+    </div>
+</div>
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <a href="pinjam">Pinjam Buku</a>
+    </div>
+</div>
 <form method="POST" action="{{ url("daftar-peminjaman") }}">
     <div class="ui search item">
         <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="Cari peminjaman by nama..." name = "nama">
+            <input class="prompt" type="text" placeholder="Cari nama peminjam..." name = "nama">
             <input class="circular ui brown icon button" type="submit" value="">
             <i class="search icon"></i>
         </div>
         <div class="results"></div>
     </div>
 </form>
-
-
 <table class="ui selectable inverted brown celled table">
     <thead>
         <tr class="center aligned">
