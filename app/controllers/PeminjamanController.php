@@ -1,5 +1,6 @@
 <?php
 use Phalcon\Mvc\Controller;
+//use Phalcon\Mvc\Model\Query;
 class PeminjamanController extends BaseController
 {
     public function manageAction()
@@ -8,18 +9,25 @@ class PeminjamanController extends BaseController
             $this->response->redirect();
         }
 
+        //$query = $this->modelsManager->createQuery('SELECT u.nama, p.id_buku FROM Users u, Peminjaman p
+        //WHERE u.id = p.id_user');
+        //$users  = $query->execute();
+
+        $query = $this->modelsManager->createQuery('SELECT p.id, p.id_user, u.id as wkwk, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
+        WHERE u.id = p.id_user AND p.id_buku = b.id AND p.id = 1');
+        $peminjamans  = $query->execute();
+        
+        
         $nama = $this->request->getPost('nama');
         $nama= '%'.$nama.'%';
-        $peminjamans = Peminjaman::find(
-            [
-                'conditions' => "id LIKE :nama:" ,
-                'bind'       => [
-                    'nama' => $nama,
-                ]
-            ]
-        );
-        
-        
+        // $peminjamans = Peminjaman::find(
+        //     [
+        //         'conditions' => "id LIKE :nama:" ,
+        //         'bind'       => [
+        //             'nama' => $nama,
+        //         ]
+        //     ]
+        // );
         $this->view->peminjamans = $peminjamans;
     }
 
@@ -52,8 +60,8 @@ class PeminjamanController extends BaseController
             $id_user = $this->request->getPost('id_user');
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
-            $tgl_pinjam = $this->request->getPost('tgl_pinjam');
-            $tgl_hrs_kembali = $this->request->getPost('tgl_hrs_kembali');
+            $date = date('Y-m-d');
+            $datekembali = strftime("%Y-%m-%d", strtotime("$date +7 day"));          
             $id_admin = 1;
             $status = "pinjam";
 
@@ -65,8 +73,8 @@ class PeminjamanController extends BaseController
                 $pinjam->id_user = $id_user;
                 $pinjam->id_buku = $id_buku;
                 $pinjam->id_admin = $id_admin;
-                $pinjam->tgl_pinjam = $tgl_pinjam;
-                $pinjam->tgl_hrs_kembali = $tgl_hrs_kembali;
+                $pinjam->tgl_pinjam = $date;
+                $pinjam->tgl_hrs_kembali = $datekembali;
                 $pinjam->status = $status;
 
                 if($pinjam->save() === false){
@@ -76,6 +84,8 @@ class PeminjamanController extends BaseController
                 }
                 else{
                     $this->response->redirect('daftar-peminjaman');
+                    // $interval = abs(strtotime($datekembali) - strtotime($date));;
+                    // echo $interval;
                 }
             }
             else{
@@ -108,6 +118,47 @@ class PeminjamanController extends BaseController
             }
         }
     }
+    
+    public function cobaAction()
+    {
+        if($this->session->get('auth')['status'] != '1'){
+            $this->response->redirect();
+        }
+
+        
+
+        // // Instantiate the Query
+        // $query = new Query(
+        //     'SELECT * FROM Users',
+        //     $this->getDI()
+        // );
+        
+        // // Execute the query returning a result if any
+        // $users = $query->execute();
+        
+        //$query = $this->modelsManager->createQuery('SELECT u.nama,  FROM Users');
+        $query = $this->modelsManager->createQuery('SELECT u.nama, p.id_buku FROM Users u, Peminjaman p
+        WHERE u.id = p.id_user');
+        $users  = $query->execute();
+        
+        // // With bound parameters
+        // $query = $this->modelsManager->createQuery('SELECT * FROM Cars WHERE name = :name:');
+        // $cars  = $query->execute(
+        //     [
+        //         'name' => 'Audi',
+        //     ]
+        // );
+
+         $this->view->users = $users;
+
+
+
+
+    }
+
+   
+
+
     
     public function returnAction()
     {

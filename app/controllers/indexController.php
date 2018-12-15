@@ -9,7 +9,15 @@ class IndexController extends BaseController
 
     public function indexAction()
     {   
-    
+        // if(!isset($_COOKIE["akses"])) {
+        //     $cookie_name = "akses";
+        //     $cookie_value = 1;
+        //     setcookie($cookie_name, $cookie_value, time() + (86400), "/");
+        //     $date = date('Y-m-d');
+        //     //query
+        // } else {
+        //     $this->response->redirect();
+        // }
     }
 
     public function indexAdminAction()

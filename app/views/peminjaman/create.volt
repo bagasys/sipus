@@ -30,14 +30,6 @@ Pinjam Buku
             <label for="password">Password</label>
             <input type="password" name="password" placeholder="">
         </div>
-        <div class="field">
-            <label for="tgl_pinjam">Tanggal Pinjam</label>
-            <input type="date" name="tgl_pinjam" placeholder="">
-        </div>
-        <div class="field">
-            <label for="tgl_hrs_kembali">Tanggal Harus Kembali</label>
-            <input type="date" name="tgl_hrs_kembali" placeholder="">
-        </div>
         
         <input type="submit" value="Pinjamkan Buku" class="ui inverted brown button">
     </form>
