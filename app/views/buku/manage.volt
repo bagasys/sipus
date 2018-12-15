@@ -64,23 +64,51 @@ Daftar Buku
             <th>{{result.status}}</th>
             <th>
                 <div>
-                    <a href="ubah-buku/{{result.id}}" class="ui labeled icon button">
+                    <a href="ubah-buku/{{result.id}}" class="ui labeled icon blue button">
                         <i class="edit icon"></i>
                         Edit
                     </a>
 				</div>
-                <form method="POST" action="{{url("hapus-buku")}}" class="ui form">
-                    <input type="hidden" name="id" value="{{result.id}}">
-                    <button type="submit" class="ui labeled icon button">
-                        <i class="trash alternate icon"></i>
-                        Hapus
-                    </button>
-                </form> 
+                <button class="confirm ui labeled icon red button" data-id="{{result.id}}" data-nama="{{result.judul}}">
+                    <i class="trash alternate icon"></i>
+                    Hapus
+                </button>
             </th>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+<div class="ui mini test modal">
+    <div class="header">
+        Hapus Buku
+    </div>
+    <div class="content">
+        <p>Apakah Anda yakin ingin menghapus <span id="confirm-nama"></span> dari koleksi perpustakaan?</p>
+    </div>
+    <div class="actions">
+        <div class="ui negative button">
+            Tidak
+        </div>
+        <div style="display: inline-block;">
+            <form method="POST" action="{{url("hapus-buku")}}" class="ui form">
+                <input type="hidden" name="id" id="confirm-id">
+                <button type="submit" class="ui positive right labeled icon button">
+                    Ya
+                    <i class="checkmark icon"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(".confirm").click(function(){
+        var id = $(this).data("id");
+        var nama = $(this).data("nama");
+        $("#confirm-id").val(id);
+        $("#confirm-nama").html(nama);
+        $('.mini.modal').modal('show');
+    });
+</script>
 {% endblock %}
 
 

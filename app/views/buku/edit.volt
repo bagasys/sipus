@@ -3,7 +3,7 @@
 <div class="ui middle aligned center aligned grid">
     <div class="column">
         <div class="title">
-            Ubah Data Anggota
+            Ubah Data Buku
         </div>
     </div>
 </div>
