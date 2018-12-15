@@ -8,7 +8,7 @@ Daftar Peminjaman
 <form method="POST" action="{{ url("daftar-peminjaman") }}">
     <div class="ui search item">
         <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="Cari peminjaman by nama..." name = "nama">
+            <input class="prompt" type="text" placeholder="Cari peminjaman" name = "searchKey">
             <input class="circular ui brown icon button" type="submit" value="">
             <i class="search icon"></i>
         </div>
@@ -37,10 +37,10 @@ Daftar Peminjaman
          
         <tr class="center aligned">
             <th>{{ peminjaman.id }}</th>
-            <th>{{ peminjaman.id_user }}</th>
-            <th>{{users[count].nama}}</th>
+            <th>{{ peminjaman.id_user}}</th>
+            <th>{{peminjaman.nama}}</th>
             <th>{{ peminjaman.id_buku }}</th>
-            <th>{{ peminjaman.id_admin }}</th>
+            <th>{{ peminjaman.tgl_pinjam }}</th>
             <th>{{ peminjaman.tgl_pinjam }}</th>
             <th>{{ peminjaman.tgl_hrs_kembali }}</th>
             <th>Rp. {{ peminjaman.denda }},-</th>
@@ -56,7 +56,6 @@ Daftar Peminjaman
                 </form>
             </th>
         </tr>
-        {% set count = count + 1 %}
        
         {% endfor %} 
     </tbody>

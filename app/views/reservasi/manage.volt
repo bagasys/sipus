@@ -2,15 +2,24 @@
 {% block content %}
 
 <form method="POST" action="{{ url("daftar-reservasi") }}">
+        <label for="searchBy">Cari Berdasarkan: </label>
+        <select name="searchBy">
+            <option value="nama">Nama Anggota</option>
+            <option value="judul">Judul Buku</option>
+            <option value="id buku">Id Buku</option>
+            <option value="id user">Id User</option>
+            <option value="id reservasi">Id Reservasi</option>
+        </select>
     <div class="ui search item">
         <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="Cari peminjaman by ISBN-ISSN..." name = "id_buku">
+            <input class="prompt" type="text" placeholder="Cari Reservasi" name = "searchKey">
             <input class="circular ui brown icon button" type="submit" value="">
             <i class="search icon"></i>
         </div>
         <div class="results"></div>
     </div>
 </form>
+
 
 
 <table class="ui selectable inverted brown celled table">

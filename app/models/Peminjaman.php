@@ -4,7 +4,7 @@ use Phalcon\Mvc\Model;
 
 class Peminjaman extends Model
 {
-    public $id_peminjaman;
+    public $id;
     public $id_user;
     public $id_buku;
     public $id_admin;

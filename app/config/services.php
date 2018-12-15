@@ -1,17 +1,21 @@
-<?php
-    $di->set(
-    'voltService',
-    function($view, $di){
-        $volt = new \Phalcon\Mvc\View\Engine\Volt($view, $di);
-        $volt->setOptions([
-            "compiledPath"          => APP_PATH . "/cache/",
-            "compiledExtension"     => ".compiled",
-            "compileAlways"         => true,
-        ]);
 
-        return $volt;
-    }
-);
+
+<?php
+    use Phalcon\Mvc\Model\Manager as ModelsManager;
+
+    $di->set(
+        'voltService',
+        function($view, $di){
+            $volt = new \Phalcon\Mvc\View\Engine\Volt($view, $di);
+            $volt->setOptions([
+                "compiledPath"          => APP_PATH . "/cache/",
+                "compiledExtension"     => ".compiled",
+                "compileAlways"         => true,
+            ]);
+
+            return $volt;
+        }
+    );
 
 $di->set(
     'view',
@@ -60,6 +64,13 @@ $di->set(
         $session->start();
 
         return $session;
+    }
+);
+
+$di->set(
+    "modelsManager",
+    function() {
+        return new ModelsManager();
     }
 );
 

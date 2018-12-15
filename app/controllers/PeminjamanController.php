@@ -1,5 +1,6 @@
 <?php
 use Phalcon\Mvc\Controller;
+//use Phalcon\Mvc\Model\Query;
 class PeminjamanController extends BaseController
 {
     public function manageAction()
@@ -8,32 +9,25 @@ class PeminjamanController extends BaseController
             $this->response->redirect();
         }
 
+        //$query = $this->modelsManager->createQuery('SELECT u.nama, p.id_buku FROM Users u, Peminjaman p
+        //WHERE u.id = p.id_user');
+        //$users  = $query->execute();
+
+        $query = $this->modelsManager->createQuery('SELECT p.id, p.id_user, u.id as wkwk, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
+        WHERE u.id = p.id_user AND p.id_buku = b.id AND p.id = 1');
+        $peminjamans  = $query->execute();
+        
+        
         $nama = $this->request->getPost('nama');
         $nama= '%'.$nama.'%';
-        $peminjamans = Peminjaman::find(
-            [
-                'conditions' => "id LIKE :nama:" ,
-                'bind'       => [
-                    'nama' => $nama,
-                ]
-            ]
-        );
-        
-        $users=array();
-        $bukus=array();
-
-        foreach ($peminjamans as $peminjaman){
-            $user =  Users::findFirst("id = '$peminjaman->id_user'");
-            $buku =  Buku::findFirst("id = '$peminjaman->id_buku'");
-
-            array_push($users, $user);
-            array_push($bukus, $buku);
-        }
-
-        $count = 0;
-        $this->view->users = $users;
-        $this->view->bukus = $bukus;
-        $this->view->count = $count;
+        // $peminjamans = Peminjaman::find(
+        //     [
+        //         'conditions' => "id LIKE :nama:" ,
+        //         'bind'       => [
+        //             'nama' => $nama,
+        //         ]
+        //     ]
+        // );
         $this->view->peminjamans = $peminjamans;
     }
 
@@ -125,7 +119,42 @@ class PeminjamanController extends BaseController
         }
     }
     
+    public function cobaAction()
+    {
+        if($this->session->get('auth')['status'] != '1'){
+            $this->response->redirect();
+        }
 
+        
+
+        // // Instantiate the Query
+        // $query = new Query(
+        //     'SELECT * FROM Users',
+        //     $this->getDI()
+        // );
+        
+        // // Execute the query returning a result if any
+        // $users = $query->execute();
+        
+        //$query = $this->modelsManager->createQuery('SELECT u.nama,  FROM Users');
+        $query = $this->modelsManager->createQuery('SELECT u.nama, p.id_buku FROM Users u, Peminjaman p
+        WHERE u.id = p.id_user');
+        $users  = $query->execute();
+        
+        // // With bound parameters
+        // $query = $this->modelsManager->createQuery('SELECT * FROM Cars WHERE name = :name:');
+        // $cars  = $query->execute(
+        //     [
+        //         'name' => 'Audi',
+        //     ]
+        // );
+
+         $this->view->users = $users;
+
+
+
+
+    }
 
    
 
