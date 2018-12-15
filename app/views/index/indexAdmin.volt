@@ -37,7 +37,7 @@ Area Pustakawan
                 <a href="daftar-peminjaman">Lihat Daftar Peminjaman</a>
             </div>
             <div>
-                <a href="tambah-peminjaman">Pinjamkan Buku kepada Anggota</a>
+                <a href="pinjam">Pinjamkan Buku kepada Anggota</a>
             </div>
         </center>
     </div>
