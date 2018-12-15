@@ -11,75 +11,49 @@ class ReservasiController extends BaseController
 
         $searchBy = $this->request->getPost('searchBy');
         $searchKey = $this->request->getPost('searchKey');
-        if($searchBy == 'nama'){
-            $searchBy= '%'.$searchBy.'%';
-            $reservasis = Reservasi::query()
-            ->where('nama LIKE :searchKey:')
-            //->andWhere('year < 2000')
-            ->bind(['searchKey' => $searchKey ])
-            //->order('name')
-            ->execute();
-        }else if($searchBy == 'judul'){
+        if($searchBy == 'id_reservasi'){
+           // $searchKey= '%'.$searchKey.'%';
+            
+            $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.nama, p.id_buku, b.judul FROM Users u, Peminjaman p, Buku b
+            WHERE u.id = p.id_user AND p.id_buku = b.id AND p.id = :searchKey:');
+            $peminjamans  = $query->execute([
+                'searchKey' => $searchKey,
+            ]);  
+        }else if($searchBy == 'nama'){
+             $searchKey= '%'.$searchKey.'%';
+             
+             $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.nama, p.id_buku, b.judul FROM Users u, Peminjaman p, Buku b
+             WHERE u.id = p.id_user AND p.id_buku = b.id AND u.nama LIKE :searchKey:');
+             $peminjamans  = $query->execute([
+                 'searchKey' => $searchKey,
+             ]);  
+         }else if($searchBy == 'id_buku'){
+            $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.nama, p.id_buku, b.judul FROM Users u, Peminjaman p, Buku b
+            WHERE u.id = p.id_user AND p.id_buku = b.id AND p.id_buku = :searchKey:');
+            $peminjamans  = $query->execute([
+                'searchKey' => $searchKey,
+            ]);
+         }else if($searchBy == 'judul'){
+            $searchKey= '%'.$searchKey.'%';
+            $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.nama, p.id_buku, b.judul FROM Users u, Peminjaman p, Buku b
+            WHERE u.id = p.id_user AND p.id_buku = b.id AND b.judul LIKE :searchKey:');
+            $peminjamans  = $query->execute([
+                'searchKey' => $searchKey,
+            ]);
+         }else {
+            $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.nama, p.id_buku, b.judul FROM Users u, Peminjaman p, Buku b
+            WHERE u.id = p.id_user AND p.id_buku = b.id AND p.id_user = :searchKey:');
+            $peminjamans  = $query->execute([
+                'searchKey' => $searchKey,
+            ]);
+         }
 
-        }else if($searchBy == 'id buku'){
-            $reservasis = Reservasi::find(
-                    [
-                        'conditions' => "id_buku == :searchKey:" ,
-                        'bind'       => [
-                            'searchKey' => $searchKey,
-                        ]
-                    ]
-                );
-        }else if($searchBy == 'id user'){
-            $reservasis = Reservasi::find(
-                [
-                    'conditions' => "id_user == :searchKey:" ,
-                    'bind'       => [
-                        'searchKey' => $searchKey,
-                    ]
-                ]
-            );
-        }else if($searchBy == 'id reservasi'){
-            $reservasis = Reservasi::find(
-                [
-                    'conditions' => "id == :searchKey:" ,
-                    'bind'       => [
-                        'searchKey' => $searchKey,
-                    ]
-                ]
-            );
-        }
+         
 
-        // $id_buku = $this->request->getPost('kunci');
-        // $id_buku= '%'.$id_buku.'%';
-        // $reservasis = Reservasi::find(
-        //     [
-        //         'conditions' => "id LIKE :nama:" ,
-        //         'bind'       => [
-        //             'nama' => $nama,
-        //         ]
-        //     ]
-        // );
+
+        $this->view->peminjamans = $peminjamans;
         
-        $reservasis = Reservasi::find();
-
-
-        $users=array();
-        $bukus=array();
-
-        foreach ($reservasis as $reservasi){
-            $user =  Users::findFirst("id = '$reservasi->id_user'");
-            $buku =  Buku::findFirst("id = '$reservasi->id_buku'");
-
-            array_push($users, $user);
-            array_push($bukus, $buku);
-        }
-
-        $count = 0;
-        $this->view->users = $users;
-        $this->view->bukus = $bukus;
-        $this->view->count = $count;
-        $this->view->reservasis = $reservasis;
+        
     }
 
     public function createAction()

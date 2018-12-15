@@ -9,6 +9,9 @@
         <a href="{{ url("") }}" class="item">
             <img class="ui mini image" src="{{ url("img/sipus_logo.png") }}">
         </a>
+        {% if session.get('auth')['status'] === '1' %}
+        <a href="{{ url("dashboard") }}" class="item">Area Pustakawan</a>
+        {% endif %}
         <a href="{{ url("catalogue") }}" class="item">Browse Catalogue</a>
         <form method="POST" action="catalogue">
             <div class="ui search item">
