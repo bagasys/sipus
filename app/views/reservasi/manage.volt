@@ -6,9 +6,10 @@
         <select name="searchBy">
             <option value="nama">Nama Anggota</option>
             <option value="judul">Judul Buku</option>
-            <option value="id buku">Id Buku</option>
-            <option value="id user">Id User</option>
-            <option value="id reservasi">Id Reservasi</option>
+            <option value="id_buku">Id Buku</option>
+            <option value="id_user">Id User</option>
+            <option value="id_reservasi">Id Reservasi</option>
+           
         </select>
     <div class="ui search item">
         <div class="ui icon input">
@@ -34,13 +35,13 @@
         </tr>
     </thead>
     <tbody>
-        {% for reservasi in reservasis %} 
+        {% for peminjaman in peminjamans %} 
         <tr class="center aligned">
-            <th>{{ reservasi.id }}</th>
-            <th>{{ reservasi.id_user }}</th>
-            <th>{{ users[count].nama }}</th>
-            <th>{{ reservasi.id_buku }}</th>
-            <th>{{ bukus[count].judul }}</th>
+            <th>{{ peminjaman.idp }}</th>
+            <th>{{ peminjaman.id_user }}</th>
+            <th>{{ peminjaman.nama }}</th>
+            <th>{{ peminjaman.id_buku }}</th>
+            <th>{{ peminjaman.judul }}</th>
             <th>
                 <form method="POST" action="{{url("hapus-reservasi")}}" class="ui form">
                     <input type="hidden" name="id" value="{{reservasi.id}}">
@@ -48,7 +49,6 @@
                 </form> 
             </th>
         </tr>
-        {% set count = count + 1 %}
        
         {% endfor %} 
     </tbody>
