@@ -53,7 +53,7 @@ class PeminjamanController extends BaseController
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
             $date = date('Y-m-d');
-            $datekembali = strftime("%Y-%m-%d", strtotime("$date +7 day"));
+            $datekembali = strftime("%Y-%m-%d", strtotime("$date +7 day"));          
             $id_admin = 1;
             $status = "pinjam";
 
@@ -109,13 +109,4 @@ class PeminjamanController extends BaseController
         }
     }
     
-    public function returnAction()
-    {
-        $id = $this->request->getPost('id');
-        
-        $peminjaman = Peminjaman::findFirst("id = '$id'");
-
-        
-    }
-
 }
