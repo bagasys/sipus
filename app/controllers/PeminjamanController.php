@@ -90,6 +90,8 @@ class PeminjamanController extends BaseController
                 }
                 else{
                     $this->response->redirect('daftar-peminjaman');
+                    // $interval = abs(strtotime($datekembali) - strtotime($date));;
+                    // echo $interval;
                 }
             }
             else{
