@@ -9,7 +9,7 @@ Area Pustakawan
     Selamat datang di Area Pustakawan, {{ session.get('auth')['nama'] }}!
 </div>
 
-<div class="ui segment">
+<div class="ui inverted brown segment">
   <div class="ui three column very relaxed grid">
     <div class="column">
         <center>
@@ -37,7 +37,7 @@ Area Pustakawan
                 <a href="daftar-peminjaman">Lihat Daftar Peminjaman</a>
             </div>
             <div>
-                <a href="tambah-peminjaman">Pinjamkan Buku kepada Anggota</a>
+                <a href="pinjam">Pinjamkan Buku kepada Anggota</a>
             </div>
         </center>
     </div>

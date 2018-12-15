@@ -1,4 +1,9 @@
 {% extends "layouts\base.volt" %}
+
+{% block title %}
+Pinjam Buku
+{% endblock %}
+
 {% block content %}
 <div class="ui two column centered grid">
     <form method="POST" action="{{ url("pinjam") }}" class="ui form">
