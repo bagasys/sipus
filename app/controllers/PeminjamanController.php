@@ -214,11 +214,36 @@ class PeminjamanController extends BaseController
     
     public function returnAction()
     {
-        $id = $this->request->getPost('id');
+        //$id = $this->request->getPost('id');
         
-        $peminjaman = Peminjaman::findFirst("id = '$id'");
+        //$peminjaman = Peminjaman::findFirst("id = '$id'");
 
-        
+        $date = date('Y-m-d');
+        $query = $this->modelsManager->createQuery('SELECT id,tgl_hrs_kembali,status FROM Peminjaman WHERE tgl_hrs_kembali < :tgl:');
+        $users = $query->execute(
+            [
+                'tgl' => $date,
+            ]
+        );
+
+        foreach($users as $user){
+            $tanggal = $user->tgl_hrs_kembali;
+            $interval = (strtotime($date) - strtotime($tanggal)) / 86400;
+            $denda = $interval * 5000;
+            echo $interval;
+            echo $user->status;
+            if($denda > 0){
+                $sql = $this->modelsManager->createQuery('UPDATE Peminjaman SET denda = :denda:, status = :stat: WHERE id = :id:');
+                $update = $sql->execute(
+                    [
+                        'denda' => $denda,
+                        'id' => $user->id,
+                        'stat' => 'telat',
+                    ]
+                );  
+            }
+        }
+        $this->response->redirect('daftar-peminjaman');
     }
 
 }
