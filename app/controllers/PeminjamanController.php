@@ -19,7 +19,21 @@ class PeminjamanController extends BaseController
             ]
         );
         
-        
+        $users=array();
+        $bukus=array();
+
+        foreach ($peminjamans as $peminjaman){
+            $user =  Users::findFirst("id = '$peminjaman->id_user'");
+            $buku =  Buku::findFirst("id = '$peminjaman->id_buku'");
+
+            array_push($users, $user);
+            array_push($bukus, $buku);
+        }
+
+        $count = 0;
+        $this->view->users = $users;
+        $this->view->bukus = $bukus;
+        $this->view->count = $count;
         $this->view->peminjamans = $peminjamans;
     }
 
@@ -109,4 +123,19 @@ class PeminjamanController extends BaseController
         }
     }
     
+
+
+   
+
+
+    
+    public function returnAction()
+    {
+        $id = $this->request->getPost('id');
+        
+        $peminjaman = Peminjaman::findFirst("id = '$id'");
+
+        
+    }
+
 }

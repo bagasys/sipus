@@ -20,17 +20,18 @@
             <th>ID User</th>
             <th>Nama User</th>
             <th>ID Buku</th>
+            <th>Nama Buku</th>
             <th>Aksi</th>
         </tr>
     </thead>
     <tbody>
-        {% for reservasi in reserve %}
-        <?php $user = $reservasi->id_user ?> 
+        {% for reservasi in reservasis %} 
         <tr class="center aligned">
             <th>{{ reservasi.id }}</th>
             <th>{{ reservasi.id_user }}</th>
-            <th>{{ reservasi.id_user.nama }}</th>
+            <th>{{ users[count].nama }}</th>
             <th>{{ reservasi.id_buku }}</th>
+            <th>{{ bukus[count].judul }}</th>
             <th>
                 <form method="POST" action="{{url("hapus-reservasi")}}" class="ui form">
                     <input type="hidden" name="id" value="{{reservasi.id}}">
@@ -38,6 +39,8 @@
                 </form> 
             </th>
         </tr>
+        {% set count = count + 1 %}
+       
         {% endfor %} 
     </tbody>
 </table>

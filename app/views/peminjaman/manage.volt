@@ -34,11 +34,11 @@ Daftar Peminjaman
     </thead>
     <tbody>
         {% for peminjaman in peminjamans %}
-        <?php $user = $peminjaman->id_user ?> 
+         
         <tr class="center aligned">
             <th>{{ peminjaman.id }}</th>
             <th>{{ peminjaman.id_user }}</th>
-            <th>{{ peminjaman.user_id.nama }}</th>
+            <th>{{users[count].nama}}</th>
             <th>{{ peminjaman.id_buku }}</th>
             <th>{{ peminjaman.id_admin }}</th>
             <th>{{ peminjaman.tgl_pinjam }}</th>
@@ -56,6 +56,8 @@ Daftar Peminjaman
                 </form>
             </th>
         </tr>
+        {% set count = count + 1 %}
+       
         {% endfor %} 
     </tbody>
 </table>
