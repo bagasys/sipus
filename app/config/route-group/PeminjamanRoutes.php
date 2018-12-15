@@ -51,7 +51,12 @@ class PeminjamanRoutes extends RouterGroup
             ]
         );
        
-
+        $this->addPost(
+            '/kembalikan',
+            [
+                'action'    => 'return',
+            ]
+        );
 
     }
 }

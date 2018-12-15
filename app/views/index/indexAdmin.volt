@@ -9,7 +9,7 @@ Area Pustakawan
     Selamat datang di Area Pustakawan, {{ session.get('auth')['nama'] }}!
 </div>
 
-<div class="ui segment">
+<div class="ui inverted brown segment">
   <div class="ui three column very relaxed grid">
     <div class="column">
         <center>

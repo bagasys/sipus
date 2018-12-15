@@ -15,7 +15,7 @@
                 <div class="ui icon input">
                     <input class="prompt" type="text" placeholder="Search for books..." name = "title">
                     <input class="circular ui brown icon button" type="submit" style="display: none;">
-                    <i class="search icon"></i>
+                    <i class="brown search icon"></i>
                 </div>
                 <div class="results"></div>
             </div>

@@ -1,4 +1,9 @@
 {% extends "layouts\base.volt" %}
+
+{% block title %}
+Tambah Buku
+{% endblock %}
+
 {% block content %}
 
 <div class="ui two column centered grid">

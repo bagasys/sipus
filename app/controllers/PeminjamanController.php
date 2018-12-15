@@ -109,4 +109,13 @@ class PeminjamanController extends BaseController
         }
     }
     
+    public function returnAction()
+    {
+        $id = $this->request->getPost('id');
+        
+        $peminjaman = Peminjaman::findFirst("id = '$id'");
+
+        
+    }
+
 }
