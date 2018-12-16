@@ -60,6 +60,13 @@ class PeminjamanRoutes extends RouterGroup
             ]
         );
 
+        $this->addGet(
+            '/kembalikan/{id}',
+            [
+                'action'    => 'return',
+            ]
+        );
+
         $this->addPost(
             '/coba',
             [

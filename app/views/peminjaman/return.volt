@@ -1,22 +1,13 @@
-{% extends "layouts\base.volt" %}
+{{result.id}} <br>
+{{result.id_buku}} <br>
+{{result.id_user}} <br>
+Denda: Rp. {{result.denda}},- <br>
 
-{% block title %}
-Pinjam Buku
-{% endblock %}
-
-{% block content %}
-<div class="ui middle aligned center aligned grid">
-    <div class="column">
-        <div class="title">
-            Pinjamkan Buku
-        </div>
-    </div>
-</div>
 <div class="ui two column centered grid">
-    <form method="POST" action="{{ url("pinjam") }}" class="ui form">
+    <form method="POST" action="{{ url("kembalikan") }}" class="ui form">
         <div class="field">
             <label for="id_buku">ISBN / ISSN Buku</label>
-            <input type="text" name="ISBN_ISSN" placeholder="">
+            <input type="text" name="ISBN_ISSN" placeholder="" value = "">
         </div>
         <div class="field">
             <label for="id_user">Nomor Anggota</label>
@@ -34,5 +25,3 @@ Pinjam Buku
         <input type="submit" value="Pinjamkan Buku" class="ui inverted brown button">
     </form>
 </div>
-
-{% endblock %}
