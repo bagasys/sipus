@@ -27,7 +27,7 @@ Daftar Buku
         <div class="results"></div>
     </div>
 </form>
-<table class="ui selectable inverted brown celled table">
+<table class="ui sortable selectable inverted brown celled table">
     <thead>
         <tr class="center aligned">
             <th>ID</th>
@@ -108,6 +108,8 @@ Daftar Buku
         $("#confirm-nama").html(nama);
         $('.mini.modal').modal('show');
     });
+    $("table")
+        .tablesort();
 </script>
 {% endblock %}
 

@@ -18,16 +18,15 @@ Daftar Peminjaman
     </div>
 </div>
 <form method="POST" action="{{ url("daftar-peminjaman") }}">
-    <label for="searchBy">Cari Berdasarkan: </label>
-    <select name="searchBy">
-            <option value="nama">Nama Anggota</option>
-            <option value="judul">Judul Buku</option>
-            <option value="id_buku">Id Buku</option>
-            <option value="id_user">Id User</option>
-            <option value="id_reservasi">Id Reservasi</option>
-            <option value="id_reservasi">Hari Ini</option>
+    <select name="searchBy" class="ui dropdown">
+        <option value="">Kategori Pencarian</option>
+        <option value="nama">Nama Anggota</option>
+        <option value="judul">Judul Buku</option>
+        <option value="id_buku">ID Buku</option>
+        <option value="id_user">ID User</option>
+        <option value="id_reservasi">ID Reservasi</option>
+        <option value="id_reservasi">Hari Ini</option>
     </select>
-
     <div class="ui search item">
         <div class="ui icon input">
             <input class="prompt" type="text" placeholder="Cari peminjaman" name = "searchKey">
@@ -37,7 +36,7 @@ Daftar Peminjaman
         <div class="results"></div>
     </div>
 </form>
-<table class="ui selectable inverted brown celled table">
+<table class="ui sortable selectable inverted brown celled table">
     <thead>
         <tr class="center aligned">
             <th>ID Peminjaman</th>
@@ -80,4 +79,10 @@ Daftar Peminjaman
         {% endfor %} 
     </tbody>
 </table>
+<script>
+    $('.ui.dropdown')
+        .dropdown();
+    $("table")
+        .tablesort();
+</script>
 {% endblock %}
