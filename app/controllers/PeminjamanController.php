@@ -11,6 +11,9 @@ class PeminjamanController extends BaseController
 
         $searchKey = $this->request->getPost('searchKey');
         $searchBy = $this->request->getPost('searchBy');
+        $pinjamKey = $this->request->getPost('pinjamKey');
+        $kembaliKey = $this->request->getPost('kembaliKey');
+        $date = date('Y-m-d');
 
         if($searchBy == 'id_peminjaman'){
             $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
@@ -20,27 +23,41 @@ class PeminjamanController extends BaseController
             ]);
         } else if($searchBy == 'id_user'){
             $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
-            WHERE u.id = p.id_user AND p.id_buku = b.id AND p.id_user = :searchKey:');
+            WHERE u.id = p.id_user AND p.id_buku = b.id AND p.id_user = :searchKey: AND p.status != "selesai" ');
             $peminjamans  = $query->execute([
                 'searchKey' => $searchKey,
             ]);
         } else if ($searchBy == 'nama'){
             $searchKey = '%'.$searchKey.'%';
             $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
-            WHERE u.id = p.id_user AND p.id_buku = b.id AND u.nama LIKE :searchKey:');
+            WHERE u.id = p.id_user AND p.id_buku = b.id AND u.nama LIKE :searchKey: AND p.status != "selesai" ');
             $peminjamans  = $query->execute([
                 'searchKey' => $searchKey,
             ]);
         } else if ($searchBy == 'judul'){
             $searchKey = '%'.$searchKey.'%';
             $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
-            WHERE u.id = p.id_user AND p.id_buku = b.id AND b.judul LIKE :searchKey:');
+            WHERE u.id = p.id_user AND p.id_buku = b.id AND b.judul LIKE :searchKey: AND p.status != "selesai" ');
             $peminjamans  = $query->execute([
                 'searchKey' => $searchKey,
             ]);
+        } else if ($pinjamKey == 'tgl_pinjam'){
+            $pinjamKey = '%'.$date.'%';
+            $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
+            WHERE u.id = p.id_user AND p.id_buku = b.id AND p.tgl_pinjam LIKE :searchKey: AND p.status != "selesai" ');
+            $peminjamans  = $query->execute([
+                'searchKey' => $pinjamKey,
+            ]);
+        } else if ($kembaliKey == 'tgl_hrs_kembali'){
+            $kembaliKey = '%'.$date.'%';
+            $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
+            WHERE u.id = p.id_user AND p.id_buku = b.id AND p.tgl_hrs_kembali LIKE :searchKey: AND p.status != "selesai" ');
+            $peminjamans  = $query->execute([
+                'searchKey' => $kembaliKey,
+            ]);
         } else {
             $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
-            WHERE u.id = p.id_user AND p.id_buku = b.id AND p.id_buku = :searchKey:');
+            WHERE u.id = p.id_user AND p.id_buku = b.id AND p.id_buku = :searchKey: AND p.status != "selesai" ');
             $peminjamans  = $query->execute([
                 'searchKey' => $searchKey,
             ]);

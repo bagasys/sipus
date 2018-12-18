@@ -19,18 +19,36 @@ Daftar Peminjaman
 </div>
 <form method="POST" action="{{ url("daftar-peminjaman") }}">
     <select name="searchBy" class="ui dropdown">
-        <option value="">Kategori Pencarian</option>
         <option value="nama">Nama Anggota</option>
         <option value="judul">Judul Buku</option>
         <option value="id_buku">ID Buku</option>
         <option value="id_user">ID User</option>
         <option value="id_peminjaman">ID Peminjaman</option>
-        <option value="id_peminjaman">Hari Ini</option>
     </select>
     <div class="ui search item">
         <div class="ui icon input">
             <input class="prompt" type="text" placeholder="Cari peminjaman" name = "searchKey">
             <input class="circular ui brown icon button" type="submit" value="">
+            <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+    </div>
+</form>
+<form method="POST" action="{{ url("daftar-peminjaman") }}">
+     <div class="ui search item">
+        <div class="ui icon input">
+            <input class="prompt" type="hidden" placeholder="Cari peminjaman" name = "pinjamKey" value="tgl_pinjam">
+            <input class="circular ui brown icon button" type="submit" value="Pinjam Hari Ini">
+            <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+    </div>
+</form>
+<form method="POST" action="{{ url("daftar-peminjaman") }}">
+    <div class="ui search item">
+        <div class="ui icon input">
+            <input class="prompt" type="hidden" placeholder="Cari peminjaman" name = "kembaliKey" value="tgl_hrs_kembali">
+            <input class="circular ui brown icon button" type="submit" value="Deadline Hari Ini">
             <i class="search icon"></i>
         </div>
         <div class="results"></div>
