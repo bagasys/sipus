@@ -35,17 +35,44 @@ class IndexController extends BaseController
     
     public function showBooksAction()
     {   
-        $judul = $this->request->getPost('title');
-        $judul = '%'.$judul.'%';
-        $results = Buku::find(
-            [
-                'conditions' => "judul LIKE :judul:" ,
-                'bind'       => [
-                    'judul' => $judul,
-                ]
-            ]
-        );
-        
+        $searchKey =  $this->request->getPost('searchKey');
+        $searchBy =  $this->request->getPost('searchBy');
+            
+        if($searchBy == 'judul'){
+            $searchKey = '%'.$searchKey.'%';
+            $query = $this->modelsManager->createQuery('SELECT * FROM Buku
+            WHERE judul LIKE :searchKey:');
+            $results  = $query->execute([
+                'searchKey' =>$searchKey,
+            ]);
+        }else if($searchBy == 'pengarang'){ 
+            $searchKey = '%'.$searchKey.'%';
+            $query = $this->modelsManager->createQuery('SELECT * FROM Buku
+            WHERE pengarang LIKE :searchKey:');
+            $results  = $query->execute([
+                'searchKey' => $searchKey,
+            ]);
+        }else if($searchBy == 'id_buku'){ 
+            $query = $this->modelsManager->createQuery('SELECT * FROM Buku
+            WHERE id = :searchKey:');
+            $results  = $query->execute([
+                'searchKey' => $searchKey,
+            ]);
+        }else if($searchBy == 'kategori'){ 
+            $searchKey = '%'.$searchKey.'%';
+            $query = $this->modelsManager->createQuery('SELECT * FROM Buku
+            WHERE kategori LIKE :searchKey:');
+            $results  = $query->execute([
+                'searchKey' => $searchKey,
+            ]);
+        }else if($searchBy == 'penerbit'){ 
+            $searchKey = '%'.$searchKey.'%';
+            $query = $this->modelsManager->createQuery('SELECT * FROM Buku
+            WHERE penerbit LIKE :searchKey:');
+            $results  = $query->execute([
+                'searchKey' => $searchKey,
+            ]);
+        }
         
         $this->view->results = $results;
     }

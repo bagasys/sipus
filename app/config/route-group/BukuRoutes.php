@@ -41,7 +41,7 @@ class BukuRoutes extends RouterGroup
         $this->addPost(
             '/tambah-buku',
             [
-                'action'    => 'store',
+                'action'    => 'create',
             ]
         );
 
