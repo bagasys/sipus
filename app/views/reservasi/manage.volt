@@ -16,8 +16,8 @@ Daftar Reservasi
     <select name="searchBy" class="ui dropdown">
         <option value="nama">Nama Anggota</option>
         <option value="judul">Judul Buku</option>
-        <option value="id_buku">ID Buku</option>
-        <option value="id_user">ID User</option>
+        <option value="ISBN_ISSN">ISBN_ISSN</option>
+        <option value="no_id">No ID Anggota</option>
         <option value="id_reservasi">ID Reservasi</option>
     </select>
     <div class="ui search item" style="display:inline-block;">
@@ -33,9 +33,9 @@ Daftar Reservasi
     <thead>
         <tr class="center aligned">
             <th>ID Reservasi</th>
-            <th>ID User</th>
+            <th>No ID Anggota</th>
             <th>Nama User</th>
-            <th>ID Buku</th>
+            <th>ISBN_ISSN</th>
             <th>Nama Buku</th>
             <th>Aksi</th>
         </tr>
@@ -44,9 +44,9 @@ Daftar Reservasi
         {% for peminjaman in peminjamans %} 
         <tr class="center aligned">
             <th>{{ peminjaman.idp }}</th>
-            <th>{{ peminjaman.id_user }}</th>
+            <th>{{ peminjaman.no_id }}</th>
             <th>{{ peminjaman.nama }}</th>
-            <th>{{ peminjaman.id_buku }}</th>
+            <th>{{ peminjaman.ISBN_ISSN }}</th>
             <th>{{ peminjaman.judul }}</th>
             <th>
                 <form method="POST" action="{{url("hapus-reservasi")}}" class="ui form">
