@@ -4,7 +4,7 @@
     {% include 'layouts\header.volt' %}
     <title>Sipus - {% block title %}{% endblock %}</title>
 </head>
-<body style="background-image: url('img/background2.jpg'); background-repeat: no-repeat; background-size: 100% 100%">
+<body style="background-image: url('img/background2.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%;">
     <div class="ui brown inverted menu">
         <a href="{{ url("") }}" class="item">
             <img class="ui mini image" src="{{ url("img/sipus_logo.png") }}">
@@ -25,8 +25,10 @@
         </form>
         <div class="right menu">
             {% if session.has('auth') %}
-            <div class="ui simple dropdown item">
+            <div class="ui dropdown item">
+                <div class="text">
                 {{ session.get('auth')['nama'] }}
+                </div>
                 <i class="dropdown icon"></i>
                 <div class="menu">
                     {% if session.get('auth')['status'] === '0' %}
@@ -51,6 +53,11 @@
     {% block content %} {% endblock %}
 
 {# ini footer #}
+
+<script>
+    $('.ui.dropdown')
+        .dropdown();
+</script>
 
 </body>
 </html>
