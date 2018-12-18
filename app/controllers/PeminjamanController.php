@@ -24,7 +24,7 @@ class PeminjamanController extends BaseController
             $peminjamans  = $query->execute([
                 'searchKey' => $searchKey,
             ]);
-            
+
         } else if ($searchBy == 'nama'){
             $searchKey = '%'.$searchKey.'%';
             $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
@@ -32,13 +32,7 @@ class PeminjamanController extends BaseController
             $peminjamans  = $query->execute([
                 'searchKey' => $searchKey,
             ]);
-        } else if ($searchBy == 'judul'){
-            $searchKey = '%'.$searchKey.'%';
-            $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
-            WHERE u.id = p.id_user AND p.id_buku = b.id AND b.judul LIKE :searchKey:');
-            $peminjamans  = $query->execute([
-                'searchKey' => $searchKey,
-            ]);
+            
         } else {
             $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
             WHERE u.id = p.id_user AND p.id_buku = b.id AND p.id_buku = :searchKey:');
@@ -176,22 +170,9 @@ class PeminjamanController extends BaseController
             }
         }
 
-       // }   
-        // if($date > $peminjaman[$i]){
-
-        //    // $this->view->users = $peminjaman[0];
-        // }
-
-         
-
-
-
     }
 
-   
 
-
-    
     public function returnAction()
     {
         //$id = $this->request->getPost('id');
@@ -225,9 +206,12 @@ class PeminjamanController extends BaseController
         }
         //$this->response->redirect('daftar-peminjaman');
 
-        $id = $this->dispatcher->getParam("id");
-        $results = Peminjaman::findFirst("id = '$id' ");
-        $this->view->result = $results;
+        $searchKey = $this->dispatcher->getParam("id");
+        $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
+        WHERE u.id = p.id_user AND p.id_buku = b.id AND p.id = :searchKey:');
+        $peminjamans  = $query->execute([
+            'searchKey' => $searchKey,
+        ]);
+            $this->view->peminjamans = $peminjamans;
     }
-
 }

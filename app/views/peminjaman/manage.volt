@@ -19,7 +19,6 @@ Daftar Peminjaman
 </div>
 <form method="POST" action="{{ url("daftar-peminjaman") }}">
     <select name="searchBy" class="ui dropdown">
-        <option value="">Kategori Pencarian</option>
         <option value="nama">Nama Anggota</option>
         <option value="judul">Judul Buku</option>
         <option value="id_buku">ID Buku</option>
@@ -46,8 +45,6 @@ Daftar Peminjaman
             <th>Judul Buku</th>
             <th>Tanggal Pinjam</th>
             <th>Tanggal Harus Kembali</th>
-            <th>Tanggal Kembali</th>
-            <th>Denda</th>
             <th>Status</th>
             <th>Aksi</th>
         </tr>
@@ -62,9 +59,7 @@ Daftar Peminjaman
             <th>{{ peminjaman.id_buku }}</th>
             <th>{{ peminjaman.judul }}</th>
             <th>{{ peminjaman.tgl_pinjam }}</th>
-            <th>{{ peminjaman.tgl_pinjam }}</th>
             <th>{{ peminjaman.tgl_hrs_kembali }}</th>
-            <th>Rp. {{ peminjaman.denda }},-</th>
             <th>{{ peminjaman.status }}</th>
             <th>
                 <form method="POST" action="{{url("hapus-peminjaman")}}" class="ui form">
