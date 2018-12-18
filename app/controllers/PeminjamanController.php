@@ -251,6 +251,7 @@ class PeminjamanController extends BaseController
         $peminjamans  = $query->execute([
             'searchKey' => $searchKey,
         ]);
+
         $this->view->peminjamans = $peminjamans;
         
         // $query = $this->modelsManager->createQuery('SELECT b.jumlah_tersedia as jumter FROM Peminjaman p, Buku b
