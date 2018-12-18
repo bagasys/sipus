@@ -24,8 +24,8 @@ Daftar Peminjaman
         <option value="judul">Judul Buku</option>
         <option value="id_buku">ID Buku</option>
         <option value="id_user">ID User</option>
-        <option value="id_reservasi">ID Reservasi</option>
-        <option value="id_reservasi">Hari Ini</option>
+        <option value="id_peminjaman">ID Peminjaman</option>
+        <option value="id_peminjaman">Hari Ini</option>
     </select>
     <div class="ui search item" style="display:inline-block;">
         <div class="ui icon input">
@@ -43,6 +43,7 @@ Daftar Peminjaman
             <th>ID User</th>
             <th>Nama User</th>
             <th>ID Buku</th>
+            <th>Judul Buku</th>
             <th>Tanggal Pinjam</th>
             <th>Tanggal Harus Kembali</th>
             <th>Tanggal Kembali</th>
@@ -57,8 +58,9 @@ Daftar Peminjaman
         <tr class="center aligned">
             <th>{{ peminjaman.idp }}</th>
             <th>{{ peminjaman.id_user}}</th>
-            <th>{{peminjaman.nama}}</th>
+            <th>{{ peminjaman.nama }}</th>
             <th>{{ peminjaman.id_buku }}</th>
+            <th>{{ peminjaman.judul }}</th>
             <th>{{ peminjaman.tgl_pinjam }}</th>
             <th>{{ peminjaman.tgl_pinjam }}</th>
             <th>{{ peminjaman.tgl_hrs_kembali }}</th>

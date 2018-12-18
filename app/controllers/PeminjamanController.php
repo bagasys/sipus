@@ -24,10 +24,18 @@ class PeminjamanController extends BaseController
             $peminjamans  = $query->execute([
                 'searchKey' => $searchKey,
             ]);
+            
         } else if ($searchBy == 'nama'){
             $searchKey = '%'.$searchKey.'%';
             $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
             WHERE u.id = p.id_user AND p.id_buku = b.id AND u.nama LIKE :searchKey:');
+            $peminjamans  = $query->execute([
+                'searchKey' => $searchKey,
+            ]);
+        } else if ($searchBy == 'judul'){
+            $searchKey = '%'.$searchKey.'%';
+            $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
+            WHERE u.id = p.id_user AND p.id_buku = b.id AND b.judul LIKE :searchKey:');
             $peminjamans  = $query->execute([
                 'searchKey' => $searchKey,
             ]);
