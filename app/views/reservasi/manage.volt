@@ -43,14 +43,14 @@ Daftar Reservasi
     <tbody>
         {% for peminjaman in peminjamans %} 
         <tr class="center aligned">
-            <th>{{ peminjaman.idp }}</th>
+            <th>{{ peminjaman.idr }}</th>
             <th>{{ peminjaman.no_id }}</th>
             <th>{{ peminjaman.nama }}</th>
             <th>{{ peminjaman.ISBN_ISSN }}</th>
             <th>{{ peminjaman.judul }}</th>
             <th>
                 <form method="POST" action="{{url("hapus-reservasi")}}" class="ui form">
-                    <input type="hidden" name="id" value="{{reservasi.id}}">
+                    <input type="hidden" name="id" value="{{peminjaman.idr}}">
                     <input type="submit" value="Hapus">
                 </form> 
             </th>
