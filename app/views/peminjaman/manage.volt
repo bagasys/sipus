@@ -25,7 +25,7 @@ Daftar Peminjaman
         <option value="id_user">ID User</option>
         <option value="id_peminjaman">ID Peminjaman</option>
     </select>
-    <div class="ui search item">
+    <div class="ui search item" style="display:inline-block;">
         <div class="ui icon input">
             <input class="prompt" type="text" placeholder="Cari peminjaman" name = "searchKey">
             <input class="circular ui brown icon button" type="submit" value="">
@@ -64,8 +64,6 @@ Daftar Peminjaman
             <th>Judul Buku</th>
             <th>Tanggal Pinjam</th>
             <th>Tanggal Harus Kembali</th>
-            <th>Tanggal Kembali</th>
-            <th>Denda</th>
             <th>Status</th>
             <th>Aksi</th>
         </tr>
@@ -80,9 +78,7 @@ Daftar Peminjaman
             <th>{{ peminjaman.id_buku }}</th>
             <th>{{ peminjaman.judul }}</th>
             <th>{{ peminjaman.tgl_pinjam }}</th>
-            <th>{{ peminjaman.tgl_pinjam }}</th>
             <th>{{ peminjaman.tgl_hrs_kembali }}</th>
-            <th>Rp. {{ peminjaman.denda }},-</th>
             <th>{{ peminjaman.status }}</th>
             <th>
                 <form method="POST" action="{{url("hapus-peminjaman")}}" class="ui form">

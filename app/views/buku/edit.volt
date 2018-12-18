@@ -29,6 +29,7 @@
             </div>
         </div>
         <div class="field">
+{#
             <label for="kategori">Kategori</label>
             <select name="kategori">
                 <option value="satu">coba1</option>
@@ -36,6 +37,15 @@
                 <option value="tiga">coba3</option>
                 <option value="empat">coba4</option>
             </select>
+#}
+            <select name="kategori" class="ui dropdown">
+                <option value="">Pilih kategori buku...</option>
+                <option value="satu">coba1</option>
+                <option value="dua">coba2</option>
+                <option value="tiga">coba3</option>
+                <option value="empat">coba4</option>
+            </select>
+
         </div>
         <div class="two fields">
             <div class="field">
@@ -55,7 +65,11 @@
             <label for="gambar_buku">Cover</label>
             <input type="file" name="gambar_buku">
         </div>
-        <input type="submit" value="Ubah Data Buku" class="ui inverted brown button"">
+        <input type="submit" value="Ubah Data Buku" class="ui inverted brown button">
     </form>
 </div>
+<script>
+    $('.ui.dropdown')
+        .dropdown();
+</script>
 {% endblock %}

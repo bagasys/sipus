@@ -36,7 +36,7 @@ Daftar Anggota
             <th>Email</th>
             <th>Alamat</th>
             <th>Nomor Telepon</th>
-            <th>Status Admin</th>
+            <th>Status</th>
             <th>Aksi</th>
         </tr>
     </thead>
@@ -49,16 +49,22 @@ Daftar Anggota
             <th>{{result.email}}</th>
             <th>{{result.alamat}}</th>
             <th>{{result.no_telepon}}</th>
-            <th>{{result.admin}}</th>
+            <th>
+                {% if result.admin === '1' %}
+                Pustakawan
+                {% else %}
+                Anggota Biasa
+                {% endif %}
+            </th>
             <th>
                 <div>
                     <a href="ubah-anggota/{{result.id}}" class="ui labeled icon blue button">
-                        <i class="edit icon"></i>
+                        <i class="edit outline icon"></i>
                         Edit
                     </a>
 				</div>
                 <button class="confirm ui labeled icon red button" data-id="{{result.id}}" data-nama="{{result.nama}}">
-                    <i class="trash alternate icon"></i>
+                    <i class="trash alternate outline icon"></i>
                     Hapus
                 </button>
             </th>
