@@ -18,6 +18,13 @@ Daftar Anggota
     </div>
 </div>
 <form method="POST" action="{{ url("daftar-anggota") }}">
+    <select name="searchBy" class="ui dropdown">
+        <option value="nama">Nama Anggota</option>
+        <option value="no_id">No ID Anggota</option>
+        <option value="email">Email</option>
+        <option value="ISBN_ISSN">ISBN_ISSN</option>
+        <option value="id_peminjaman">ID Peminjaman</option>
+    </select>
     <div class="ui search item">
         <div class="ui icon input">
             <input class="prompt" type="text" placeholder="Cari nama anggota..." name = "title">
@@ -32,7 +39,7 @@ Daftar Anggota
         <tr class="center aligned">
             <th>ID</th>
             <th>Nama Lengkap</th>
-            <th>Nomor Kartu Identitas</th>
+            <th>No ID Anggota</th>
             <th>Email</th>
             <th>Alamat</th>
             <th>Nomor Telepon</th>

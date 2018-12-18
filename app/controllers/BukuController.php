@@ -8,30 +8,6 @@ class BukuController extends BaseController
             $this->response->redirect();
         }
 
-        $searchKey = $this->request->getPost('searchKey');
-        $searchBy = $this->request->getPost('searchBy');
-
-        if($searchBy == 'judul'){
-            $searchKey = '%'.$searchKey.'%';
-            $query = $this->modelsManager->createQuery('SELECT * FROM Buku WHERE judul LIKE :searchKey:');
-            $bukus  = $query->execute([
-                'searchKey' => $searchKey,
-            ]);
-        }
-
-        $this->view->results = $bukus;
-        
-        // $judul = $this->request->getPost('title');
-        // $judul = '%'.$judul.'%';
-        // $results = Buku::find(
-        //     [
-        //         'conditions' => "judul LIKE :judul:" ,
-        //         'bind'       => [
-        //             'judul' => $judul,
-        //         ]
-        //     ]
-        // );
-
         $searchKey =  $this->request->getPost('searchKey');
         $searchBy =  $this->request->getPost('searchBy');
             if($searchBy == 'pengarang'){ 
@@ -41,9 +17,9 @@ class BukuController extends BaseController
                 $results  = $query->execute([
                     'searchKey' => $searchKey,
                 ]);
-            }else if($searchBy == 'id_buku'){ 
+            }else if($searchBy == 'ISBN_ISSN'){ 
                 $query = $this->modelsManager->createQuery('SELECT * FROM Buku
-                WHERE id = :searchKey:');
+                WHERE ISBN_ISSN = :searchKey:');
                 $results  = $query->execute([
                     'searchKey' => $searchKey,
                 ]);
