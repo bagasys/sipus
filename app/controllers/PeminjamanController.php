@@ -50,13 +50,12 @@ class PeminjamanController extends BaseController
                 'searchKey' => $pinjamKey,
             ]);
         } else if ($kembaliKey == 'tgl_hrs_kembali'){
-            $kembaliKey = '%'.$date.'%';
+            $kembaliKey = '%'.$date.'%';  
             $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
             WHERE u.id = p.id_user AND p.id_buku = b.id AND p.tgl_hrs_kembali LIKE :searchKey: AND p.status != "selesai" ');
             $peminjamans  = $query->execute([
                 'searchKey' => $kembaliKey,
             ]);
-            
         } else {
             $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
             WHERE u.id = p.id_user AND p.id_buku = b.id AND p.id_buku = :searchKey: AND p.status != "selesai" ');

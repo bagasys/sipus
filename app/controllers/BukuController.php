@@ -7,17 +7,30 @@ class BukuController extends BaseController
         if($this->session->get('auth')['status'] != '1'){
             $this->response->redirect();
         }
+
+        $searchKey = $this->request->getPost('searchKey');
+        $searchBy = $this->request->getPost('searchBy');
+
+        if($searchBy == 'judul'){
+            $searchKey = '%'.$searchKey.'%';
+            $query = $this->modelsManager->createQuery('SELECT * FROM Buku WHERE judul LIKE :searchKey:');
+            $bukus  = $query->execute([
+                'searchKey' => $searchKey,
+            ]);
+        }
+
+        $this->view->results = $bukus;
         
-        $judul = $this->request->getPost('title');
-        $judul = '%'.$judul.'%';
-        $results = Buku::find(
-            [
-                'conditions' => "judul LIKE :judul:" ,
-                'bind'       => [
-                    'judul' => $judul,
-                ]
-            ]
-        );
+        // $judul = $this->request->getPost('title');
+        // $judul = '%'.$judul.'%';
+        // $results = Buku::find(
+        //     [
+        //         'conditions' => "judul LIKE :judul:" ,
+        //         'bind'       => [
+        //             'judul' => $judul,
+        //         ]
+        //     ]
+        // );
         
         
         $this->view->results = $results;
@@ -79,7 +92,6 @@ class BukuController extends BaseController
     
     public function updateAction()
     {   
-        
         
         $id = $this->request->getPost('id');
         $isbn = $this->request->getPost('ISBN_ISSN');
