@@ -202,10 +202,12 @@ class PeminjamanController extends BaseController
         //$peminjaman = Peminjaman::findFirst("id = '$id'");
 
         $date = date('Y-m-d');
-        $query = $this->modelsManager->createQuery('SELECT id,tgl_hrs_kembali,status FROM Peminjaman WHERE tgl_hrs_kembali < :tgl:');
+        $searchKey = $this->dispatcher->getParam("id");
+
+        $query = $this->modelsManager->createQuery('SELECT tgl_hrs_kembali, status FROM Peminjaman WHERE id = :id:');
         $users = $query->execute(
             [
-                'tgl' => $date,
+                'id' => $searchKey
             ]
         );
 
@@ -213,27 +215,34 @@ class PeminjamanController extends BaseController
             $tanggal = $user->tgl_hrs_kembali;
             $interval = (strtotime($date) - strtotime($tanggal)) / 86400;
             $denda = $interval * 5000;
+            $status = $user->status;
             echo $interval;
             echo $user->status;
-            if($denda > 0){
-                $sql = $this->modelsManager->createQuery('UPDATE Peminjaman SET denda = :denda:, status = :stat: WHERE id = :id:');
+            if($denda <= 0){
+                  $denda = 0;
+                  $status = 'terlambat';
+            }
+
+            $sql = $this->modelsManager->createQuery('UPDATE Peminjaman SET denda = :denda:, status = :stat:, tgl_kembali = :tgl: WHERE id = :id:');
                 $update = $sql->execute(
                     [
                         'denda' => $denda,
-                        'id' => $user->id,
-                        'stat' => 'telat',
+                        'id' => $searchKey,
+                        'stat' => $status,
+                        'tgl' => $date,
                     ]
-                );  
-            }
+                );
         }
         //$this->response->redirect('daftar-peminjaman');
 
-        $searchKey = $this->dispatcher->getParam("id");
-        $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
+        $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam, p.tgl_kembali FROM Users u, Peminjaman p, Buku b
         WHERE u.id = p.id_user AND p.id_buku = b.id AND p.id = :searchKey:');
         $peminjamans  = $query->execute([
             'searchKey' => $searchKey,
         ]);
-            $this->view->peminjamans = $peminjamans;
+        $this->view->peminjamans = $peminjamans;
+        
+        
+
     }
 }
