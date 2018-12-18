@@ -112,12 +112,12 @@ class BukuController extends BaseController
                 echo $message, "\n";
             }
         } else {
-            $this->view->status = "pendaftaran sukses";
+            $this->view->   status = "pendaftaran sukses";
         }
 
 
-        $results = Buku::find();
-        $this->view->results = $results;
+        // $results = Buku::find();
+        // $this->view->results = $results;
     }
     
     public function editAction()
