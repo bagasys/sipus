@@ -5,6 +5,8 @@ Tambah Buku
 {% endblock %}
 
 {% block content %}
+        {{status}}
+
 <div class="ui middle aligned center aligned grid">
     <div class="column">
         <div class="title">
@@ -63,6 +65,10 @@ Tambah Buku
         <div class="field">
             <label for="nomor_panggil">Nomor Panggil</label>
             <input type="text" name="nomor_panggil" placeholder="Ex: 423.1 PUR k.3">
+        </div>
+        <div class="field">
+            <label for="jumlah">Jumlah Buku</label>
+            <input type="text" name="jumlah" placeholder="Ex: 100">
         </div>
         <div class="field">
             <label for="gambar_buku">Cover</label>

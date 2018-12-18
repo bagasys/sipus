@@ -52,6 +52,43 @@ class BukuController extends BaseController
         if($this->session->get('auth')['status'] != '1'){
             $this->response->redirect();
         }
+
+        $book = new Buku();
+
+        $isbn = $this->request->getPost('ISBN_ISSN');
+        $judul = $this->request->getPost('judul');
+        $pengarang = $this->request->getPost('pengarang');
+        $kategori = $this->request->getPost('kategori');
+        $penerbit = $this->request->getPost('penerbit');
+        $deskripsi = $this->request->getPost('deskripsi');
+        $deskripsi_fisik = $this->request->getPost('deskripsi_fisik');
+        $nomor_panggil = $this->request->getPost('nomor_panggil');
+        $jumlah = $this->request->getPost('jumlah');
+       
+
+        $book->ISBN_ISSN = $isbn;
+        $book->judul = $judul;
+        $book->pengarang = $pengarang;
+        $book->kategori = $kategori;
+        $book->penerbit = $penerbit;
+        $book->deskripsi = $deskripsi;
+        $book->deskripsi_fisik = $deskripsi_fisik;
+        $book->nomor_panggil = $nomor_panggil;
+        $book->jumlah = $jumlah;
+        $book->jumlah_tersedia = $jumlah;
+
+        $this->view->status = "";
+    
+
+        if ($book->save() === false) {
+            foreach ($book->getMessages() as $message) {
+                echo $message, "\n";
+            }
+        } else {
+            $this->view->status = "pendaftaran sukses";
+        }
+
+
         $results = Buku::find();
         $this->view->results = $results;
     }
@@ -64,41 +101,6 @@ class BukuController extends BaseController
         $id = $this->dispatcher->getParam("id");
         $results = Buku::findFirst("id = '$id' ");
         $this->view->results = $results;
-    }
-
-    public function storeAction()
-    {
-        $book = new Buku();
-
-        $isbn = $this->request->getPost('ISBN_ISSN');
-        $judul = $this->request->getPost('judul');
-        $pengarang = $this->request->getPost('pengarang');
-        $kategori = $this->request->getPost('kategori');
-        $penerbit = $this->request->getPost('penerbit');
-        $deskripsi = $this->request->getPost('deskripsi');
-        $deskripsi_fisik = $this->request->getPost('deskripsi_fisik');
-        $nomor_panggil = $this->request->getPost('nomor_panggil');
-
-       
-
-        $book->ISBN_ISSN = $isbn;
-        $book->judul = $judul;
-        $book->pengarang = $pengarang;
-        $book->kategori = $kategori;
-        $book->penerbit = $penerbit;
-        $book->deskripsi = $deskripsi;
-        $book->deskripsi_fisik = $deskripsi_fisik;
-        $book->nomor_panggil = $nomor_panggil;
-
-        
-
-        if ($book->save() === false) {
-            foreach ($book->getMessages() as $message) {
-                echo $message, "\n";
-            }
-        } else {
-            echo "pendaftaran sukses";
-        }
     }
     
     public function updateAction()
@@ -132,7 +134,7 @@ class BukuController extends BaseController
                 echo $message, "\n";
             }
         } else {
-            echo "pendaftaran sukses";
+            $this->response->redirect('daftar-buku');
         }
     }
     
