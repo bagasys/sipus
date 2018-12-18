@@ -70,7 +70,6 @@ Daftar Peminjaman
     </thead>
     <tbody>
         {% for peminjaman in peminjamans %}
-         
         <tr class="center aligned">
             <th>{{ peminjaman.idp }}</th>
             <th>{{ peminjaman.id_user}}</th>

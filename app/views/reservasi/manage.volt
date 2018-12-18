@@ -1,17 +1,26 @@
 {% extends "layouts\base.volt" %}
-{% block content %}
 
+{% block title %}
+Daftar Reservasi
+{% endblock %}
+
+{% block content %}
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <div class="title">
+            Daftar Reservasi
+        </div>
+    </div>
+</div>
 <form method="POST" action="{{ url("daftar-reservasi") }}">
-        <label for="searchBy">Cari Berdasarkan: </label>
-        <select name="searchBy">
-            <option value="nama">Nama Anggota</option>
-            <option value="judul">Judul Buku</option>
-            <option value="id_buku">Id Buku</option>
-            <option value="id_user">Id User</option>
-            <option value="id_reservasi">Id Reservasi</option>
-           
-        </select>
-    <div class="ui search item">
+    <select name="searchBy" class="ui dropdown">
+        <option value="nama">Nama Anggota</option>
+        <option value="judul">Judul Buku</option>
+        <option value="id_buku">ID Buku</option>
+        <option value="id_user">ID User</option>
+        <option value="id_reservasi">ID Reservasi</option>
+    </select>
+    <div class="ui search item" style="display:inline-block;">
         <div class="ui icon input">
             <input class="prompt" type="text" placeholder="Cari Reservasi" name = "searchKey">
             <input class="circular ui brown icon button" type="submit" value="">
@@ -20,10 +29,7 @@
         <div class="results"></div>
     </div>
 </form>
-
-
-
-<table class="ui selectable inverted brown celled table">
+<table class="ui sortable selectable inverted brown celled table">
     <thead>
         <tr class="center aligned">
             <th>ID Reservasi</th>
@@ -53,4 +59,10 @@
         {% endfor %} 
     </tbody>
 </table>
+<script>
+    $('.ui.dropdown')
+        .dropdown();
+    $("table")
+        .tablesort();
+</script>
 {% endblock %}

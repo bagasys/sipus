@@ -48,9 +48,5 @@ Welcome
             duration    : 2750
         });
     });
-    // $('.search-animate')
-    //     .transition('set looping')
-    //     .transition('jiggle', '2000ms')
-;
 </script>
 {% endblock %}
