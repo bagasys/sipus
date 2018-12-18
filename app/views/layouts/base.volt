@@ -13,16 +13,8 @@
         <a href="{{ url("dashboard") }}" class="item">Area Pustakawan</a>
         {% endif %}
         <a href="{{ url("catalogue") }}" class="item">Browse Catalogue</a>
-        <form method="POST" action="catalogue">
-        <select name="searchBy" class="ui dropdown">
-            <option value="pengarang">Pengarang</option>
-            <option value="judul">Judul Buku</option>
-            <option value="id_buku">ID Buku</option>
-            <option value="ISBN_ISSN">ISBN/ISSN</option>
-            <option value="kategori">Kategori</option>
-            <option value="penerbit">Penerbit</option>      
-        </select>
-            <div class="ui search item">
+        <form method="POST" action="catalogue" class="item">
+            <div class="ui search">
                 <div class="ui icon input">
                     <input class="prompt" type="text" placeholder="Search for books..." name = "searchKey">
                     <input class="circular ui brown icon button" type="submit" style="display: none;">

@@ -6,25 +6,31 @@ Detail
 {% block content %}
 <div class="ui equal width grid">
     <div class="row">
-        <div class="column">
+        <div class="center aligned column">
             {{ image("img/sipus_logo.png") }}
             {% if session.has('auth') %}
             <form method="POST" action="{{ url("reservasi") }}">
                 <input type="hidden" value="{{results.id}}" name = "id_buku">
-                <input type="submit" value="Reservasi">
+                <button type="submit" class="ui labeled icon green button">
+                    <i class="bookmark outline icon"></i>
+                    Reservasi
+                </button>
             </form>
             {% endif %}
         </div>
         <div class="column">
-            <div class="row">
-                {{results.judul}} <br>
-                {{results.pengarang}} <br>
-                {{results.penerbit}} <br>
-                {{results.id}} <br>
-            </div>
-            <div class="row">
-                Pengarang
-            </div>
+            <h1>
+                {{results.judul}}
+            </h1>
+            <h1>
+                {{results.pengarang}}
+            </h1>
+            <h1>
+                {{results.penerbit}}
+            </h1>
+            <h1>
+                {{results.id}}
+            </h1>
         </div>
     </div>
 </div>
