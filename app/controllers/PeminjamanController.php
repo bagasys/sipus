@@ -240,18 +240,20 @@ class PeminjamanController extends BaseController
         $peminjamans  = $query->execute([
             'searchKey' => $searchKey,
         ]);
+
         $this->view->peminjamans = $peminjamans;
-        
 
         if($this->request->isPost()){
             $id = $this->request->getPost('id');
             $sql = $this->modelsManager->createQuery('UPDATE Peminjaman SET status = :stat: WHERE id = :id:');
-                $update = $sql->execute(
-                    [
-                        'id' => $id,
-                        'stat' => 'Selesai',
-                    ]
-                );
+            $update = $sql->execute(
+                [
+                    'id' => $id,
+                    'stat' => 'Selesai',
+                ]
+            );
+            //create peminjaman baru buat reservasi kalau ada
+
             $this->response->redirect("daftar-peminjaman");
         }
         

@@ -16,6 +16,7 @@ class Buku extends Model
     public $jumlah;
     public $jumlah_tersedia;
     public $status;
+    public $jumlah_reservasi;
 
     public function initialize()
     {
