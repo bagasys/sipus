@@ -26,7 +26,7 @@ Daftar Peminjaman
         <option value="id_peminjaman">ID Peminjaman</option>
         <option value="id_peminjaman">Hari Ini</option>
     </select>
-    <div class="ui search item">
+    <div class="ui search item" style="display:inline-block;">
         <div class="ui icon input">
             <input class="prompt" type="text" placeholder="Cari peminjaman" name = "searchKey">
             <input class="circular ui brown icon button" type="submit" value="">

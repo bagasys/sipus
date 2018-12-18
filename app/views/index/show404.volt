@@ -11,7 +11,7 @@ Not Found
     </div>
     <div class="ui text container">
         <h1>
-            Sorry, the page you're looking for is not found.
+            Sorry, the page you're looking for could not be found.
         </h1>
     </div>
 </div>

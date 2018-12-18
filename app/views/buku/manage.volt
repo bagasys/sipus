@@ -58,19 +58,19 @@ Daftar Buku
             <th>{{result.deskripsi}}</th>
             <th>{{result.deskripsi_fisik}}</th>
             <th>{{result.nomor_panggil}}</th>
-            <th>{{ image("img/sipus_logo.png") }}</th>
+            <th>{{ image("img/sipus_logo.png", 'width': '50%') }}</th>
             <th>{{result.jumlah}}</th>
             <th>{{result.jumlah_tersedia}}</th>
             <th>{{result.status}}</th>
             <th>
                 <div>
                     <a href="ubah-buku/{{result.id}}" class="ui labeled icon blue button">
-                        <i class="edit icon"></i>
+                        <i class="edit outline icon"></i>
                         Edit
                     </a>
 				</div>
                 <button class="confirm ui labeled icon red button" data-id="{{result.id}}" data-nama="{{result.judul}}">
-                    <i class="trash alternate icon"></i>
+                    <i class="trash alternate outline icon"></i>
                     Hapus
                 </button>
             </th>
@@ -108,8 +108,7 @@ Daftar Buku
         $("#confirm-nama").html(nama);
         $('.mini.modal').modal('show');
     });
-    $("table")
-        .tablesort();
+    $("table").tablesort();
 </script>
 {% endblock %}
 
