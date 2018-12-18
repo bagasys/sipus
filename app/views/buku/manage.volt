@@ -18,9 +18,16 @@ Daftar Buku
     </div>
 </div>
 <form method="POST" action="{{ url("daftar-buku") }}">
+    <select name="searchBy" class="ui dropdown">
+        <option value="judul">Judul Buku</option>
+        <option value="nama">Nama Anggota</option>
+        <option value="id_buku">ID Buku</option>
+        <option value="id_user">ID User</option>
+        <option value="id_peminjaman">ID Peminjaman</option>
+    </select>
     <div class="ui search item">
         <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="Cari judul buku..." name = "title">
+            <input class="prompt" type="text" placeholder="Cari judul buku..." name = "searchKey">
             <input class="circular ui brown icon button" type="submit" value="">
             <i class="search icon"></i>
         </div>
