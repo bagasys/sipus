@@ -34,14 +34,7 @@ class BukuController extends BaseController
 
         $searchKey =  $this->request->getPost('searchKey');
         $searchBy =  $this->request->getPost('searchBy');
-           if($searchBy == 'judul'){ 
-                $searchKey = '%'.$searchKey.'%';
-                $query = $this->modelsManager->createQuery('SELECT * FROM Buku
-                WHERE judul LIKE :searchKey:');
-                $results  = $query->execute([
-                    'searchKey' => $searchKey,
-                ]);
-           }else if($searchBy == 'pengarang'){ 
+            if($searchBy == 'pengarang'){ 
                 $searchKey = '%'.$searchKey.'%';
                 $query = $this->modelsManager->createQuery('SELECT * FROM Buku
                 WHERE pengarang LIKE :searchKey:');
@@ -68,8 +61,14 @@ class BukuController extends BaseController
                 $results  = $query->execute([
                     'searchKey' => $searchKey,
                 ]);
-            }
-        
+            }else{ 
+                $searchKey = '%'.$searchKey.'%';
+                $query = $this->modelsManager->createQuery('SELECT * FROM Buku
+                WHERE judul LIKE :searchKey:');
+                $results  = $query->execute([
+                    'searchKey' => $searchKey,
+                ]);
+            }        
         
         $this->view->results = $results;
     }

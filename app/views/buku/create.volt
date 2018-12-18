@@ -5,8 +5,7 @@ Tambah Buku
 {% endblock %}
 
 {% block content %}
-        {{status}}
-
+{{status}}
 <div class="ui middle aligned center aligned grid">
     <div class="column">
         <div class="title">
@@ -35,15 +34,6 @@ Tambah Buku
             </div>
         </div>
         <div class="field">
-{#
-            <label for="kategori">Kategori</label>
-            <select name="kategori">
-                <option value="satu">coba1</option>
-                <option value="dua">coba2</option>
-                <option value="tiga">coba3</option>
-                <option value="empat">coba4</option>
-            </select>
-#}
             <select name="kategori" class="ui dropdown">
                 <option value="">Pilih kategori buku...</option>
                 <option value="satu">coba1</option>
@@ -68,7 +58,7 @@ Tambah Buku
         </div>
         <div class="field">
             <label for="jumlah">Jumlah Buku</label>
-            <input type="text" name="jumlah" placeholder="Ex: 100">
+            <input type="text" name="jumlah" placeholder="Ex: 10">
         </div>
         <div class="field">
             <label for="gambar_buku">Cover</label>
