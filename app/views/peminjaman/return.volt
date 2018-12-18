@@ -17,7 +17,7 @@ Daftar Peminjaman
 <div class="ui two column centered grid">
 
 {% for peminjaman in peminjamans %}
-<form method="POST" action="" class="ui form">
+<form method="POST" action="{{url("kembalikan")}}" class="ui form">
     <div class="field"></div>
     <div class="field">
         <div class="ui labeled input">
@@ -25,7 +25,7 @@ Daftar Peminjaman
                 ID Peminjaman
             </div>
             <div class="ui disabled input">
-                <input type="text" value="{{ peminjaman.idp }}">
+                <input type="text" value="{{ peminjaman.idp }}" name = "id">
             </div>
         </div>
     </div>

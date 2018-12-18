@@ -8,18 +8,18 @@ class BukuController extends BaseController
             $this->response->redirect();
         }
 
-        $searchKey = $this->request->getPost('searchKey');
-        $searchBy = $this->request->getPost('searchBy');
+        // $searchKey = $this->request->getPost('searchKey');
+        // $searchBy = $this->request->getPost('searchBy');
 
-        if($searchBy == 'judul'){
-            $searchKey = '%'.$searchKey.'%';
-            $query = $this->modelsManager->createQuery('SELECT * FROM Buku WHERE judul LIKE :searchKey:');
-            $bukus  = $query->execute([
-                'searchKey' => $searchKey,
-            ]);
-        }
+        // if($searchBy == 'judul'){
+        //     $searchKey = '%'.$searchKey.'%';
+        //     $query = $this->modelsManager->createQuery('SELECT * FROM Buku WHERE judul LIKE :searchKey:');
+        //     $bukus  = $query->execute([
+        //         'searchKey' => $searchKey,
+        //     ]);
+        // }
 
-        $this->view->results = $bukus;
+        // $this->view->results = $bukus;
         
         // $judul = $this->request->getPost('title');
         // $judul = '%'.$judul.'%';

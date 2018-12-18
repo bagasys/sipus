@@ -242,6 +242,18 @@ class PeminjamanController extends BaseController
         ]);
         $this->view->peminjamans = $peminjamans;
         
+
+        if($this->request->isPost()){
+            $id = $this->request->getPost('id');
+            $sql = $this->modelsManager->createQuery('UPDATE Peminjaman SET status = :stat: WHERE id = :id:');
+                $update = $sql->execute(
+                    [
+                        'id' => $id,
+                        'stat' => 'Selesai',
+                    ]
+                );
+            $this->response->redirect("daftar-peminjaman");
+        }
         
 
     }
