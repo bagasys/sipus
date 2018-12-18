@@ -142,6 +142,8 @@ class BukuController extends BaseController
         $deskripsi = $this->request->getPost('deskripsi');
         $deskripsi_fisik = $this->request->getPost('deskripsi_fisik');
         $nomor_panggil = $this->request->getPost('nomor_panggil');
+        $jumlah = $this->request->getPost('jumlah');    
+        $jumlah_tersedia = $this->request->getPost('jumlah_tersedia');
 
 
         $book = Buku::findFirst("id = '$id'");
@@ -153,8 +155,9 @@ class BukuController extends BaseController
         $book->deskripsi = $deskripsi;
         $book->deskripsi_fisik = $deskripsi_fisik;
         $book->nomor_panggil = $nomor_panggil;
+        $book->jumlah = $jumlah;
+        $book->jumlah_tersedia = $jumlah_tersedia;
 
-        
         
         if ($book->save() === false) {
             foreach ($book->getMessages() as $message) {

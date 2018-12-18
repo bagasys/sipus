@@ -62,6 +62,14 @@
             <input type="text" name="nomor_panggil" placeholder="Ex: 423.1 PUR k.3" value="{{results.nomor_panggil}}">
         </div>
         <div class="field">
+            <label for="jumlah">Jumlah Buku</label>
+            <input type="text" name="jumlah" placeholder="Ex: 100" value="{{results.jumlah}}">
+        </div>
+        <div class="field">
+            <label for="jumlah_tersedia">Jumlah Buku</label>
+            <input type="text" name="jumlah_tersedia" placeholder="Ex: 100" value="{{results.jumlah_tersedia}}">
+        </div>
+        <div class="field">
             <label for="gambar_buku">Cover</label>
             <input type="file" name="gambar_buku">
         </div>
