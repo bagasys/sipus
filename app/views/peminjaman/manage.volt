@@ -20,9 +20,9 @@ Daftar Peminjaman
 <form method="POST" action="{{ url("daftar-peminjaman") }}">
     <select name="searchBy" class="ui dropdown">
         <option value="nama">Nama Anggota</option>
+        <option value="no_id">No ID Anggota</option>
         <option value="judul">Judul Buku</option>
-        <option value="id_buku">ID Buku</option>
-        <option value="id_user">ID User</option>
+        <option value="ISBN_ISSN">ISBN_ISSN</option>
         <option value="id_peminjaman">ID Peminjaman</option>
     </select>
     <div class="ui search item" style="display:inline-block;">
@@ -58,9 +58,9 @@ Daftar Peminjaman
     <thead>
         <tr class="center aligned">
             <th>ID Peminjaman</th>
-            <th>ID User</th>
+            <th>No ID Anggota</th>
             <th>Nama User</th>
-            <th>ID Buku</th>
+            <th>ISBN_ISSN</th>
             <th>Judul Buku</th>
             <th>Tanggal Pinjam</th>
             <th>Tanggal Harus Kembali</th>
@@ -72,31 +72,63 @@ Daftar Peminjaman
         {% for peminjaman in peminjamans %}
         <tr class="center aligned">
             <th>{{ peminjaman.idp }}</th>
-            <th>{{ peminjaman.id_user}}</th>
+            <th>{{ peminjaman.no_id}}</th>
             <th>{{ peminjaman.nama }}</th>
-            <th>{{ peminjaman.id_buku }}</th>
+            <th>{{ peminjaman.ISBN_ISSN }}</th>
             <th>{{ peminjaman.judul }}</th>
             <th>{{ peminjaman.tgl_pinjam }}</th>
             <th>{{ peminjaman.tgl_hrs_kembali }}</th>
             <th>{{ peminjaman.status }}</th>
             <th>
-                <form method="POST" action="{{url("hapus-peminjaman")}}" class="ui form">
-                    <input type="hidden" name="id" value="{{peminjaman.idp}}">
-                    <input type="submit" value="Hapus">
-                </form>
                 <div>
-                    <a href="kembalikan/{{peminjaman.idp}}" class="ui labeled icon blue button">
-                        <i class="edit icon"></i>
+                    <a href="kembalikan/{{peminjaman.idp}}" class="ui labeled icon green button">
+                        <i class="check square outline icon"></i>
                         Kembalikan
                     </a>
 				</div>
+                <button class="confirm ui labeled icon red button" data-id="{{peminjaman.idp}}" data-nama="{{peminjaman.nama}}" data-judul="{{peminjaman.judul}}">
+                    <i class="trash alternate outline icon"></i>
+                    Hapus
+                </button>
             </th>
         </tr>
        
         {% endfor %} 
     </tbody>
 </table>
+<div class="ui mini test modal">
+    <div class="header">
+        Hapus Peminjaman
+    </div>
+    <div class="content">
+        <p>Apakah Anda yakin ingin menghapus peminjaman buku <span id="confirm-judul"></span> oleh <span id="confirm-nama"></span>?</p>
+    </div>
+    <div class="actions">
+        <div class="ui negative button">
+            Tidak
+        </div>
+        <div style="display: inline-block;">
+            <form method="POST" action="{{url("hapus-peminjaman")}}" class="ui form">
+                <input type="hidden" name="id" id="confirm-id">
+                <button type="submit" class="ui positive right labeled icon button">
+                    Ya
+                    <i class="checkmark icon"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script>
+    $(".confirm").click(function(){
+        var id = $(this).data("id");
+        var nama = $(this).data("nama");
+        var judul = $(this).data("judul");
+        $("#confirm-id").val(id);
+        $("#confirm-nama").html(nama);
+        $("#confirm-judul").html(judul);
+        $('.mini.modal').modal('show');
+    });
     $('.ui.dropdown')
         .dropdown();
     $("table")

@@ -41,9 +41,9 @@ class BukuController extends BaseController
                 $results  = $query->execute([
                     'searchKey' => $searchKey,
                 ]);
-            }else if($searchBy == 'id_buku'){ 
+            }else if($searchBy == 'ISBN_ISSN'){ 
                 $query = $this->modelsManager->createQuery('SELECT * FROM Buku
-                WHERE id = :searchKey:');
+                WHERE ISBN_ISSN = :searchKey:');
                 $results  = $query->execute([
                     'searchKey' => $searchKey,
                 ]);

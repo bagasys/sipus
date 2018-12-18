@@ -21,7 +21,6 @@ Daftar Buku
     <select name="searchBy" class="ui dropdown">
         <option value="pengarang">Pengarang</option>
         <option value="judul">Judul Buku</option>
-        <option value="id_buku">ID Buku</option>
         <option value="ISBN_ISSN">ISBN/ISSN</option>
         <option value="kategori">Kategori</option>
         <option value="penerbit">Penerbit</option>      
@@ -38,7 +37,6 @@ Daftar Buku
 <table class="ui sortable selectable inverted brown celled table">
     <thead>
         <tr class="center aligned">
-            <th>ID</th>
             <th>ISBN / ISSN</th>
             <th>Judul</th>
             <th>Pengarang</th>
@@ -57,7 +55,6 @@ Daftar Buku
     <tbody>
         {% for result in results %}
         <tr class="center aligned">
-            <th>{{result.id}}</th>
             <th>{{result.ISBN_ISSN}}</th>
             <th>{{result.judul}}</th>
             <th>{{result.pengarang}}</th>
@@ -116,6 +113,7 @@ Daftar Buku
         $("#confirm-nama").html(nama);
         $('.mini.modal').modal('show');
     });
+    $('.ui.dropdown').dropdown();
     $("table").tablesort();
 </script>
 {% endblock %}
