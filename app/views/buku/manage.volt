@@ -116,6 +116,7 @@ Daftar Buku
         $("#confirm-nama").html(nama);
         $('.mini.modal').modal('show');
     });
+    $('.ui.dropdown').dropdown();
     $("table").tablesort();
 </script>
 {% endblock %}

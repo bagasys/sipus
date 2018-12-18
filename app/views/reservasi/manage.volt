@@ -60,6 +60,15 @@ Daftar Reservasi
     </tbody>
 </table>
 <script>
+    $(".confirm").click(function(){
+        var id = $(this).data("id");
+        var nama = $(this).data("nama");
+        var judul = $(this).data("judul");
+        $("#confirm-id").val(id);
+        $("#confirm-nama").html(nama);
+        $("#confirm-judul").html(judul);
+        $('.mini.modal').modal('show');
+    });
     $('.ui.dropdown')
         .dropdown();
     $("table")

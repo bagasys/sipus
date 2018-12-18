@@ -80,23 +80,55 @@ Daftar Peminjaman
             <th>{{ peminjaman.tgl_hrs_kembali }}</th>
             <th>{{ peminjaman.status }}</th>
             <th>
-                <form method="POST" action="{{url("hapus-peminjaman")}}" class="ui form">
-                    <input type="hidden" name="id" value="{{peminjaman.idp}}">
-                    <input type="submit" value="Hapus">
-                </form>
                 <div>
-                    <a href="kembalikan/{{peminjaman.idp}}" class="ui labeled icon blue button">
-                        <i class="edit icon"></i>
+                    <a href="kembalikan/{{peminjaman.idp}}" class="ui labeled icon green button">
+                        <i class="check square outline icon"></i>
                         Kembalikan
                     </a>
 				</div>
+                <button class="confirm ui labeled icon red button" data-id="{{peminjaman.idp}}" data-nama="{{peminjaman.nama}}" data-judul="{{peminjaman.judul}}">
+                    <i class="trash alternate outline icon"></i>
+                    Hapus
+                </button>
             </th>
         </tr>
        
         {% endfor %} 
     </tbody>
 </table>
+<div class="ui mini test modal">
+    <div class="header">
+        Hapus Peminjaman
+    </div>
+    <div class="content">
+        <p>Apakah Anda yakin ingin menghapus peminjaman buku <span id="confirm-judul"></span> oleh <span id="confirm-nama"></span>?</p>
+    </div>
+    <div class="actions">
+        <div class="ui negative button">
+            Tidak
+        </div>
+        <div style="display: inline-block;">
+            <form method="POST" action="{{url("hapus-peminjaman")}}" class="ui form">
+                <input type="hidden" name="id" id="confirm-id">
+                <button type="submit" class="ui positive right labeled icon button">
+                    Ya
+                    <i class="checkmark icon"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script>
+    $(".confirm").click(function(){
+        var id = $(this).data("id");
+        var nama = $(this).data("nama");
+        var judul = $(this).data("judul");
+        $("#confirm-id").val(id);
+        $("#confirm-nama").html(nama);
+        $("#confirm-judul").html(judul);
+        $('.mini.modal').modal('show');
+    });
     $('.ui.dropdown')
         .dropdown();
     $("table")
