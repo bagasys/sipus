@@ -5,6 +5,9 @@ Catalogue
 
 {% block content %}
 
+
+{{test}}
+
 <div class="ui middle aligned center aligned grid">
     <div class="column">
         <div class="title">

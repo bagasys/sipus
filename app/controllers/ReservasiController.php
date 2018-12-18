@@ -52,8 +52,6 @@ class ReservasiController extends BaseController
             ]);  
         }
 
-         
-
 
         $this->view->peminjamans = $peminjamans;
         

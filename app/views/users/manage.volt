@@ -18,6 +18,13 @@ Daftar Anggota
     </div>
 </div>
 <form method="POST" action="{{ url("daftar-anggota") }}">
+    <select name="searchBy" class="ui dropdown">
+        <option value="nama">Nama Anggota</option>
+        <option value="no_id">Judul Buku</option>
+        <option value="email">ID Buku</option>
+        <option value="alamat">ID User</option>
+        <option value="no_telepon">ID Reservasi</option>
+    </select>
     <div class="ui search item">
         <div class="ui icon input">
             <input class="prompt" type="text" placeholder="Cari nama anggota..." name = "title">

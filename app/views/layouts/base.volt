@@ -22,6 +22,14 @@
                 </div>
                 <div class="results"></div>
             </div>
+            <select name="searchBy" class="ui dropdown">
+                <option value="">Advanced Search</option>
+                <option value="ISBN_ISSN">ISBN/ISSN</option>
+                <option value="judul">Judul Buku</option>
+                <option value="pengarang">Pengarang</option>
+                <option value="penerbit">Penerbit</option>      
+                <option value="kategori">Kategori</option>
+            </select>
         </form>
         <div class="right menu">
             {% if session.has('auth') %}

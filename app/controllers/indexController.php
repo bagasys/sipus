@@ -37,13 +37,13 @@ class IndexController extends BaseController
     {   
         $searchKey =  $this->request->getPost('searchKey');
         $searchBy =  $this->request->getPost('searchBy');
-            
-        if($searchBy == 'judul'){
+        $this->view->test = $searchKey;
+        if($searchBy == 'penerbit'){ 
             $searchKey = '%'.$searchKey.'%';
             $query = $this->modelsManager->createQuery('SELECT * FROM Buku
-            WHERE judul LIKE :searchKey:');
+            WHERE penerbit LIKE :searchKey:');
             $results  = $query->execute([
-                'searchKey' =>$searchKey,
+                'searchKey' => $searchKey,
             ]);
         }else if($searchBy == 'pengarang'){ 
             $searchKey = '%'.$searchKey.'%';
@@ -65,14 +65,17 @@ class IndexController extends BaseController
             $results  = $query->execute([
                 'searchKey' => $searchKey,
             ]);
-        }else if($searchBy == 'penerbit'){ 
+        }else{
             $searchKey = '%'.$searchKey.'%';
             $query = $this->modelsManager->createQuery('SELECT * FROM Buku
-            WHERE penerbit LIKE :searchKey:');
+            WHERE judul LIKE :searchKey:');
             $results  = $query->execute([
                 'searchKey' => $searchKey,
             ]);
         }
+
+
+        
         
         $this->view->results = $results;
     }
