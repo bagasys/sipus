@@ -13,7 +13,7 @@ Area Pustakawan
     </div>
 </div>
 <div class="feature alternate ui stripe vertical segment">
-  <div class="ui three column center aligned divided relaxed stackable grid container">
+  <div class="ui four column center aligned divided relaxed stackable grid container">
     <div class="row">
       <div class="column">
         <h2 class="ui icon header">
@@ -46,6 +46,18 @@ Area Pustakawan
         </h2>
         <div>
             <a class="ui large brown button" href="daftar-peminjaman">Lihat Daftar Peminjaman</a>
+        </div>
+{#
+        <a class="ui large button" href="pinjam">Pinjamkan Buku kepada Anggota</a>
+#}
+      </div>
+      <div class="column">
+        <h2 class="ui icon header">
+            <i class="bookmark icon"></i>
+            Kelola Reservasi
+        </h2>
+        <div>
+            <a class="ui large brown button" href="daftar-reservasi">Lihat Daftar Reservasi</a>
         </div>
 {#
         <a class="ui large button" href="pinjam">Pinjamkan Buku kepada Anggota</a>

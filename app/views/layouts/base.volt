@@ -46,6 +46,7 @@
                     <a href="{{ url("daftar-buku") }}" class="item">Daftar Buku</a>
                     <a href="{{ url("daftar-anggota") }}" class="item">Daftar Anggota</a>
                     <a href="{{ url("daftar-peminjaman") }}" class="item">Daftar Peminjaman</a>
+                    <a href="{{ url("daftar-reservasi") }}" class="item">Daftar Reservasi</a>
                     {% endif %}
                     <a href="{{ url("logout") }}" class="item">Logout</a>
                 </div>

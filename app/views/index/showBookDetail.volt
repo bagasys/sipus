@@ -29,7 +29,10 @@ Detail
                 {{results.penerbit}}
             </h1>
             <h1>
-                {{results.id}}
+                {{results.kategori}}
+            </h1>
+            <h1>
+                {{results.deskripsi}}
             </h1>
         </div>
     </div>

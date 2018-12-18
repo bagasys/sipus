@@ -20,13 +20,14 @@ Daftar Anggota
 <form method="POST" action="{{ url("daftar-anggota") }}">
     <select name="searchBy" class="ui dropdown">
         <option value="nama">Nama Anggota</option>
-        <option value="no_id">Email</option>
-        <option value="alamat">ID User</option>
-        <option value="no_telepon">ID Reservasi</option>
+        <option value="no_id">Id Anggota</option>
+        <option value="alamat">Alamat</option>
+        <option value="no_telepon">No Telepon</option>
+        <option value="email">Email</option>
     </select>
     <div class="ui search item">
         <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="Cari nama anggota..." name = "title">
+            <input class="prompt" type="text" placeholder="Cari nama anggota..." name = "searchKey">
             <input class="circular ui brown icon button" type="submit" value="">
             <i class="search icon"></i>
         </div>

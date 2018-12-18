@@ -8,18 +8,43 @@ class UsersController extends BaseController
             $this->response->redirect();
         }
 
-        $nama = $this->request->getPost('title');
-        $nama = '%'.$nama.'%';
-        $results = Users::find(
-            [
-                'conditions' => "nama LIKE :nama:" ,
-                'bind'       => [
-                    'nama' => $nama,
-                ]
-            ]
-        );
-        
-        
+        $searchKey = $this->request->getPost('searchKey');
+        $searchBy = $this->request->getPost('searchBy');
+        if($searchBy == 'email'){
+            $searchKey = '%'.$searchKey.'%';
+            $query = $this->modelsManager->createQuery('SELECT * FROM Users
+            WHERE email LIKE :searchKey:');
+            $results  = $query->execute([
+            'searchKey' => $searchKey,
+            ]);
+        }else if($searchBy == 'no_id'){
+            $query = $this->modelsManager->createQuery('SELECT * FROM Users
+            WHERE id = :searchKey:');
+            $results  = $query->execute([
+            'searchKey' => $searchKey,
+            ]);
+        }else if($searchBy == 'alamat'){
+            $searchKey = '%'.$searchKey.'%';
+            $query = $this->modelsManager->createQuery('SELECT * FROM Users
+            WHERE alamat LIKE :searchKey:');
+            $results  = $query->execute([
+            'searchKey' => $searchKey,
+            ]);
+        }else if($searchBy == 'no_telepon'){
+            $searchKey = '%'.$searchKey.'%';
+            $query = $this->modelsManager->createQuery('SELECT * FROM Users
+            WHERE no_telepon LIKE :searchKey:');
+            $results  = $query->execute([
+            'searchKey' => $searchKey,
+            ]);
+        }else{
+            $searchKey = '%'.$searchKey.'%';
+            $query = $this->modelsManager->createQuery('SELECT * FROM Users
+            WHERE nama LIKE :searchKey:');
+            $results  = $query->execute([
+                'searchKey' => $searchKey,
+            ]);
+       }
         $this->view->results = $results;
         
     }

@@ -12,34 +12,34 @@ class ReservasiController extends BaseController
         $searchBy = $this->request->getPost('searchBy');
         $searchKey = $this->request->getPost('searchKey');
         if($searchBy == 'id_reservasi'){            
-            $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.nama, u.no_id, b.ISBN_ISSN, p.id_buku, b.judul FROM Users u, Peminjaman p, Buku b
-            WHERE u.id = p.id_user AND p.id_buku = b.id AND p.id = :searchKey:');
+            $query = $this->modelsManager->createQuery('SELECT r.id as idr, r.id_user, u.nama, b.ISBN_ISSN, r.id_buku, b.judul FROM Users u, Reservasi r, Buku b
+            WHERE u.id = r.id_user AND r.id_buku = b.id AND r.id = :searchKey:');
             $peminjamans  = $query->execute([
                 'searchKey' => $searchKey,
             ]);
-        }else if($searchBy == 'no_id') {
-            $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.nama, u.no_id, b.ISBN_ISSN, p.id_buku, b.judul FROM Users u, Peminjaman p, Buku b
-            WHERE u.id = p.id_user AND p.id_buku = b.id AND u.no_id = :searchKey:');
+        }else if($searchBy == 'judul') {
+            $searchKey = '%'.$searchKey.'%';
+            $query = $this->modelsManager->createQuery('SELECT r.id as idr, r.id_user, u.nama, b.ISBN_ISSN, r.id_buku, b.judul FROM Users u, Reservasi r, Buku b
+            WHERE u.id = r.id_user AND r.id_buku = b.id AND b.judul LIKE :searchKey:');
             $peminjamans  = $query->execute([
                 'searchKey' => $searchKey,
             ]);
         }else if($searchBy == 'ISBN_ISSN'){
-            $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.nama, u.no_id, b.ISBN_ISSN, p.id_buku, b.judul FROM Users u, Peminjaman p, Buku b
-            WHERE u.id = p.id_user AND p.id_buku = b.id AND b.ISBN_ISSN = :searchKey:');
+            $query = $this->modelsManager->createQuery('SELECT r.id as idr, r.id_user, u.nama, b.ISBN_ISSN, r.id_buku, b.judul FROM Users u, Reservasi r, Buku b
+            WHERE u.id = r.id_user AND r.id_buku = b.id AND b.ISBN_ISSN = :searchKey:');
             $peminjamans  = $query->execute([
                 'searchKey' => $searchKey,
             ]);
-        }else if($searchBy == 'judul'){
-            $searchKey= '%'.$searchKey.'%';
-            $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.nama, u.no_id, b.ISBN_ISSN, p.id_buku, b.judul FROM Users u, Peminjaman p, Buku b
-            WHERE u.id = p.id_user AND p.id_buku = b.id AND b.judul LIKE :searchKey:');
+        }else if($searchBy == 'no_id'){
+            $query = $this->modelsManager->createQuery('SELECT r.id as idr, r.id_user, u.nama, b.ISBN_ISSN, r.id_buku, b.judul FROM Users u, Reservasi r, Buku b
+            WHERE u.id = r.id_user AND r.id_buku = b.id AND u.no_id = :searchKey:');
             $peminjamans  = $query->execute([
                 'searchKey' => $searchKey,
             ]);
         }else{
             $searchKey= '%'.$searchKey.'%';
-            $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.nama, u.no_id, b.ISBN_ISSN, p.id_buku, b.judul FROM Users u, Peminjaman p, Buku b
-            WHERE u.id = p.id_user AND p.id_buku = b.id AND u.nama LIKE :searchKey:');
+            $query = $this->modelsManager->createQuery('SELECT r.id as idr, r.id_user, u.nama, u.no_id, b.ISBN_ISSN, r.id_buku, b.judul FROM Users u, Reservasi r, Buku b
+            WHERE u.id = r.id_user AND r.id_buku = b.id AND u.nama LIKE :searchKey:');
             $peminjamans  = $query->execute([
                 'searchKey' => $searchKey,
             ]);  
