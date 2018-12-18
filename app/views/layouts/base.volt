@@ -30,14 +30,14 @@
                 <i class="dropdown icon"></i>
                 <div class="menu">
                     {% if session.get('auth')['status'] === '0' %}
-                    <div class="item"><a href="{{ url("peminjaman") }}" style="color: black;">Data Peminjaman</a></div>
-                    <div class="item"><a href="{{ url("reservasi") }}" style="color: black;">Data Reservasi</a></div>
+                    <a href="{{ url("peminjaman") }}" class="item">Data Peminjaman</a>
+                    <a href="{{ url("reservasi") }}" class="item">Data Reservasi</a>
                     {% elseif session.get('auth')['status'] === '1' %}
-                    <div class="item"><a href="{{ url("daftar-buku") }}" style="color: black;">Daftar Buku</a></div>
-                    <div class="item"><a href="{{ url("daftar-anggota") }}" style="color: black;">Daftar Anggota</a></div>
-                    <div class="item"><a href="{{ url("daftar-peminjaman") }}" style="color: black;">Daftar Peminjaman</a></div>
+                    <a href="{{ url("daftar-buku") }}" class="item">Daftar Buku</a>
+                    <a href="{{ url("daftar-anggota") }}" class="item">Daftar Anggota</a>
+                    <a href="{{ url("daftar-peminjaman") }}" class="item">Daftar Peminjaman</a>
                     {% endif %}
-                    <div class="item"><a href="{{ url("logout") }}" style="color: black;">Logout</a></div>
+                    <a href="{{ url("logout") }}" class="item">Logout</a>
                 </div>
             </div>
             {% else %}
