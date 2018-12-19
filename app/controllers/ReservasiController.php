@@ -87,9 +87,6 @@ class ReservasiController extends BaseController
                     echo $message, "\n";
                 }
             } else {
-                if($this->session->get('auth')['status'] == '0'){
-                    $this->response->redirect('reservasi');
-              }
                 $this->response->redirect('daftar-reservasi');      
             }
         }

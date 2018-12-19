@@ -8,7 +8,7 @@
 .subtitle {
     font-size: 2.5em;
     font-family: 'Sacramento', cursive;
-    line-height: 2;
+    line-height: 1;
     /* font-weight: bold; */
     /* color: #a5673f; */
 }
@@ -22,10 +22,11 @@
 .book-title {
     font-size: 1.75em;
     font-family: 'Sacramento', cursive;
+    line-height: 1;
 }
 
 .book-author {
     font-size: 1.5em;
     font-family: 'Josefin Slab', serif;
-
+    line-height: 1;
 }
