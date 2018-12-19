@@ -42,7 +42,7 @@ class PeminjamanController extends BaseController
             ]);
         } else if ($pinjamKey == 'tgl_pinjam'){
             $pinjamKey = '%'.$date.'%';
-            $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, u.no_id, b.ISBN_ISSN p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
+            $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, u.no_id, b.ISBN_ISSN, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
             WHERE u.id = p.id_user AND p.id_buku = b.id AND p.tgl_pinjam LIKE :searchKey: AND p.status != "selesai" ');
             $peminjamans  = $query->execute([
                 'searchKey' => $pinjamKey,
@@ -199,6 +199,7 @@ class PeminjamanController extends BaseController
             $tersedia = $tersedia + 1;
             $id_buku = $jumlahter->idb;
         }
+
         echo ".....................................................";
         echo $tersedia;
         
@@ -288,7 +289,7 @@ class PeminjamanController extends BaseController
                     ]
                 );
 
-            $this->response->redirect("daftar-peminjaman");
+                $this->response->redirect("daftar-peminjaman");
         }
         
 
