@@ -367,9 +367,9 @@ class PeminjamanController extends BaseController
 
     public function returnAction()
     {
-        //$id = $this->request->getPost('id');
-        
-        //$peminjaman = Peminjaman::findFirst("id = '$id'");
+        if($this->session->get('auth')['status'] != '1'){
+            $this->response->redirect();
+        }
 
         $date = date('Y-m-d');
         $searchKey = $this->dispatcher->getParam("id");
