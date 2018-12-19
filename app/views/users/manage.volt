@@ -14,7 +14,7 @@ Daftar Anggota
 </div>
 <div class="ui middle aligned center aligned grid">
     <div class="column">
-        <a href="tambah-anggota" class="ui labeled icon grey button">
+        <a href="tambah-anggota" class="ui labeled icon inverted green button">
             <i class="plus icon"></i>
             Daftarkan Anggota Baru
         </a>
@@ -106,6 +106,11 @@ Daftar Anggota
         </div>
     </div>
 </div>
+<style>
+    th .button {
+        min-width: 125px;
+    }    
+</style>
 <script>
     $(".confirm").click(function(){
         var id = $(this).data("id");

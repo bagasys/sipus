@@ -34,15 +34,6 @@ Ubah Buku
             </div>
         </div>
         <div class="field">
-{#
-            <label for="kategori">Kategori</label>
-            <select name="kategori">
-                <option value="satu">coba1</option>
-                <option value="dua">coba2</option>
-                <option value="tiga">coba3</option>
-                <option value="empat">coba4</option>
-            </select>
-#}
             <select name="kategori" class="ui dropdown">
                 <option value="{{results.kategori}}">Pilih kategori buku...</option>
                 <option value="Computer science, information and general works">Computer science, information and general works</option>
@@ -72,13 +63,15 @@ Ubah Buku
             <label for="nomor_panggil">Nomor Panggil</label>
             <input type="text" name="nomor_panggil" placeholder="Ex: 423.1 PUR k.3" value="{{results.nomor_panggil}}">
         </div>
-        <div class="field">
-            <label for="jumlah">Jumlah Buku</label>
-            <input type="text" name="jumlah" placeholder="Ex: 100" value="{{results.jumlah}}">
-        </div>
-        <div class="field">
-            <label for="jumlah_tersedia">Jumlah Buku</label>
-            <input type="text" name="jumlah_tersedia" placeholder="Ex: 100" value="{{results.jumlah_tersedia}}">
+        <div class="two fields">
+            <div class="field">
+                <label for="jumlah">Jumlah Buku</label>
+                <input type="text" name="jumlah" placeholder="Ex: 100" value="{{results.jumlah}}">
+            </div>
+            <div class="field">
+                <label for="jumlah_tersedia">Jumlah Tersedia</label>
+                <input type="text" name="jumlah_tersedia" placeholder="Ex: 100" value="{{results.jumlah_tersedia}}">
+            </div>
         </div>
         <div class="field">
             <label for="gambar_buku">Cover</label>

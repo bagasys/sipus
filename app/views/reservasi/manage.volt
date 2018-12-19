@@ -51,16 +51,38 @@ Daftar Reservasi
             <th>{{ peminjaman.ISBN_ISSN }}</th>
             <th>{{ peminjaman.judul }}</th>
             <th>
-                <form method="POST" action="{{url("hapus-reservasi")}}" class="ui form">
-                    <input type="hidden" name="id" value="{{peminjaman.idr}}">
-                    <input type="submit" value="Hapus">
-                </form> 
+                <button class="confirm ui labeled icon red button" data-id="{{peminjaman.idr}}" data-nama="{{peminjaman.nama}}" data-judul="{{peminjaman.judul}}">
+                    <i class="trash alternate outline icon"></i>
+                    Hapus
+                </button>
             </th>
         </tr>
        
         {% endfor %} 
     </tbody>
 </table>
+<div class="ui mini test modal">
+    <div class="header">
+        Hapus Reservasi
+    </div>
+    <div class="content">
+        <p>Apakah Anda yakin ingin menghapus reservasi buku <span id="confirm-judul"></span> oleh <span id="confirm-nama"></span>?</p>
+    </div>
+    <div class="actions">
+        <div class="ui negative button">
+            Tidak
+        </div>
+        <div style="display: inline-block;">
+            <form method="POST" action="{{url("hapus-reservasi")}}" class="ui form">
+                <input type="hidden" name="id" id="confirm-id">
+                <button type="submit" class="ui positive right labeled icon button">
+                    Ya
+                    <i class="checkmark icon"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
 <script>
     $(".confirm").click(function(){
         var id = $(this).data("id");
