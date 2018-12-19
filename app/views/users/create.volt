@@ -5,6 +5,10 @@ Tambah Anggota
 {% endblock %}
 
 {% block content %}
+
+{{nameErr}}
+{{emailErr}}
+
 <div class="ui middle aligned center aligned grid">
     <div class="column">
         <div class="title">

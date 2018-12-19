@@ -41,7 +41,7 @@ class UsersRoutes extends RouterGroup
         $this->addPost(
             '/tambah-anggota',
             [
-                'action'    => 'store',
+                'action'    => 'create',
             ]
         );
 
