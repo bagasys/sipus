@@ -9,19 +9,6 @@ class IndexController extends BaseController
 
     public function indexAction()
     {   
-       /* if(!isset($_COOKIE["akses"])) {
-            // $cookie_name = "akses";
-            // $cookie_value = 1;
-            // setcookie($cookie_name, $cookie_value, time() + (86400), "/");
-            //$date = date('Y-m-d');
-            //query
-            //$query = $this->modelsManager->createQuery('SELECT tgl_hrs_kembali FROM Peminjaman');
-            //$tgl_hrs_kembali = $query->execute();
-            //echo $tgl_hrs_kembali;
-        } else {
-            
-        }*/
-
         
     }
 
@@ -75,17 +62,7 @@ class IndexController extends BaseController
         }
 
 
-        
-        
         $this->view->results = $results;
-    }
-
-
-    public function searchBooksAction()
-    {
-        
-
-        //$this->response->redirect("catalogue");
     }
 
     public function showBookDetailAction()
@@ -186,9 +163,9 @@ class IndexController extends BaseController
         //     $flag = 0;
         //}
 
-
-
-
+        if($this->session->get('auth')['status'] != '0'){
+            $flag = 1;
+        }
 
         echo $flag;
         $this->view->flag = $flag;

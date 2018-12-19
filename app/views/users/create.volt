@@ -22,26 +22,32 @@ Tambah Anggota
             <div>
             {{emailErr}}
             </div>
+            <div>
+            {{telpErr}}
+            </div>
+            <div>
+            {{alamatErr}}
+            </div>
         </div>
         <div class="field">
             <label for="nama">Nama Lengkap</label>
-            <input type="text" name="nama" placeholder="Ex: Joko Widodo">
+            <input type="text" name="nama" placeholder="Ex: Joko Widodo" value = "{{nama}}">
         </div>
         <div class="field">
             <label for="no_id">Nomor Kartu Identitas</label>
-            <input type="text" name="no_id" placeholder="Ex: 05111740000112">
+            <input type="text" name="no_id" placeholder="Ex: 05111740000112" value = "{{no_id}}">
         </div>
         <div class="field">
             <label for="alamat">Alamat</label>
-            <input type="text" name="alamat" placeholder="Ex: Semolowaru Elok L-39">
+            <input type="text" name="alamat" placeholder="Ex: Semolowaru Elok L-39" value = "{{alamat}}">
         </div>
         <div class="field">
             <label for="telp">Nomor Telepon</label>
-            <input type="text" name="telp" placeholder="Ex: 08123456789">
+            <input type="text" name="telp" placeholder="Ex: 08123456789" value = "{{telp}}">
         </div>
         <div class="field">
             <label for="email">E-mail</label>
-            <input type="text" name="email" placeholder="Ex: example@mail.com">
+            <input type="text" name="email" placeholder="Ex: example@mail.com" value = "{{email}}">
         </div>
         <div class="two fields">
             <div class="field">

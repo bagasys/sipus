@@ -54,21 +54,25 @@ class UsersController extends BaseController
             $this->response->redirect();
         }
 
-        $nameErr=$emailErr="";
-        
+        $nameErr=$telpErr=$emailErr=$nama=$no_id=$alamat=$telp=$email = "";
 
+    
         if($this->request->isPost()){
         $flag = 1;
         
 
+        $nama = $this->request->getPost('nama');
+        $alamat = $this->request->getPost('alamat');
+        $telp = $this->request->getPost('telp');
+        $no_id = $this->request->getPost('no_id');
+        $email = $this->request->getPost('email');
 
 
         if (empty($_POST["nama"])) {
             $nameErr = "Name is required";
             $flag = 0;
           } else {
-            $name = test_input($_POST["nama"]);
-            if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+            if (!preg_match("/^[a-zA-Z ]*$/",$nama)) {
               $nameErr = "Only letters and white space allowed"; 
               $flag = 0;
             }
@@ -84,20 +88,31 @@ class UsersController extends BaseController
                 }
           }
 
+          if (empty($_POST["telp"])) {
+            $telpErr = "Telephone number is required";
+            $flag = 0;
+          } else {
+                if (!preg_match("/\d*/",$telp)) {
+                    $emailErr = "Invalid phone number format"; 
+                    $flag = 0;
+                }
+          }
+
+          if (empty($_POST["alamat"])) {
+            $alamatErr = "Alamat is required";
+            $flag = 0;
+          } 
+
 
         
           
-
+        
 
 
         if($flag == 1){
         $user = new Users();
 
-        $nama = $this->request->getPost('nama');
-        $alamat = $this->request->getPost('alamat');
-        $telp = $this->request->getPost('telp');
-        $no_id = $this->request->getPost('no_id');
-        $email = $this->request->getPost('email');
+       
         $password = $this->request->getPost('password');
         $cpassword = $this->request->getPost('cpassword');
         $admin = 0;
@@ -136,6 +151,13 @@ class UsersController extends BaseController
         }
         $this->view->nameErr = $nameErr;
         $this->view->emailErr = $emailErr;
+        $this->view->telpErr = $telpErr;
+        $this->view->alamatErr = $telpErr;
+        $this->view->no_id = $no_id;
+        $this->view->alamat = $alamat;
+        $this->view->telp = $telp;
+        $this->view->email = $email;
+        $this->view->nama = $nama;
 
     }
 
@@ -152,54 +174,10 @@ class UsersController extends BaseController
 
     public function storeAction()
     {   
-        $flag = 1;
-
-        
-
-        if($flag == 1){
-        $user = new Users();
-
-        $nama = $this->request->getPost('nama');
-        $alamat = $this->request->getPost('alamat');
-        $telp = $this->request->getPost('telp');
-        $no_id = $this->request->getPost('no_id');
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
-        $cpassword = $this->request->getPost('cpassword');
-        $admin = 0;
-
-        if($password === $cpassword && $password != ''){
-            $checkUser = Users::findFirst("email = '$email'");
-            if($checkUser){
-                $this->response->redirect('tambah-anggota');
-            }
-            else{
-                $password = password_hash($password, PASSWORD_DEFAULT); 
-                $user->nama = $nama;
-                $user->email = $email;
-                $user->password = $password;
-                $user->alamat = $alamat;
-                $user->no_telepon = $telp;
-                $user->no_id = $no_id;
-                $user->admin = $admin;
-
-                if($user->save() === false){
-                    foreach ($user->getMessages() as $message) {
-                        echo $message, "\n";
-                    }                
-                }
-                else{
-                    $this->response->redirect('daftar-anggota');
-                }
-            }
-        }
-        else{
-            $this->response->redirect('tambah-anggota');
-        }
 
     }
         
-    }
+    
     public function updateAction()
     {
         $flag = 0;
