@@ -77,7 +77,16 @@ class PeminjamanController extends BaseController
         $id = $this->session->get('auth')['id'];
 
     
-        $results = Peminjaman::find("id_user = '$id' ");
+        // $results = Peminjaman::find("id_user = '$id' ");
+        $this->view->results = $results;
+
+        
+        $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.tgl_pinjam, p.tgl_hrs_kembali,b.pengarang, u.no_id, b.ISBN_ISSN, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
+        WHERE u.id = p.id_user AND p.id_buku = b.id AND u.id = :searchKey: AND p.status != "selesai" ');
+        $results  = $query->execute([
+            'searchKey' => $id,
+        ]);
+
         $this->view->results = $results;
 
 
