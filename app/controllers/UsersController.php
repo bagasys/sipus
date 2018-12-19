@@ -55,10 +55,10 @@ class UsersController extends BaseController
         }
 
         $nameErr=$telpErr=$emailErr=$nama=$no_id=$alamat=$telp=$email = "";
-
-    
-        if($this->request->isPost()){
         $flag = 1;
+    
+        $flag = 1;
+        if($this->request->isPost()){
         
 
         $nama = $this->request->getPost('nama');
@@ -158,7 +158,7 @@ class UsersController extends BaseController
         $this->view->telp = $telp;
         $this->view->email = $email;
         $this->view->nama = $nama;
-
+        $this->view->flag = $flag;
     }
 
 
