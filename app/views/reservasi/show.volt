@@ -16,8 +16,7 @@ Data Reservasi
 {% for result in results %}
     <div class="column">
         <center>
-            {{ image("img/sipus_logo.png") }}
-{#            <img src="{{config.url.baseUrl}}{{result.gambar_buku}}" alt="{{result.ISBN_ISSN}}.jpg"> #}
+            <img src="{{config.url.baseUrl}}{{result.gambar_buku}}" alt="{{result.ISBN_ISSN}}.jpg">
             <div class="ui header">
                 <div class="content">
                     <div class="book-title">

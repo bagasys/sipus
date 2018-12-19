@@ -16,22 +16,23 @@ Data Peminjaman
 {% for result in results %}
     <div class="column">
         <center>
-            {{ image("img/sipus_logo.png") }}
-{#            <img src="{{config.url.baseUrl}}{{result.gambar_buku}}" alt="{{result.ISBN_ISSN}}.jpg"> #}
+            <img src="{{config.url.baseUrl}}{{result.gambar_buku}}" alt="{{result.ISBN_ISSN}}.jpg">
             <div class="ui header">
                 <div class="content">
                     <div class="book-title">
-                        Judul Buku : {{result.judul}}
+                        {{result.judul}}
                     </div>
                 </div>
                 <div class="sub header">
                     <div class="book-author">
-                        Pengarang {{result.pengarang}}
+                        {{result.pengarang}}
                     </div>
                 </div>
             </div>
             <div>
                 {{result.tgl_pinjam}} - {{result.tgl_hrs_kembali}}
+            </div>
+            <div>
                 {{result.status}}
             </div>
         </center>

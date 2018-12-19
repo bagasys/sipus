@@ -70,7 +70,7 @@ Tambah Buku
             <label for="gambar_buku">Cover</label>
             <input type="file" name="gambar_buku">
         </div>
-        <input type="submit" value="Tambahkan Buku ke Koleksi" class="ui inverted brown button">
+        <input type="submit" value="Tambahkan Buku ke Koleksi" class="ui black button">
     </form>
 </div>
 <script>
