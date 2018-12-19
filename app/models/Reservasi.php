@@ -9,6 +9,7 @@ class Reservasi extends Model
     public $id_buku;
     public $tgl_reservasi;
     public $status;
+    public $tgl_ready;
 
     public function initialize()
     {

@@ -402,11 +402,12 @@ class PeminjamanController extends BaseController
                  $user = Users::findFirst("id = '$id_user'");
  
                  //////////
-                 
-                 $sql = $this->modelsManager->createQuery('UPDATE Reservasi SET status = :stat: WHERE id = :id_reservasi:');
+                 $date = date('Y-m-d');
+                 $sql = $this->modelsManager->createQuery('UPDATE Reservasi SET status = :stat:, tgl_ready = :date: WHERE id = :id_reservasi:');
                  $update = $sql->execute(
                      [
                          'id_reservasi' => $id_reservasi,
+                         'date' => $date,
                          'stat' => 'ready',
                      ]
                      );
