@@ -1,13 +1,10 @@
 {% extends "layouts\base.volt" %}
+
 {% block title %}
 Catalogue
 {% endblock %}
 
 {% block content %}
-
-
-{{test}}
-
 <div class="ui middle aligned center aligned grid">
     <div class="column">
         <div class="title">
@@ -43,7 +40,7 @@ Catalogue
 <div class="column">
     <a class="ui centered brown card" href="details/{{result.id}}">
         <div>
-            {{ image("img/sipus_logo.png") }}
+            <img src="{{config.url.baseUrl}}{{result.gambar_buku}}" alt="{{result.ISBN_ISSN}}.jpg" class="ui centered small image">
         </div>
         <div class="content">
             <div class="header">{{result.judul}}</div>

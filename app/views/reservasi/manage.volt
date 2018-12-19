@@ -13,6 +13,15 @@ Daftar Reservasi
     </div>
 </div>
 <form method="POST" action="{{ url("daftar-reservasi") }}">
+    <div class="ui search item">
+        <div class="ui icon input">
+            <input class="prompt" type="text" placeholder="Cari pada reservasi..." name = "searchKey">
+            <input class="circular ui brown icon button" type="submit" value="">
+            <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+    </div>
+    <br>
     <select name="searchBy" class="ui dropdown">
         <option value="nama">Nama Anggota</option>
         <option value="judul">Judul Buku</option>
@@ -20,14 +29,7 @@ Daftar Reservasi
         <option value="no_id">No ID Anggota</option>
         <option value="id_reservasi">ID Reservasi</option>
     </select>
-    <div class="ui search item" style="display:inline-block;">
-        <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="Cari Reservasi" name = "searchKey">
-            <input class="circular ui brown icon button" type="submit" value="">
-            <i class="search icon"></i>
-        </div>
-        <div class="results"></div>
-    </div>
+    <div class="ui left pointing brown label">Advanced Search</div>
 </form>
 <table class="ui sortable selectable inverted brown celled table">
     <thead>

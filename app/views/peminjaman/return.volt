@@ -1,16 +1,14 @@
 {% extends "layouts\base.volt" %}
 
 {% block title %}
-Daftar Peminjaman
+Pengembalikan Buku
 {% endblock %}
 
 {% block content %}
-
-
 <div class="ui middle aligned center aligned grid">
     <div class="column">
         <div class="title">
-            Pengembalian Buku
+            Kembalikan Buku
         </div>
     </div>
 </div>

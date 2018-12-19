@@ -21,30 +21,3 @@ require_once APP_PATH. '/Bootstrap.php';
 
 $app = new Bootstrap();
 $app->init();
-
-/*echo "hai";
-
-//Mencari record dengan id 4
-$todo = Todos::findFirst(1);
-//Mencetak "Minum"
-$todo->content;
-
-//Mencari record dengan id4
-$todo = Todos::findFirst(1);
-
-$todo->content = "Mengerjakan proyek web3";
-
-$todo->save();
-*/
-
-// $todos = $this->modelsManager->executeQuery(
-//     'SELECT * FROM Todos WHERE content = :content_body:',
-//     [
-//         'content_body' => "makan"
-//     ]
-// );
-
-// foreach ($todos as $todo){
-//     echo $todo->content."\n";
-// }
-

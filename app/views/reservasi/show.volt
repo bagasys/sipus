@@ -1,4 +1,5 @@
 {% extends "layouts\base.volt" %}
+
 {% block title %}
 Data Reservasi
 {% endblock %}
@@ -6,7 +7,7 @@ Data Reservasi
 {% block content %}
 <div class="ui middle aligned center aligned grid">
     <div class="column">
-        <div class="title">
+        <div class="ui huge header">
             Reservasi oleh {{ session.get('auth')['nama'] }}
         </div>
     </div>
@@ -16,6 +17,7 @@ Data Reservasi
     <div class="column">
         <center>
             {{ image("img/sipus_logo.png") }}
+{#            <img src="{{config.url.baseUrl}}{{result.gambar_buku}}" alt="{{result.ISBN_ISSN}}.jpg"> #}
             <div class="ui header">
                 <div class="content">
                     <div class="book-title">

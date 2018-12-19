@@ -14,17 +14,13 @@ Daftar Anggota
 </div>
 <div class="ui middle aligned center aligned grid">
     <div class="column">
-        <a href="tambah-anggota">Daftarkan Anggota Baru</a>    
+        <a href="tambah-anggota" class="ui labeled icon grey button">
+            <i class="plus icon"></i>
+            Daftarkan Anggota Baru
+        </a>
     </div>
 </div>
 <form method="POST" action="{{ url("daftar-anggota") }}">
-    <select name="searchBy" class="ui dropdown">
-        <option value="nama">Nama Anggota</option>
-        <option value="no_id">Id Anggota</option>
-        <option value="alamat">Alamat</option>
-        <option value="no_telepon">No Telepon</option>
-        <option value="email">Email</option>
-    </select>
     <div class="ui search item">
         <div class="ui icon input">
             <input class="prompt" type="text" placeholder="Cari nama anggota..." name = "searchKey">
@@ -33,6 +29,15 @@ Daftar Anggota
         </div>
         <div class="results"></div>
     </div>
+    <br>
+    <select name="searchBy" class="ui dropdown">
+        <option value="nama">Nama Anggota</option>
+        <option value="no_id">ID Anggota</option>
+        <option value="alamat">Alamat</option>
+        <option value="no_telepon">No Telepon</option>
+        <option value="email">Email</option>
+    </select>
+    <div class="ui left pointing brown label">Advanced Search</div>
 </form>
 <table class="ui sortable selectable inverted brown celled table">
     <thead>

@@ -90,7 +90,12 @@ class BukuController extends BaseController
         $deskripsi_fisik = $this->request->getPost('deskripsi_fisik');
         $nomor_panggil = $this->request->getPost('nomor_panggil');
         $jumlah = $this->request->getPost('jumlah');
-       
+
+        $path ='books/'.$isbn.'.jpg';
+        if ($this->request->hasFiles()) {
+            $gambar = $this->request->getUploadedFiles()[0];
+            $gambar->moveTo($path);
+        }
 
         $book->ISBN_ISSN = $isbn;
         $book->judul = $judul;
@@ -102,7 +107,7 @@ class BukuController extends BaseController
         $book->nomor_panggil = $nomor_panggil;
         $book->jumlah = $jumlah;
         $book->jumlah_tersedia = $jumlah;
-
+        $book->gambar_buku = $path;
         $this->view->status = "";
     
 
@@ -144,6 +149,11 @@ class BukuController extends BaseController
         $jumlah = $this->request->getPost('jumlah');    
         $jumlah_tersedia = $this->request->getPost('jumlah_tersedia');
 
+        $path = 'books/'.$isbn.'.jpg';
+        if ($this->request->hasFiles()) {
+            $gambar = $this->request->getUploadedFiles()[0];
+            $gambar->moveTo($path);
+        }
 
         $book = Buku::findFirst("id = '$id'");
         $book->ISBN_ISSN = $isbn;
@@ -156,7 +166,7 @@ class BukuController extends BaseController
         $book->nomor_panggil = $nomor_panggil;
         $book->jumlah = $jumlah;
         $book->jumlah_tersedia = $jumlah_tersedia;
-
+        $book->gambar_buku = $path;
         
         if ($book->save() === false) {
             foreach ($book->getMessages() as $message) {

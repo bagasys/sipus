@@ -14,25 +14,30 @@ Daftar Buku
 </div>
 <div class="ui middle aligned center aligned grid">
     <div class="column">
-        <a href="tambah-buku">Tambahkan Buku Baru</a>    
+        <a href="tambah-buku" class="ui labeled icon grey button">
+            <i class="plus icon"></i>
+            Tambahkan Buku Baru
+        </a>    
     </div>
 </div>
 <form method="POST" action="{{ url("daftar-buku") }}">
-    <select name="searchBy" class="ui dropdown">
-        <option value="pengarang">Pengarang</option>
-        <option value="judul">Judul Buku</option>
-        <option value="ISBN_ISSN">ISBN/ISSN</option>
-        <option value="kategori">Kategori</option>
-        <option value="penerbit">Penerbit</option>      
-    </select>
     <div class="ui search item">
         <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="Cari judul buku..." name = "searchKey">
+            <input class="prompt" type="text" placeholder="Cari koleksi buku..." name = "searchKey">
             <input class="circular ui brown icon button" type="submit" value="">
             <i class="search icon"></i>
         </div>
         <div class="results"></div>
     </div>
+    <br>
+    <select name="searchBy" class="ui dropdown">
+        <option value="judul">Judul Buku</option>
+        <option value="pengarang">Pengarang</option>
+        <option value="penerbit">Penerbit</option>      
+        <option value="ISBN_ISSN">ISBN/ISSN</option>
+        <option value="kategori">Kategori</option>
+    </select>    
+    <div class="ui left pointing brown label">Advanced Search</div>
 </form>
 <table class="ui sortable selectable inverted brown celled table">
     <thead>
@@ -63,7 +68,7 @@ Daftar Buku
             <th>{{result.deskripsi}}</th>
             <th>{{result.deskripsi_fisik}}</th>
             <th>{{result.nomor_panggil}}</th>
-            <th>{{ image("img/sipus_logo.png", 'width': '50%') }}</th>
+            <th><img src="{{result.gambar_buku}}" alt="{{result.ISBN_ISSN}}.jpg" width="50%"></th>
             <th>{{result.jumlah}}</th>
             <th>{{result.jumlah_tersedia}}</th>
             <th>{{result.status}}</th>

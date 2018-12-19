@@ -4,8 +4,8 @@
     {% include 'layouts\header.volt' %}
     <title>Sipus - {% block title %}{% endblock %}</title>
 </head>
-<body style="background-image: url('img/background2.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%;">
-    <div class="ui brown inverted menu">
+<body style="background-image: url('{{config.url.baseUrl}}img/background2.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%;">
+    <div class="ui brown inverted fixed menu">
         <a href="{{ url("") }}" class="item">
             <img class="ui mini image" src="{{ url("img/sipus_logo.png") }}">
         </a>
@@ -31,6 +31,61 @@
                 <option value="kategori">Kategori</option>
             </select>
         </form>
+<!-- <div class="item">
+<div class="ui floating dropdown labeled icon button">
+  <i class="search icon"></i>
+  <span class="text">Search</span>
+  <div class="menu">
+    <div class="ui icon search input">
+      <i class="search icon"></i>
+      <input type="text" placeholder="Search tags...">
+    </div>
+    <div class="divider"></div>
+    <div class="header">
+      <i class="tags icon"></i>
+      Advanced Search
+    </div>
+    <div class="scrolling menu">
+      <div class="item">
+        <div class="ui red empty circular label"></div>
+        Important
+      </div>
+      <div class="item">
+        <div class="ui blue empty circular label"></div>
+        Announcement
+      </div>
+      <div class="item">
+        <div class="ui black empty circular label"></div>
+        Cannot Fix
+      </div>
+      <div class="item">
+        <div class="ui purple empty circular label"></div>
+        News
+      </div>
+      <div class="item">
+        <div class="ui orange empty circular label"></div>
+        Enhancement
+      </div>
+      <div class="item">
+        <div class="ui empty circular label"></div>
+        Change Declined
+      </div>
+      <div class="item">
+        <div class="ui yellow empty circular label"></div>
+        Off Topic
+      </div>
+      <div class="item">
+        <div class="ui pink empty circular label"></div>
+        Interesting
+      </div>
+      <div class="item">
+        <div class="ui green empty circular label"></div>
+        Discussion
+      </div>
+    </div>
+  </div>
+</div>
+</div> -->
         <div class="right menu">
             {% if session.has('auth') %}
             <div class="ui dropdown item">
@@ -56,11 +111,9 @@
             {% endif %}
         </div>
     </div>
-
-    
-
-    {% block content %} {% endblock %}
-
+    <div style="position: relative; top: 100px;">
+        {% block content %} {% endblock %}
+    </div>
 {# ini footer #}
 
 <script>

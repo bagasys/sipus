@@ -1,4 +1,5 @@
 {% extends "layouts\base.volt" %}
+
 {% block title %}
 Data Peminjaman
 {% endblock %}
@@ -6,7 +7,7 @@ Data Peminjaman
 {% block content %}
 <div class="ui middle aligned center aligned grid">
     <div class="column">
-        <div class="title">
+        <div class="ui huge header">
             Peminjaman oleh {{ session.get('auth')['nama'] }}
         </div>
     </div>
@@ -15,7 +16,8 @@ Data Peminjaman
 {% for result in results %}
     <div class="column">
         <center>
-            <img src="{{ url("img/sipus_logo.png") }}">
+            {{ image("img/sipus_logo.png") }}
+{#            <img src="{{config.url.baseUrl}}{{result.gambar_buku}}" alt="{{result.ISBN_ISSN}}.jpg"> #}
             <div class="ui header">
                 <div class="content">
                     <div class="book-title">

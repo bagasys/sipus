@@ -14,7 +14,7 @@ Tambah Buku
     </div>
 </div>
 <div class="ui two column centered grid">
-    <form method="POST" action="{{ url("tambah-buku") }}" class="ui form">
+    <form method="POST" action="{{ url("tambah-buku") }}" enctype="multipart/form-data" class="ui form">
         <div class="field">
             <label for="ISBN_ISSN">ISBN / ISSN</label>
             <input type="text" name="ISBN_ISSN" placeholder="Ex: 978-0-262-03384-8">
@@ -36,10 +36,16 @@ Tambah Buku
         <div class="field">
             <select name="kategori" class="ui dropdown">
                 <option value="">Pilih kategori buku...</option>
-                <option value="satu">coba1</option>
-                <option value="dua">coba2</option>
-                <option value="tiga">coba3</option>
-                <option value="empat">coba4</option>
+                <option value="Computer science, information and general works">Computer science, information and general works</option>
+                <option value="Philosophy and psychology">Philosophy and psychology</option>
+                <option value="Religion">Religion</option>
+                <option value="Social Sciences">Social Sciences</option>
+                <option value="Language">Language</option>
+                <option value="Science">Science</option>
+                <option value="Technology and applied science">Technology and applied science</option>
+                <option value="Arts and recreation">Arts and recreation</option>
+                <option value="Literature">Literature</option>
+                <option value="History and geography">History and geography</option>
             </select>
         </div>
         <div class="two fields">
