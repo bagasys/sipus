@@ -42,6 +42,17 @@ Daftar Peminjaman
 <br>
 <form method="POST" action="{{ url("daftar-peminjaman") }}">
     <div class="ui search item">
+       <div class="ui icon input">
+           <input class="prompt" type="hidden" name = "pinjamKey" value="tgl_pinjam">
+           <input class="circular ui green icon button" type="submit" value="Peminjaman Hari Ini">
+           <i class="calendar plus outline icon"></i>
+       </div>
+       <div class="results"></div>
+   </div>
+</form>
+<br>
+<form method="POST" action="{{ url("daftar-peminjaman") }}">
+    <div class="ui search item">
         <div class="ui icon input">
             <input class="prompt" type="hidden" name = "kembaliKey" value="tgl_hrs_kembali">
             <input class="circular ui red icon button" type="submit" value="Harus Kembali Hari Ini">
@@ -49,17 +60,6 @@ Daftar Peminjaman
         </div>
         <div class="results"></div>
     </div>
-</form>
-<br>
-<form method="POST" action="{{ url("daftar-peminjaman") }}">
-    <div class="ui search item">
-       <div class="ui icon input">
-           <input class="prompt" type="hidden" name = "pinjamKey" value="tgl_pinjam">
-           <input class="circular ui green icon button" type="submit" value="Pinjam Hari Ini">
-           <i class="calendar plus outline icon"></i>
-       </div>
-       <div class="results"></div>
-   </div>
 </form>
 <table class="ui sortable selectable inverted brown celled table">
     <thead>
