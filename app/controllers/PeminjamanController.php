@@ -300,6 +300,62 @@ class PeminjamanController extends BaseController
                 $this->response->redirect('daftar-peminjaman');
             }
         }
+
+
+
+        $jumlah_record = 0;
+                 
+        $sql = $this->modelsManager->createQuery('SELECT COUNT(id_user) as total FROM Reservasi WHERE id_buku = :id_buku: AND status = :status: ORDER BY tgl_reservasi');
+        $results = $sql->execute(
+            [
+                'id_buku' => $id_buku,
+                'status' => 'wait'
+            ]
+        );
+        
+        foreach($results as $result){
+            $jumlah_record = $result->total;
+        }
+    
+        if($jumlah_record >= 1){
+            $sql = $this->modelsManager->createQuery('SELECT * FROM Reservasi WHERE id_buku = :id_buku: AND status = :status: ORDER BY tgl_reservasi LIMIT 1');
+            $reservasi = $sql->execute(
+                [
+                    'id_buku' => $id_buku,
+                    'status' => 'wait',
+                ]
+            );
+            $status_reservasi =  ' ';
+            $id_user = 0;
+            $id_reservasi = 0;
+
+            foreach($reservasi as $reserve){
+                //echo $buku->id_user;
+                $id_user = $reserve->id_user;
+                $status_reservasi = $reserve->status;
+                $id_reservasi = $reserve->id;
+            }
+
+            $user = Users::findFirst("id = '$id_user'");
+
+            //////////
+            $date = date('Y-m-d');
+            $sql = $this->modelsManager->createQuery('UPDATE Reservasi SET status = :stat:, tgl_ready = :date: WHERE id = :id_reservasi:');
+            $update = $sql->execute(
+                [
+                    'id_reservasi' => $id_reservasi,
+                    'date' => $date,
+                    'stat' => 'ready',
+                ]
+                );
+            
+            /////////
+        }else{
+            
+        }
+
+
+
     }
     
     public function cobaAction()
