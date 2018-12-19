@@ -19,7 +19,7 @@ Pinjam Buku
             <input type="text" name="ISBN_ISSN" placeholder="">
         </div>
         <div class="field">
-            <label for="id_user">Nomor Anggota</label>
+            <label for="id_user">Nomor ID Anggota</label>
             <input type="text" name="no_id" placeholder="">
         </div>
         <div class="field">
@@ -31,7 +31,7 @@ Pinjam Buku
             <input type="password" name="password" placeholder="">
         </div>
         
-        <input type="submit" value="Pinjamkan Buku" class="ui inverted brown button">
+        <input type="submit" value="Pinjamkan Buku" class="ui black button">
     </form>
 </div>
 

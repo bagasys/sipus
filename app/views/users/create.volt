@@ -48,7 +48,7 @@ Tambah Anggota
                 <input type="password" name="cpassword" placeholder="">
             </div>
         </div>
-        <input type="submit" value="Tambahkan sebagai Anggota" class="ui inverted brown button">
+        <input type="submit" value="Tambahkan sebagai Anggota" class="ui black button">
     </form>
 </div>
 

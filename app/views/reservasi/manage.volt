@@ -31,6 +31,17 @@ Daftar Reservasi
     </select>
     <div class="ui left pointing brown label">Advanced Search</div>
 </form>
+<br>
+<form method="POST" action="{{ url("daftar-reservasi") }}">
+    <div class="ui search item">
+        <div class="ui icon input">
+            <input class="prompt" type="hidden" name = "updateKey" value="update">
+            <input class="circular ui red icon button" type="submit" value="Update">
+            <i class="calendar check outline icon"></i>
+        </div>
+        <div class="results"></div>
+    </div>
+</form>
 <table class="ui sortable selectable inverted brown celled table">
     <thead>
         <tr class="center aligned">
@@ -39,6 +50,8 @@ Daftar Reservasi
             <th>Nama User</th>
             <th>ISBN_ISSN</th>
             <th>Nama Buku</th>
+            <th>Status</th>
+            <th>Tanggal Ready</th>
             <th>Aksi</th>
         </tr>
     </thead>
@@ -50,6 +63,8 @@ Daftar Reservasi
             <th>{{ peminjaman.nama }}</th>
             <th>{{ peminjaman.ISBN_ISSN }}</th>
             <th>{{ peminjaman.judul }}</th>
+            <th>{{ peminjaman.status }}</th>
+            <th>{{ peminjaman.tgl_ready }}</th>
             <th>
                 <button class="confirm ui labeled icon red button" data-id="{{peminjaman.idr}}" data-nama="{{peminjaman.nama}}" data-judul="{{peminjaman.judul}}">
                     <i class="trash alternate outline icon"></i>

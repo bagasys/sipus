@@ -17,7 +17,7 @@ Librarian
         <div class="row">
             <div class="column">
                 <h2 class="ui icon header">
-                    <i class="onHover user icon"></i>
+                    <i class="user icon"></i>
                     Kelola Anggota
                 </h2>
                 <div style="padding-bottom: 5px;">
@@ -29,7 +29,7 @@ Librarian
             </div>
             <div class="column">
                 <h2 class="ui icon header">
-                    <i class="onHover book icon"></i>
+                    <i class="book icon"></i>
                     Kelola Buku
                 </h2>
                 <div style="padding-bottom: 5px;">
@@ -47,7 +47,7 @@ Librarian
         <div class="row">
             <div class="column">
                 <h2 class="ui icon header">
-                    <i class="onHover tasks icon"></i>
+                    <i class="tasks icon"></i>
                     Kelola Peminjaman
                 </h2>
                 <div style="padding-bottom: 5px;">
@@ -59,7 +59,7 @@ Librarian
             </div>
             <div class="column">
                 <h2 class="ui icon header">
-                    <i class="onHover bookmark icon"></i>
+                    <i class="bookmark icon"></i>
                     Kelola Reservasi
                 </h2>
                 <div>
@@ -74,17 +74,4 @@ Librarian
         min-width: 250px;
     }
 </style>
-<script>
-$(document).ready(function(){
-    $('.onHover').hover(function(){
-        $(this).transition({
-            debug     : true,
-            animation : 'bounce',
-            duration  : 500,
-            interval  : 200
-        });
-    }, function(){});
-
-});
-</script>
 {% endblock %}
