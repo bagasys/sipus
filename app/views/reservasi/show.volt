@@ -21,21 +21,21 @@ Data Reservasi
             <div class="ui header">
                 <div class="content">
                     <div class="book-title">
-                        Judul Buku {{result.id}}
+                        Judul Buku : {{result.judul}}
                     </div>
                 </div>
                 <div class="sub header">
                     <div class="book-author">
-                        Pengarang {{result.id}}
+                        Pengarang : {{result.pengarang}}
                     </div>
                 </div>
             </div>
             <div>
-                26 April 2019
+                {{result.tgl_reservasi}}
             </div>
             <div>
                 <form method="POST" action="{{url("hapus-reservasi")}}" class="ui form">
-                    <input type="hidden" name="id" value="{{result.id}}">
+                    <input type="hidden" name="id" value="{{result.idr}}">
                     <input type="submit" value="Batalkan">
                 </form>               
             </div>

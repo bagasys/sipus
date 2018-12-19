@@ -21,17 +21,18 @@ Data Peminjaman
             <div class="ui header">
                 <div class="content">
                     <div class="book-title">
-                        Judul Buku {{result.id}}
+                        Judul Buku : {{result.judul}}
                     </div>
                 </div>
                 <div class="sub header">
                     <div class="book-author">
-                        Pengarang {{result.id}}
+                        Pengarang {{result.pengarang}}
                     </div>
                 </div>
             </div>
             <div>
-                26 April 2019 - 8 Mei 2019
+                {{result.tgl_pinjam}} - {{result.tgl_hrs_kembali}}
+                {{result.status}}
             </div>
         </center>
     </div>

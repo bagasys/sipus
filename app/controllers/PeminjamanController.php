@@ -77,7 +77,16 @@ class PeminjamanController extends BaseController
         $id = $this->session->get('auth')['id'];
 
     
-        $results = Peminjaman::find("id_user = '$id' ");
+        // $results = Peminjaman::find("id_user = '$id' ");
+        $this->view->results = $results;
+
+        
+        $query = $this->modelsManager->createQuery('SELECT p.id as idp, p.id_user, u.id, u.nama, p.tgl_pinjam, p.tgl_hrs_kembali,b.pengarang, u.no_id, b.ISBN_ISSN, p.id_buku, b.judul, p.status, p.tgl_hrs_kembali, p.denda, p.tgl_pinjam FROM Users u, Peminjaman p, Buku b
+        WHERE u.id = p.id_user AND p.id_buku = b.id AND u.id = :searchKey: AND p.status != "selesai" ');
+        $results  = $query->execute([
+            'searchKey' => $id,
+        ]);
+
         $this->view->results = $results;
 
 
@@ -291,44 +300,68 @@ class PeminjamanController extends BaseController
     
     public function cobaAction()
     {   
-        
-        $jumlah_record = 0;
+        $id_buku = 8;
+
+        //
+        $reservasi_wait = 0;
                  
-        $sql = $this->modelsManager->createQuery('SELECT COUNT(id_user) as total FROM Reservasi WHERE id_buku = :id_buku:  AND status = :status: ORDER BY tgl_reservasi');
+        $sql = $this->modelsManager->createQuery('SELECT COUNT(id_user) as total FROM Reservasi WHERE id_buku = :id_buku: AND status = :status:');
         $results = $sql->execute(
             [
-                'id_buku' => 8,
-                'status' => 'menunggu buku'
+                'id_buku' => $id_buku,
+                'status' => 'wait'
             ]
         );
         
         foreach($results as $result){
-            $jumlah_record = $result->total;
-            //echo $buku->total;
+            $reservasi_wait = $result->total;
         }
 
-        echo $jumlah_record . "<br>";
-    
-        if($jumlah_record >= 1){
-            $sql = $this->modelsManager->createQuery('SELECT * FROM Reservasi WHERE id_buku = :id_buku: AND status = :status: ORDER BY tgl_reservasi LIMIT 1');
-            $reservasi = $sql->execute(
-                [
-                    'id_buku' => 8,
-                    'status' => 'menunggu buku',
-                ]
-            );
-            $status_reservasi =  ' ';
-            $id_user = 0;
-            $id_reservasi = 0;
+        echo "reservasi_wait: " . $reservasi_wait;
+        //
 
-            foreach($reservasi as $reserve){
-                //echo $buku->id_user;
-                $id_user = $reserve->id_user;
-                $status_reservasi = $reserve->status;
-                $id_reservasi = $reserve->id;
-            }
-                     
+        //
+        $jumlah_tersedia = 0;
+        $jumlah = 0;
+
+        $query = $this->modelsManager->createQuery('SELECT jumlah_tersedia, jumlah FROM Buku
+        WHERE id = :searchKey:');
+        $results  = $query->execute([
+            'searchKey' => $id_buku,
+        ]);
+        
+        foreach($results as $result){
+            $jumlah_tersedia = $result->jumlah_tersedia;
+            $jumlah = $result->jumlah;
         }
+
+        echo "jumlah_tersedia: " . $jumlah_tersedia;
+        echo "jumlah: " . $jumlah;
+        //
+
+        //
+        $reservasi_ready = 0;
+                 
+        $sql = $this->modelsManager->createQuery('SELECT COUNT(id_user) as total FROM Reservasi WHERE id_buku = :id_buku: AND status = :status:');
+        $results = $sql->execute(
+            [
+                'id_buku' => $id_buku,
+                'status' => 'ready'
+            ]
+        );
+        
+        foreach($results as $result){
+            $reservasi_ready = $result->total;
+        }
+
+        echo "reservasi_ready: " . $reservasi_ready;
+        //
+
+        if ($jumlah_tersedia - $reservasi_ready <= 0 && $reservasi_wait + $reservasi_ready < $jumlah){
+            echo "haha";
+        }
+
+
     }
 
 

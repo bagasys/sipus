@@ -14,7 +14,7 @@ Daftar Buku
 </div>
 <div class="ui middle aligned center aligned grid">
     <div class="column">
-        <a href="tambah-buku" class="ui labeled icon grey button">
+        <a href="tambah-buku" class="ui labeled icon inverted green button">
             <i class="plus icon"></i>
             Tambahkan Buku Baru
         </a>    
@@ -47,7 +47,7 @@ Daftar Buku
             <th>Pengarang</th>
             <th>Penerbit</th>
             <th>Kategori</th>
-            <th>Deskripsi</th>
+{#            <th>Deskripsi</th> #}
             <th>Deskripsi Fisik</th>
             <th>Nomor Panggil</th>
             <th>Gambar Buku</th>
@@ -65,7 +65,7 @@ Daftar Buku
             <th>{{result.pengarang}}</th>
             <th>{{result.penerbit}}</th>
             <th>{{result.kategori}}</th>
-            <th>{{result.deskripsi}}</th>
+{#            <th>{{result.deskripsi}}</th> #}
             <th>{{result.deskripsi_fisik}}</th>
             <th>{{result.nomor_panggil}}</th>
             <th><img src="{{result.gambar_buku}}" alt="{{result.ISBN_ISSN}}.jpg" width="50%"></th>
@@ -110,6 +110,11 @@ Daftar Buku
         </div>
     </div>
 </div>
+<style>
+    th .button {
+        min-width: 125px;
+    }    
+</style>
 <script>
     $(".confirm").click(function(){
         var id = $(this).data("id");

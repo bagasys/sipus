@@ -87,7 +87,7 @@ class ReservasiController extends BaseController
                     echo $message, "\n";
                 }
             } else {
-                $this->response->redirect('daftar-reservasi');
+                $this->response->redirect('reservasi');
             }
         }
     }
@@ -100,9 +100,18 @@ class ReservasiController extends BaseController
 
         $id = $this->session->get('auth')['id'];
     
-        $results = Reservasi::find("id_user = '$id' ");
-        $this->view->results = $results;
+        // $results = Reservasi::find("id_user = '$id' ");
+        // $this->view->results = $results;
         
+
+        
+        $query = $this->modelsManager->createQuery('SELECT r.id as idr, r.id_user, u.nama, b.pengarang, r.tgl_reservasi, b.ISBN_ISSN, r.id_buku, b.judul FROM Users u, Reservasi r, Buku b
+        WHERE u.id = r.id_user AND r.id_buku = b.id AND u.id = :searchKey:');
+        $results  = $query->execute([
+            'searchKey' => $id,
+        ]);
+
+        $this->view->results = $results;
 
     }
 

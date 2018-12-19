@@ -116,7 +116,8 @@ class BukuController extends BaseController
                 echo $message, "\n";
             }
         } else {
-            $this->view->   status = "pendaftaran sukses";
+            $this->response->redirect('daftar-buku');
+//            $this->view->   status = "pendaftaran sukses";
         }
 
 

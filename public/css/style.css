@@ -1,12 +1,14 @@
 .title {
     font-size: 4em;
     font-family: 'Fredericka the Great', cursive;
+    line-height: 1;
     /* color: #a5673f; */
 }
 
 .subtitle {
     font-size: 2.5em;
     font-family: 'Sacramento', cursive;
+    line-height: 2;
     /* font-weight: bold; */
     /* color: #a5673f; */
 }

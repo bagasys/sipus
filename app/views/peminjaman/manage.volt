@@ -14,7 +14,7 @@ Daftar Peminjaman
 </div>
 <div class="ui middle aligned center aligned grid">
     <div class="column">
-        <a href="pinjam" class="ui labeled icon grey button">
+        <a href="pinjam" class="ui labeled icon inverted green button">
             <i class="plus icon"></i>
             Pinjam Buku
         </a>
@@ -44,7 +44,7 @@ Daftar Peminjaman
     <div class="ui search item">
         <div class="ui icon input">
             <input class="prompt" type="hidden" name = "kembaliKey" value="tgl_hrs_kembali">
-            <input class="circular ui brown icon button" type="submit" value="Harus Kembali Hari Ini">
+            <input class="circular ui red icon button" type="submit" value="Harus Kembali Hari Ini">
             <i class="calendar check outline icon"></i>
         </div>
         <div class="results"></div>
@@ -55,7 +55,7 @@ Daftar Peminjaman
     <div class="ui search item">
        <div class="ui icon input">
            <input class="prompt" type="hidden" name = "pinjamKey" value="tgl_pinjam">
-           <input class="circular ui brown icon button" type="submit" value="Pinjam Hari Ini">
+           <input class="circular ui green icon button" type="submit" value="Pinjam Hari Ini">
            <i class="calendar plus outline icon"></i>
        </div>
        <div class="results"></div>
@@ -125,7 +125,11 @@ Daftar Peminjaman
         </div>
     </div>
 </div>
-
+<style>
+    th .button {
+        min-width: 175px;
+    }
+</style>
 <script>
     $(".confirm").click(function(){
         var id = $(this).data("id");
