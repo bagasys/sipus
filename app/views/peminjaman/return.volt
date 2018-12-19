@@ -33,7 +33,7 @@ Pengembalikan Buku
                 ID Peminjam
             </div>
             <div class="ui disabled input">
-                <input type="text" value="{{ peminjaman.id_user }}">
+                <input type="text" value="{{ peminjaman.no_id }}">
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@ Pengembalikan Buku
                 ID Buku
             </div>
             <div class="ui disabled input">
-                <input type="text" value="{{ peminjaman.id_buku }}">
+                <input type="text" value="{{ peminjaman.ISBN_ISSN }}" name = "id_buku">
             </div>
         </div>
     </div>

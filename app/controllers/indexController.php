@@ -52,9 +52,9 @@ class IndexController extends BaseController
             $results  = $query->execute([
                 'searchKey' => $searchKey,
             ]);
-        }else if($searchBy == 'id_buku'){ 
+        }else if($searchBy == 'ISBN_ISSN'){ 
             $query = $this->modelsManager->createQuery('SELECT * FROM Buku
-            WHERE id = :searchKey:');
+            WHERE ISBN_ISSN = :searchKey:');
             $results  = $query->execute([
                 'searchKey' => $searchKey,
             ]);
@@ -93,6 +93,30 @@ class IndexController extends BaseController
         $id = $this->dispatcher->getParam("id");
         $results = Buku::findFirst("id = '$id' ");
         $this->view->results = $results;
+
+        $jumlah_record = 0;
+
+        $sql = $this->modelsManager->createQuery('SELECT COUNT(id_user) as total FROM Reservasi WHERE id_buku = :id: ORDER BY tgl_reservasi');
+        $update = $sql->execute(
+            [
+                'id' => $id,
+            ]
+        );
+        
+        foreach($update as $buku){
+            $jumlah_record = $buku->total;
+            echo $buku->total;
+        }
+
+        $results = Buku::findFirst("id = '$id' ");
+        echo $results->status;
+        $flag = 1;
+        if($results->status === 'bisa' && $jumlah_record < $results->jumlah){
+            $flag = 0;
+        }
+        echo $flag;
+        $this->view->flag = $flag;
+        
     }
 
 }
