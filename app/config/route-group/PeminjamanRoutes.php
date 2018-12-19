@@ -66,20 +66,5 @@ class PeminjamanRoutes extends RouterGroup
                 'action'    => 'return',
             ]
         );
-
-        $this->addPost(
-            '/coba',
-            [
-                'action'    => 'coba',
-            ]
-        );
-
-        $this->addGet(
-            '/coba',
-            [
-                'action'    => 'coba',
-            ]
-        );
-
     }
 }
