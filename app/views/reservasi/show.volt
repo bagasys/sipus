@@ -35,7 +35,7 @@ Data Reservasi
             </div>
             <div>
                 <form method="POST" action="{{url("hapus-reservasi")}}" class="ui form">
-                    <input type="hidden" name="id" value="{{result.id}}">
+                    <input type="hidden" name="id" value="{{result.idr}}">
                     <input type="submit" value="Batalkan">
                 </form>               
             </div>
