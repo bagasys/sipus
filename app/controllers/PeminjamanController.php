@@ -109,6 +109,7 @@ class PeminjamanController extends BaseController
                 );
             }
 
+
             $no_id = $this->request->getPost('no_id');
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
@@ -122,35 +123,127 @@ class PeminjamanController extends BaseController
             $id_user = $user->id;
 
             if(password_verify($password, $user->password)){
-                $pinjam = new Peminjaman();
+                ///peminjaman kalau ada yg reserve //////
 
-                $pinjam->id_user = $id_user;
-                $pinjam->id_buku = $id_buku;
-                $pinjam->id_admin = 2;
-                $pinjam->tgl_pinjam = $date;
-                $pinjam->tgl_hrs_kembali = $datekembali;
-                $pinjam->status = $status;
-
-                if($pinjam->save() === false){
-                    foreach ($pinjam->getMessages() as $message) {
-                        echo $message, "\n";
-                    }                
-                }
-                else{
-                    $sisa = $sisa - 1;
-
-                    $sql = $this->modelsManager->createQuery('UPDATE Buku SET jumlah_tersedia = :jumlah_tersedia: WHERE id = :id_buku:');
-                    $update = $sql->execute(
+                $jumlah_record = 0;
+                 
+                $sql = $this->modelsManager->createQuery('SELECT COUNT(*) as total FROM Reservasi WHERE id_buku = :id_buku: AND id_user = :id_user: AND status = :stat:');
+                $results = $sql->execute(
                     [
-                        'jumlah_tersedia' => $sisa,
                         'id_buku' => $id_buku,
-                    ]);  
-                    $this->response->redirect('daftar-peminjaman');
+                        'id_user' => $id_user,
+                        'stat' => 'ready',
+                    ]
+                );
+                
+                foreach($results as $result){
+                    $jumlah_record = $result->total;
                 }
+
+
+                if($jumlah_record > 0){
+                    $pinjam = new Peminjaman();
+
+                    $pinjam->id_user = $id_user;
+                    $pinjam->id_buku = $id_buku;
+                    $pinjam->id_admin = 1;
+                    $pinjam->tgl_pinjam = $date;
+                    $pinjam->tgl_hrs_kembali = $datekembali;
+                    $pinjam->status = $status;
+
+                    if($pinjam->save() === false){
+                        foreach ($pinjam->getMessages() as $message) {
+                            echo $message, "\n";
+                        }                
+                    }
+                    else{
+                        $sisa = $sisa - 1;
+
+                        $sql = $this->modelsManager->createQuery('UPDATE Buku SET jumlah_tersedia = :jumlah_tersedia: WHERE id = :id_buku:');
+                        $update = $sql->execute(
+                        [
+                            'jumlah_tersedia' => $sisa,
+                            'id_buku' => $id_buku,
+                        ]); 
+                        
+                        //hapus reservasi//
+                        $id_reservasi = 0;
+                 
+                        $sql = $this->modelsManager->createQuery('SELECT id FROM Reservasi WHERE id_buku = :id_buku: AND id_user = :id_user: LIMIT 1');
+                        $results = $sql->execute(
+                            [
+                                'id_buku' => $id_buku,
+                                'id_user' => $id_user
+                            ]
+                        );
+                        
+                        foreach($results as $result){
+                            $id_reservasi = $result->id;
+                        }
+
+                        $sql = $this->modelsManager->createQuery('DELETE FROM Reservasi WHERE id = :id:');
+                        $delete = $sql->execute(
+                        [
+                            'id' => $id_reservasi,
+                        ]); 
+
+                        $this->response->redirect('daftar-peminjaman');
+                    }
+                }
+                ////////////////////////////
+                
+                ///peminjaman lainnya//
+                else{
+
+                    $jumlah_record = 0;
+                 
+                    $sql = $this->modelsManager->createQuery('SELECT COUNT(*) as total FROM Reservasi WHERE id_buku = :id_buku: ');
+                    $results = $sql->execute(
+                        [
+                            'id_buku' => $id_buku,
+                        ]
+                    );
+                
+                    foreach($results as $result){
+                        $jumlah_record = $result->total;
+                    }
+                    //peminjaman org yang bukan reservasi//
+                    if($sisa > $jumlah_record){
+                        $pinjam = new Peminjaman();
+
+                        $pinjam->id_user = $id_user;
+                        $pinjam->id_buku = $id_buku;
+                        $pinjam->id_admin = 1;
+                        $pinjam->tgl_pinjam = $date;
+                        $pinjam->tgl_hrs_kembali = $datekembali;
+                        $pinjam->status = $status;
+
+                        if($pinjam->save() === false){
+                            foreach ($pinjam->getMessages() as $message) {
+                                echo $message, "\n";
+                            }                
+                        }
+                        else{
+                            $sisa = $sisa - 1;
+
+                            $sql = $this->modelsManager->createQuery('UPDATE Buku SET jumlah_tersedia = :jumlah_tersedia: WHERE id = :id_buku:');
+                            $update = $sql->execute(
+                            [
+                                'jumlah_tersedia' => $sisa,
+                                'id_buku' => $id_buku,
+                            ]);  
+                            $this->response->redirect('daftar-peminjaman');
+                        }
+                    }
+                    else{
+                        $this->response->redirect('pinjam');
+                    }
+                }
+                ////////////////////////////
             }
             else{
                 $this->response->redirect('pinjam');
-            }
+            }            
         }
         else{
             $this->response->redirect('pinjam');

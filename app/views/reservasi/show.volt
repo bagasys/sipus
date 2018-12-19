@@ -21,12 +21,12 @@ Data Reservasi
             <div class="ui header">
                 <div class="content">
                     <div class="book-title">
-                        Judul Buku : {{result.judul}}
+                        {{result.judul}}
                     </div>
                 </div>
                 <div class="sub header">
                     <div class="book-author">
-                        Pengarang : {{result.pengarang}}
+                        {{result.pengarang}}
                     </div>
                 </div>
             </div>
@@ -34,13 +34,45 @@ Data Reservasi
                 {{result.tgl_reservasi}}
             </div>
             <div>
-                <form method="POST" action="{{url("hapus-reservasi")}}" class="ui form">
-                    <input type="hidden" name="id" value="{{result.idr}}">
-                    <input type="submit" value="Batalkan">
-                </form>               
+                <button class="confirm ui labeled icon red button" data-id="{{result.idr}}" data-judul="{{result.judul}}">
+                    <i class="times icon"></i>
+                    Batalkan
+                </button>
             </div>
         </center>
     </div>
 {% endfor %}   
 </div>
+<div class="ui mini test modal">
+    <div class="header">
+        Batalkan Reservasi
+    </div>
+    <div class="content">
+        <p>Apakah Anda yakin ingin membatalkan reservasi buku <span id="confirm-judul"></span>?</p>
+    </div>
+    <div class="actions">
+        <div class="ui negative button">
+            Tidak
+        </div>
+        <div style="display: inline-block;">
+            <form method="POST" action="{{url("hapus-reservasi")}}" class="ui form">
+                <input type="hidden" name="id" id="confirm-id">
+                <button type="submit" class="ui positive right labeled icon button">
+                    Ya
+                    <i class="checkmark icon"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(".confirm").click(function(){
+        var id = $(this).data("id");
+        var nama = $(this).data("nama");
+        var judul = $(this).data("judul");
+        $("#confirm-id").val(id);
+        $("#confirm-judul").html(judul);
+        $('.mini.modal').modal('show');
+    });
+</script>
 {% endblock %}
