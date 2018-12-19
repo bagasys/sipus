@@ -15,19 +15,23 @@ Tambah Anggota
 </div>
 <div class="ui two column centered grid">
     <form method="POST" action="{{ url("tambah-anggota") }}" class="ui form">
-        <div class="ui error message">
-            <div>
+        {% if flag == 0 %}
+        <div class="ui negative message">
+            <p>
             {{nameErr}}
-            </div>
-            <div>
+            </p>
+            <p>
             {{emailErr}}
-            </div>
-            <div>
+            </p>
+            <p>
             {{telpErr}}
-            </div>
-            <div>
+            </p>
+            <p>
             {{alamatErr}}
-            </div>
+            </p>
+        </div>
+        {% endif %}
+        <div class="ui error message">
         </div>
         <div class="field">
             <label for="nama">Nama Lengkap</label>
