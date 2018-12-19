@@ -122,7 +122,7 @@ class ReservasiController extends BaseController
     public function showAction()
     {
         if($this->session->get('auth')['status'] != '0'){
-              $this->response->redirect();
+              $this->response->redirect('dashboard');
         }
 
         $id = $this->session->get('auth')['id'];

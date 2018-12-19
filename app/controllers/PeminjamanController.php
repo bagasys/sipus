@@ -74,6 +74,10 @@ class PeminjamanController extends BaseController
 
     public function showAction()
     {
+        if($this->session->get('auth')['status'] != '0'){
+            $this->response->redirect('dashboard');
+        }
+
         $id = $this->session->get('auth')['id'];
 
     
