@@ -9,6 +9,7 @@ Detail
         <div class="center aligned column">
             {{ image("img/sipus_logo.png") }}
             {% if session.has('auth') %}
+            <?php if(!$flag == 1){ ?>
             <form method="POST" action="{{ url("reservasi") }}">
                 <input type="hidden" value="{{results.id}}" name = "id_buku">
                 <button type="submit" class="ui labeled icon green button">
@@ -16,6 +17,7 @@ Detail
                     Reservasi
                 </button>
             </form>
+            <?php } ?>
             {% endif %}
         </div>
         <div class="column">

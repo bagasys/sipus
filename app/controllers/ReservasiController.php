@@ -56,11 +56,11 @@ class ReservasiController extends BaseController
 
         $id_buku = $this->request->getPost('id_buku');
         $id_user = $this->session->get('auth')['id'];
-       
+        $date = date('Y-m-d');
 
         $reservasi->id_buku = $id_buku;
         $reservasi->id_user = $id_user;
-        
+        $reservasi->tgl_reservasi = $date;
 
         if ($reservasi->save() === false) {
             foreach ($reservasi->getMessages() as $message) {
@@ -97,9 +97,8 @@ class ReservasiController extends BaseController
         if($this->session->get('auth')['status'] != '0'){
               $this->response->redirect();
         }
-        
-        $id = $this->session->get('auth')['id'];
 
+        $id = $this->session->get('auth')['id'];
     
         $results = Reservasi::find("id_user = '$id' ");
         $this->view->results = $results;
