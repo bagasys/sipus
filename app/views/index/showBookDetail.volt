@@ -13,7 +13,7 @@ Detail
             <p>
                 {{results.kategori}}
             </p>
-            <?php if($!flag == 1){ ?>
+            <?php if(!$flag == 1){ ?>
             <form method="POST" action="{{ url("reservasi") }}">
                 <input type="hidden" value="{{results.id}}" name = "id_buku">
                 <button type="submit" class="ui labeled icon green button">

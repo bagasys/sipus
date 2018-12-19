@@ -93,27 +93,103 @@ class IndexController extends BaseController
         $id = $this->dispatcher->getParam("id");
         $results = Buku::findFirst("id = '$id' ");
         $this->view->results = $results;
-
+        $jumlah_tersedia = $results->jumlah_tersedia;
+        //$reser
         $jumlah_record = 0;
 
         $sql = $this->modelsManager->createQuery('SELECT COUNT(id_user) as total FROM Reservasi WHERE id_buku = :id: ORDER BY tgl_reservasi');
-        $update = $sql->execute(
+        $counts = $sql->execute(
             [
                 'id' => $id,
             ]
         );
         
-        foreach($update as $buku){
-            $jumlah_record = $buku->total;
-            echo $buku->total;
+        foreach($counts as $count){
+            $jumlah_record = $count->total;
+            echo $count->total;
         }
 
-        $results = Buku::findFirst("id = '$id' ");
+        //$results = Buku::findFirst("id = '$id' ");
         echo $results->status;
-        $flag = 1;
-        if($results->status === 'bisa' && $jumlah_record < $results->jumlah){
-            $flag = 0;
+
+ 
+
+       
+
+        
+
+        $reservasi_wait = 0;
+                 
+        $sql = $this->modelsManager->createQuery('SELECT COUNT(id_user) as total FROM Reservasi WHERE id_buku = :id_buku: AND status = :status:');
+        $results = $sql->execute(
+            [
+                'id_buku' => $id,
+                'status' => 'wait'
+            ]
+        );
+        
+        foreach($results as $result){
+            $reservasi_wait = $result->total;
         }
+
+        //echo "reservasi_wait: " . $reservasi_wait;
+        //
+
+        //
+        $jumlah_tersedia = 0;
+        $jumlah = 0;
+
+        $query = $this->modelsManager->createQuery('SELECT jumlah_tersedia, jumlah FROM Buku
+        WHERE id = :searchKey:');
+        $results  = $query->execute([
+            'searchKey' => $id,
+        ]);
+        
+        foreach($results as $result){
+            $jumlah_tersedia = $result->jumlah_tersedia;
+            $jumlah = $result->jumlah;
+        }
+
+       // echo "jumlah_tersedia: " . $jumlah_tersedia;
+       // echo "jumlah: " . $jumlah;
+        //
+
+        //
+        $reservasi_ready = 0;
+                 
+        $sql = $this->modelsManager->createQuery('SELECT COUNT(id_user) as total FROM Reservasi WHERE id_buku = :id_buku: AND status = :status:');
+        $results = $sql->execute(
+            [
+                'id_buku' => $id,
+                'status' => 'ready'
+            ]
+        );
+        
+        foreach($results as $result){
+            $reservasi_ready = $result->total;
+        }
+
+        //echo "reservasi_ready: " . $reservasi_ready;
+        //
+
+        if ($jumlah_tersedia - $reservasi_ready <= 0 && $reservasi_wait + $reservasi_ready < $jumlah){
+            echo "haha";
+        }
+
+        $flag = 1;
+
+         if($jumlah_tersedia - $reservasi_ready <= 0 && $reservasi_wait + $reservasi_ready < $jumlah){
+             $flag = 0;
+        }
+
+        // if($results->status === 'bisa' && $jumlah_record < $results->jumlah){
+        //     $flag = 0;
+        //}
+
+
+
+
+
         echo $flag;
         $this->view->flag = $flag;
         

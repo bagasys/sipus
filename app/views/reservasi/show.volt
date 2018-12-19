@@ -35,10 +35,9 @@ Data Reservasi
             </div>
             <div>
                 <button class="confirm ui labeled icon red button" data-id="{{result.idr}}" data-judul="{{result.judul}}">
-                    <i class="trash alternate outline icon"></i>
-                    Hapus
+                    <i class="times icon"></i>
+                    Batalkan
                 </button>
-
             </div>
         </center>
     </div>
