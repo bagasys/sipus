@@ -21,6 +21,11 @@ Detail
                     Reservasi
                 </button>
             </form>
+            <?php } else { ?>
+                <button type="submit" class="ui labeled icon green disabled button">
+                    <i class="bookmark icon"></i>
+                    Reservasi
+                </button>
             <?php } ?>
             {% endif %}
         </div>
