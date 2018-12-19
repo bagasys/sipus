@@ -156,11 +156,14 @@ class PeminjamanController extends BaseController
             $id_buku = $jumlahter->idb;
         }
         
-        $sql = $this->modelsManager->createQuery('UPDATE Buku SET jumlah_tersedia = :tersedia: WHERE ISBN_ISSN = :id_buku:');
+        $status = "tidak";
+
+        $sql = $this->modelsManager->createQuery('UPDATE Buku SET jumlah_tersedia = :tersedia:, status = :stat: WHERE ISBN_ISSN = :id_buku:');
             $update = $sql->execute(
                 [
                     'id_buku' => $id_buku,
                     'tersedia' => $tersedia,
+                    'stat' => $status,
                 ]
         );
         
