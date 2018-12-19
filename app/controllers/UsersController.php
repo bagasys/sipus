@@ -174,50 +174,6 @@ class UsersController extends BaseController
 
     public function storeAction()
     {   
-        $flag = 1;
-
-        
-
-        if($flag == 1){
-        $user = new Users();
-
-        $nama = $this->request->getPost('nama');
-        $alamat = $this->request->getPost('alamat');
-        $telp = $this->request->getPost('telp');
-        $no_id = $this->request->getPost('no_id');
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
-        $cpassword = $this->request->getPost('cpassword');
-        $admin = 0;
-
-        if($password === $cpassword && $password != ''){
-            $checkUser = Users::findFirst("email = '$email'");
-            if($checkUser){
-                $this->response->redirect('tambah-anggota');
-            }
-            else{
-                $password = password_hash($password, PASSWORD_DEFAULT); 
-                $user->nama = $nama;
-                $user->email = $email;
-                $user->password = $password;
-                $user->alamat = $alamat;
-                $user->no_telepon = $telp;
-                $user->no_id = $no_id;
-                $user->admin = $admin;
-
-                if($user->save() === false){
-                    foreach ($user->getMessages() as $message) {
-                        echo $message, "\n";
-                    }                
-                }
-                else{
-                    $this->response->redirect('daftar-anggota');
-                }
-            }
-        }
-        else{
-            $this->response->redirect('tambah-anggota');
-        }
 
     }
         
