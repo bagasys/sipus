@@ -163,9 +163,9 @@ class IndexController extends BaseController
         //     $flag = 0;
         //}
 
-
-
-
+        if($this->session->get('auth')['status'] != '0'){
+            $flag = 1;
+        }
 
         echo $flag;
         $this->view->flag = $flag;
