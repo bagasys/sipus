@@ -62,9 +62,5 @@ class SessionController extends BaseController
         $this->response->redirect();
     }
 
-    public function showAction(){
-        
-    }
-
 }
    

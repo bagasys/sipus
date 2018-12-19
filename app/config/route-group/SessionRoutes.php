@@ -25,13 +25,6 @@ class SessionRoutes extends RouterGroup
         );
         
         $this->addGet(
-            '/profile',
-            [
-                'action'    => 'show',
-            ]
-        );
-
-        $this->addGet(
             '/logout',
             [
                 'action'    => 'destroy',

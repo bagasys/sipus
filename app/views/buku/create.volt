@@ -42,6 +42,7 @@ Tambah Buku
                 <option value="Social Sciences">Social Sciences</option>
                 <option value="Language">Language</option>
                 <option value="Science">Science</option>
+                <option value="Fiction">Fiction</option>
                 <option value="Technology and applied science">Technology and applied science</option>
                 <option value="Arts and recreation">Arts and recreation</option>
                 <option value="Literature">Literature</option>
