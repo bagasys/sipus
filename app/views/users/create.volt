@@ -6,9 +6,6 @@ Tambah Anggota
 
 {% block content %}
 
-{{nameErr}}
-{{emailErr}}
-
 <div class="ui middle aligned center aligned grid">
     <div class="column">
         <div class="title">
@@ -18,6 +15,14 @@ Tambah Anggota
 </div>
 <div class="ui two column centered grid">
     <form method="POST" action="{{ url("tambah-anggota") }}" class="ui form">
+        <div class="ui error message">
+            <div>
+            {{nameErr}}
+            </div>
+            <div>
+            {{emailErr}}
+            </div>
+        </div>
         <div class="field">
             <label for="nama">Nama Lengkap</label>
             <input type="text" name="nama" placeholder="Ex: Joko Widodo">
@@ -51,5 +56,52 @@ Tambah Anggota
         <input type="submit" value="Tambahkan sebagai Anggota" class="ui black button">
     </form>
 </div>
-
+<script>
+$('.ui.form')
+  .form({
+    fields: {
+      nama: {
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Dimohon mengisi nama anggota'
+          }
+        ]
+      },
+      alamat: {
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Dimohon mengisi alamat anggota'
+          }
+        ]
+      },
+      telp: {
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Dimohon mengisi nomor telepon anggota '
+          }
+        ]
+      },
+      email: {
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Dimohon mengisi alamat email anggota'
+          }
+        ]
+      },
+      password: {
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Dimohon mengisi password untuk akun anggota'
+          }
+        ]
+      }
+    }
+  })
+;
+</script>
 {% endblock %}
