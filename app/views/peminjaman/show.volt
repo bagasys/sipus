@@ -15,28 +15,26 @@ Data Peminjaman
 <div class="ui four column grid">
 {% for result in results %}
     <div class="column">
-        <center>
-            <img src="{{config.url.baseUrl}}{{result.gambar_buku}}" alt="{{result.ISBN_ISSN}}.jpg">
-            <div class="ui header">
-                <div class="content">
-                    <div class="book-title">
-                        {{result.judul}}
-                    </div>
-                </div>
-                <div class="sub header">
-                    <div class="book-author">
-                        {{result.pengarang}}
-                    </div>
-                </div>
-            </div>
+        <a class="ui centered brown card" href="#">
             <div>
-                {{result.tgl_pinjam}} - {{result.tgl_hrs_kembali}}
+                <img src="{{config.url.baseUrl}}{{result.gambar_buku}}" alt="{{result.ISBN_ISSN}}.jpg" class="ui centered small image">
             </div>
-            <div>
-                {{result.status}}
+            <div class="content">
+                <div class="header">{{result.judul}}</div>
+                <div class="meta">
+                    <span class="category">{{result.pengarang}}</span>
+                </div>
+                <div class="description">
+                    Tanggal pinjam: {{result.tgl_pinjam}} <br>
+                    Tanggal harus kembali: {{result.tgl_hrs_kembali}}
+                </div>
             </div>
-        </center>
+            <div class="extra content">
+                Status: {{result.status}}
+            </div>
+        </a>
     </div>
+
 {% endfor %}   
 </div>
 {% endblock %}

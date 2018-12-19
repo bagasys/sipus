@@ -15,30 +15,26 @@ Data Reservasi
 <div class="ui four column grid">
 {% for result in results %}
     <div class="column">
-        <center>
-            <img src="{{config.url.baseUrl}}{{result.gambar_buku}}" alt="{{result.ISBN_ISSN}}.jpg">
-            <div class="ui header">
-                <div class="content">
-                    <div class="book-title">
-                        {{result.judul}}
-                    </div>
+        <a class="ui centered brown card" href="#">
+            <div>
+                <img src="{{config.url.baseUrl}}{{result.gambar_buku}}" alt="{{result.ISBN_ISSN}}.jpg" class="ui centered small image">
+            </div>
+            <div class="content">
+                <div class="header">{{result.judul}}</div>
+                <div class="meta">
+                    <span class="category">{{result.pengarang}}</span>
                 </div>
-                <div class="sub header">
-                    <div class="book-author">
-                        {{result.pengarang}}
-                    </div>
+                <div class="description">
+                    Tanggal reservasi: {{result.tgl_reservasi}}
                 </div>
             </div>
-            <div>
-                {{result.tgl_reservasi}}
-            </div>
-            <div>
+            <div class="extra content center aligned">
                 <button class="confirm ui labeled icon red button" data-id="{{result.idr}}" data-judul="{{result.judul}}">
                     <i class="times icon"></i>
                     Batalkan
                 </button>
             </div>
-        </center>
+        </a>
     </div>
 {% endfor %}   
 </div>
