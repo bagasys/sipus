@@ -177,7 +177,7 @@ class UsersController extends BaseController
 
     }
         
-    }
+    
     public function updateAction()
     {
         $flag = 0;
